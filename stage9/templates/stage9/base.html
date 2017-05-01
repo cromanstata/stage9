@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="expo">
+        <title>stage9</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this templete -->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/style.css' %}" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+        <script type="text/javascript" src="{% static 'stage9/js/jquery-1.11.0.min.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="{% static 'stage9/js/layout.js' %}"></script>
+
+        <script>
+            $( document ).ready(function() {
+                console.log( "document loaded" );
+                $('.menu_btn').click(function(event){
+                    event.stopPropagation();
+                    $(".dropdown_menu").toggle();
+                    });
+                $(".dropdown_menu").on("click", function (event) {
+                    event.stopPropagation();
+                });
+            });
+
+            $( window ).on( "load", function() {
+                console.log( "window loaded" );
+            });
+
+            $(document).on("click", function () {
+                $(".dropdown_menu").hide();
+            });
+
+
+
+         </script>
+    </head>
+    <body>
+            <div class="header">
+                <div class="header_cont">
+                    <div class="login_form block">{% include "stage9/stage9_login.html" %}</div>
+                        <img id="box33" class="block logo_bug" src="{% static 'stage9/img/rsz_bug.png' %}" alt="bug logo">
+                    <div class="btn">
+                        <img class="block menu_btn" src="{% static 'stage9/img/rsz_menuw.png' %}" alt="menu">
+                    </div>
+                </div>
+            </div>
+
+            <div id="menuDrop" class="dropdown_menu">
+                <div>
+                    <div style="position: relative; top: 10px;"></div>
+                    <div class="menu_liner"></div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                <div class="menu_liner"></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'admin:index' %}">Blog<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'admin:index' %}">Catalog<span class="link_span"></span></a></div>
+                <div class="menu_liner"></div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                <div class="menu_it">first one</div>
+                    </div>
+            </div>
+
+            <div class="container_info">
+                <div class="liner"></div>
+                {% block profile_pic %}{%  endblock  %}
+            </div>
+
+            <div class="container_body">
+                              <div class="thinner"></div>
+                    <div class="col-md-10 cont"> <!-- content !-->
+                        {% block content %}{% endblock %}
+                    </div>
+            </div>
+
+            <div class="footer">
+                <div class="liner"></div>
+                <div class="footer_content">
+                      <div class="copyright">
+                        stage9 1.01
+                      </div>
+                      <div class="links_footer">
+                          {% if request.user.is_authenticated %}
+                          <div class="bot_items"><i class="glyphicon glyphicon-log-out icon-muted"></i><a class="mini_links modal1" href="{% url 'account_logout' %}" id="modal_trigger">Logout</a></div>
+                          {% else %}
+                          <div class="bot_items"><i class="glyphicon glyphicon-log-in icon-muted"></i><a class="mini_links modal1" href="{% url 'account_signup' %}" id="modal_trigger">Register</a></div>
+                          {% endif %}
+                          <div class="bot_items"><i class="glyphicon glyphicon-cog icon-muted"></i><a class="mini_links" href="{% url 'admin:index' %}">Settings</a></div>
+                          <div class="bot_items"><i class="glyphicon glyphicon-globe icon-muted"></i><a class="mini_links" href="https://webchat.freenode.net/?channels=pyramid">Language</a></div>
+                          <div class="bot_items"><i class="glyphicon glyphicon-home icon-muted"></i><a class="mini_links" href="{% url 'home' %}">Home</a></div>
+                      </div>
+                </div>
+            </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "stage9/base.html" %}
+
+{% block content %}
+
+    <h1> welcome {{ user.username }}</h1>
+    {% if request.user.profile.account_verified %}
+        <p>(verified)</p>
+    {% else %}
+        <p>(unverified)</p>
+    {% endif %}
+
+{% endblock %}
+
+{% block profile_pic %}
+    <img src="{{ UserProfile.profile_image_url }}" alt="profile picture">
+{% endblock %}

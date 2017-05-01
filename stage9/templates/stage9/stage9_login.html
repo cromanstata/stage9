@@ -1,0 +1,17 @@
+{% if user.is_authenticated %}
+    <p>Hi: {{ request.user.username }}</p>
+    <a href="{% url "account_logout" %}">Logout</a>
+{% else %}
+    <form action="{% url "account_login" %}" method="post">
+        {% csrf_token %}
+        <input type="username" placeholder="Username" name="login">
+        <input type="password" placeholder="Password" name="password">
+        <label for="id_remember_menu" class="text-primary">Remember Me:</label>
+        <input id="id_remember_menu" name="remember" type="checkbox">
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button type="submit">Login</button>
+        <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
+    </form>
+{% endif %}

@@ -1,0 +1,388 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background: #F0F8FF;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+p {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-semi-bold {
+  font-weight: 600;
+}
+.font-bold {
+  font-weight: 700;
+}
+.starter-template {
+  margin-top: 250px;
+}
+.starter-template .content {
+  margin-left: 10px;
+}
+.starter-template .content h1 {
+  margin-top: 10px;
+  font-size: 60px;
+}
+.starter-template .content h1 .smaller {
+  font-size: 40px;
+  color: #3fa3c9;
+}
+.starter-template .content .lead {
+  font-size: 25px;
+  color: #3fa3c9;
+}
+.starter-template .content .lead .font-normal {
+  color: #ffffff;
+}
+
+.links_footer {
+    display: inline-block;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 20px;
+    left: -50px;
+    font-weight: 300;
+    color: white;
+}
+.starter-template {
+  display: block;
+}
+
+.starter-template .current-version {
+  color: #3fa3c9;
+  font-weight: 400;
+}
+
+.bot_items a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.bot_items a:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menu_it a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menu_it a:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.link_span {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+
+    z-index: 1;
+
+    /* fixes overlap error in IE7/8,
+     make sure you have an empty gif */
+    /*background-image: url('empty.gif');*/
+}
+
+.icon-muted {
+  color: #3fa3c9;
+  margin-right: 2px;
+}
+
+.links_footer .bot_items:hover .icon-muted  {
+  color: #ffffff;
+}
+
+.starter-template {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: whitesmoke;
+  text-transform: lowercase;
+  float: none;
+  right: 0;
+    height: 30%;
+    width: 100%;
+    position: absolute;
+}
+.header_cont {
+    position: relative;
+}
+.version {
+    position:absolute;
+    display: inline-block;
+    top: 75%;
+    float: left;
+}
+
+.col-md-10 cont {
+    clear: both;
+    position: relative;
+}
+
+.copyright {
+    display: inline-block;
+    position: absolute;
+    right: 80px;
+    color: white;
+    margin-top: 10px;
+}
+
+.block {
+    display: inline-block;
+}
+
+.menu_btn {
+  opacity: 0.6;
+}
+
+.login_form {
+    font-weight: 300;
+    color: white;
+    position: absolute;
+    right: 300px;
+}
+
+.btn {
+    position: absolute;
+    left: 10px;
+    top: 24px;
+}
+
+.logo_bug {
+    position: absolute;
+    right: 10px;
+
+}
+
+.btn img:hover {
+  opacity: 1;
+}
+
+.showon {
+    display: block;
+}
+
+.dropdown_menu {
+    position: fixed;
+    min-height: 484px;
+    min-width: 160px;
+    background: #434343;
+    color: whitesmoke;
+    left: 0px;
+    top: 91px;
+    display: none;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    z-index: 1;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: 1px;
+}
+
+.menu_it {
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 3px;
+    top: 3px;
+    position: relative;
+
+}
+
+.menu_it:hover {
+    cursor:pointer;
+    background: #292929;
+}
+
+
+
+.cont {
+    padding-bottom: 50px;
+    margin-left: 160px;
+}
+
+.container_info {
+    position: relative;
+    display: inline-block;
+    top: 90px;
+    width: 100%;
+    height: 60px;
+}
+
+.container_body {
+    position: relative;
+    display: inline-block;
+    color: #434343;
+    clear: both;
+    width: 100%;
+    height: 420px;
+    top: 85px;
+    right: 0px;
+    left: 0px;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 90px;
+    background: #434343;
+}
+
+.downer {
+    position: relative;
+    bottom: -140px;
+}
+
+.upper {
+    height: 6px;
+    position: relative;
+    bottom: -120px;
+}
+
+.footer {
+    clear:both;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #434343;
+    height: 40px;
+     z-index: 0;
+}
+.footer_content {
+    position:relative;
+    height: 100%;
+    width: 100%;
+    margin-right: 50px;
+    margin-left: 50px;
+    padding-right: 5px;
+    padding-bottom: 22px;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    font-weight: 300;
+}
+
+.liner {
+    height: 2px;
+    background: black;
+}
+
+.menu_liner {
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 1px;
+    background: black;
+}
+
+.thinner {
+    height: 1px;
+    background: black;
+    top: 30%;
+    width: 100%;
+}
+
+.bot_items {
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: 300;
+    color: white;
+    margin-left: 10px;
+}
+
+.mini_links {
+    font-weight: 300;
+    color: white;
+    margin-left: 5px;
+}
+
+.mini_links_menu {
+    font-weight: 300;
+    color: white;
+}
+
+@media (max-width: 1199px) {
+  .starter-template .content h1 {
+    min-height: 100%;
+    position: relative;
+    font-size: 45px;
+  }
+  .starter-template .content h1 .smaller {
+    font-size: 30px;
+  }
+  .starter-template .content .lead {
+    font-size: 20px;
+  }
+}
+@media (max-width: 991px) {
+  .starter-template {
+    margin-top: 0;
+  }
+  .starter-template .logo {
+    margin: 40px auto;
+  }
+  .starter-template .content {
+    margin-left: 0;
+    text-align: center;
+  }
+  .starter-template .content h1 {
+    margin-bottom: 20px;
+  }
+  .starter-template .links {
+    float: none;
+    text-align: center;
+    margin-top: 60px;
+  }
+  .starter-template {
+    float: none;
+    text-align: center;
+  }
+}
+@media (max-width: 767px) {
+  .starter-template .content h1 .smaller {
+    font-size: 25px;
+    display: block;
+  }
+  .starter-template .content .lead {
+    font-size: 16px;
+  }
+  .starter-template .links {
+    margin-top: 40px;
+  }
+  .starter-template .links ul li {
+    display: block;
+    margin: 0;
+  }
+  .starter-template .links ul li .icon-muted {
+    display: none;
+  }
+  .starter-template {
+    margin-top: 20px;
+  }
+}
+
+
+
