@@ -1,6 +1,7 @@
 from allauth.account.forms import LoginForm, SignupForm
 
 #pushcheck1
+#pushcheck12
 
 class MyLoginForm(LoginForm):
     def __init__(self, *args, **kwargs):
