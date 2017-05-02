@@ -154,6 +154,7 @@ ACCOUNT_LOGOUT_ON_GET = True
 AUTH_USER_MODEL = 'auth.User'
 
 #pushcheck
+#pushcheck4444
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
