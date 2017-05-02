@@ -17,6 +17,8 @@
         <script type="text/javascript" src="{% static 'stage9/js/jquery-1.11.0.min.js' %}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="{% static 'stage9/js/layout.js' %}"></script>
+        <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
+        {% include 'material/includes/material_js.html' %}
 
         <script>
             $( document ).ready(function() {
@@ -75,12 +77,15 @@
             </div>
 
             <div class="container_info">
-                <div class="liner"></div>
-                {% block profile_pic %}{%  endblock  %}
+                <div style="position:relative; width: 100%; height: 100%;">
+                    <div class="liner"></div>
+                    {% block profile_pic %}{%  endblock  %}
+                </div>
             </div>
 
+            <div class="liner" style="position: fixed;"></div>
+
             <div class="container_body">
-                              <div class="thinner"></div>
                     <div class="col-md-10 cont"> <!-- content !-->
                         {% block content %}{% endblock %}
                     </div>
@@ -100,7 +105,11 @@
                           {% endif %}
                           <div class="bot_items"><i class="glyphicon glyphicon-cog icon-muted"></i><a class="mini_links" href="{% url 'admin:index' %}">Settings</a></div>
                           <div class="bot_items"><i class="glyphicon glyphicon-globe icon-muted"></i><a class="mini_links" href="https://webchat.freenode.net/?channels=pyramid">Language</a></div>
+                          {% if request.user.is_authenticated %}
+                          <div class="bot_items"><i class="glyphicon glyphicon-home icon-muted"></i><a class="mini_links" href="{% url 'profiles:profile' %}">Home</a></div>
+                          {% else %}
                           <div class="bot_items"><i class="glyphicon glyphicon-home icon-muted"></i><a class="mini_links" href="{% url 'home' %}">Home</a></div>
+                          {% endif %}
                       </div>
                 </div>
             </div>

@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='stage9/home.html'),name='home'),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^(?P<name>.+)/$', views.profile, name='user')
+    url(r'^(?P<name>.+)/profile/$', views.profile, name='user'),
+    url(r'^(?P<name>.+)/update/$', views.edit_user, name='update')
 ]
 

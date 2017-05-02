@@ -3,16 +3,26 @@ from django.db import models
 from allauth.account.models import EmailAddress
 from allauth.socialaccount.models import SocialAccount
 import hashlib
-
+from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
+    photo = models.URLField(default='', blank=True)
+    website = models.URLField(default='', blank=True)
+    bio = models.TextField(default='', blank=True)
+    phone = models.CharField(max_length=20, blank=True, default='')
+    city = models.CharField(max_length=100, default='', blank=True)
+    country = models.CharField(max_length=100, default='', blank=True)
+    organization = models.CharField(max_length=100, default='', blank=True)
 
     def __str__(self):
         return self.user.username
 
-    class Meta:
-        db_table = 'user_profile'
+    def create_profile(sender, **kwargs):
+        user = kwargs["instance"]
+        if kwargs["created"]:
+            user_profile = UserProfile(user=user)
+            user_profile.save()
 
     def account_verified(self):
         if self.user.is_authenticated:
@@ -20,7 +30,6 @@ class UserProfile(models.Model):
             if len(result):
                 return result[0].verified
         return False
-
 
     def profile_image_url(self):
         fb_uid = SocialAccount.objects.filter(user_id=self.user.id, provider='facebook')
@@ -30,20 +39,11 @@ class UserProfile(models.Model):
 
         # return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.user.email).hexdigest())
 
-        return "http://www.gravatar.com/avatar/{0}?s={1}".format(hashlib.md5(self.user.email.encode('UTF-8')).hexdigest(),40)
+        return "http://www.gravatar.com/avatar/{0}?s={1}".format(
+            hashlib.md5(self.user.email.encode('UTF-8')).hexdigest(), 40)
 
-    User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+    post_save.connect(create_profile, sender=User)
 
-    #profile_username = User.username
-    #profile_firstname = User.first_name
-    #profile_lastname = User.last_name
-    #profile_datejoined = User.date_joined
-    #profile_email = User.email
-    #profile_lastloging = User.last_login
-    #profile_id = User.id
-    #profile_isactive = User.is_active
-    #profile_img_url=profile_image_url(user)
-    #profile_account_verified = account_verified(user)
 
 
 # Create your models here.

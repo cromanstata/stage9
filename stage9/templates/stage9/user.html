@@ -8,7 +8,19 @@
     {% else %}
         <p>(unverified)</p>
     {% endif %}
-
+    <p><a href="{% url 'profiles:account_update' %}">Update your profile NOW</a></p>
+    <p>{{ user.first_name }}</p>
+    <p>{{ user.last_name }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.profile.bio }}</p>
+    <p>{{ user.profile.country }}</p>
+    <p>{{ user.profile.city }}</p>
+    <p>{{ user.profile.phone }}</p>
+    <p>{{ user.profile.organization }}</p>
+    <p>{{ user.profile.website }}</p>
+    <p>{{ user.profile.photo }}</p>
+<!-- stage9.public.profiles_userprofile
+stage9.public.auth_user--!>
 {% endblock %}
 
 {% block profile_pic %}
