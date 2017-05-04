@@ -1,0 +1,19 @@
+{% extends "stage9/base.html" %}
+
+{% block content %}
+    <div class="cook_detail">
+        <img src="{{ MEDIA_URL }}{{ recipe.photo }}" style="display: inline-block; height: 300px; width: 300px;">
+        <div class="cook_cont" style="display:inline-block; width: 400px">
+            <h1>{{ recipe.title }}</h1>
+            <h3>{{ recipe.summary }}</h3>
+            <p>INGREDIENTS:</p>
+            {% for ingredient in recipe.ingredients.all %}
+              <p style="display:inline-block"> {{ ingredient }} ,</p>
+            {% endfor %}
+            <P>{{ recipe.description }}</P>
+        </div>
+        <a href="{% url 'cooks:list' %}" style="display: inline-block; font-size: 20px;">back</a>
+    </div>
+
+
+{%  endblock %}
