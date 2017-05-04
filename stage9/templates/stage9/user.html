@@ -9,6 +9,7 @@
         <p>(unverified)</p>
     {% endif %}
     <p><a href="{% url 'profiles:account_update' %}">Update your profile NOW</a></p>
+    <p><a href="{% url 'cooks:list' %}">LOOK AT RECIPES</a></p>
     <p>{{ user.first_name }}</p>
     <p>{{ user.last_name }}</p>
     <p>{{ user.email }}</p>

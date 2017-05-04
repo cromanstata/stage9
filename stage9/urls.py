@@ -15,15 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import static
 from django.views.generic.base import TemplateView
 from . import views
+from . import settings
 
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
+    url(r'^cooks/', include('cooks.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='stage9/home.html'),name='home'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^(?P<name>.+)/profile/$', views.profile, name='user'),
     url(r'^(?P<name>.+)/update/$', views.edit_user, name='update')
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
 

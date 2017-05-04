@@ -26,6 +26,7 @@
         <option value="$MODULE_DIR$/polls/templates" />
         <option value="$MODULE_DIR$/allauth/templates" />
         <option value="$MODULE_DIR$/profiles/templates" />
+        <option value="$MODULE_DIR$/cooks/templates" />
       </list>
     </option>
   </component>

@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>{{ question.question_text }}</h1>
-    <div>{{ question.extra_info }}</div>
+    <p>{{ question.extra_info }}</p>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
     <form action="{% url 'polls:vote' question.id %}" method="post">

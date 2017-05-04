@@ -30,6 +30,11 @@
                 $(".dropdown_menu").on("click", function (event) {
                     event.stopPropagation();
                 });
+                $(".cook_item").hover(function () {
+                    $(this).find(".cook_item_back").css("opacity", "0.9");
+                    }, function(){
+                        $(this).find(".cook_item_back").css("opacity", "0.3");
+                });
             });
 
             $( window ).on( "load", function() {
@@ -64,7 +69,7 @@
                 <div class="menu_it">first one</div>
                 <div class="menu_liner"></div>
                 <div class="menu_it"><a class="mini_links_menu"  href="{% url 'admin:index' %}">Blog<span class="link_span"></span></a></div>
-                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'admin:index' %}">Catalog<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">Cooks<span class="link_span"></span></a></div>
                 <div class="menu_liner"></div>
                 <div class="menu_it">first one</div>
                 <div class="menu_it">first one</div>
