@@ -2,29 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75218757-83e0-46de-a827-b3e6c2ee3210" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/templates/cooks/cooks_search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/css/loader.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/css/recipe_cards.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/ajax_search.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/ajax_tags.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/my_functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/templates/stage9/ajax_search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/templates/stage9/search.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stage9/static/stage9/js/jquery-1.11.0.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/models.py" afterPath="$PROJECT_DIR$/cooks/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/templates/cooks/cooks_list.html" afterPath="$PROJECT_DIR$/cooks/templates/cooks/cooks_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/urls.py" afterPath="$PROJECT_DIR$/cooks/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/views.py" afterPath="$PROJECT_DIR$/cooks/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/saved_settings_updated_recovery.py" afterPath="$PROJECT_DIR$/stage9/saved_settings_updated_recovery.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/templates/stage9/base.html" afterPath="$PROJECT_DIR$/stage9/templates/stage9/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/templates/stage9/home.html" afterPath="$PROJECT_DIR$/stage9/templates/stage9/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/templates/stage9/user.html" afterPath="$PROJECT_DIR$/stage9/templates/stage9/user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/urls.py" afterPath="$PROJECT_DIR$/stage9/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/views.py" afterPath="$PROJECT_DIR$/stage9/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/img/fridge-icon-1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/img/fridge-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/info_git" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/profiles/migrations/0002_auto_20170502_1934.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/profiles/migrations/0003_auto_20170503_0108.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/css/jquery.tagit.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/css/tagit.ui-zendesk.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/jquery-3.2.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/tag-it.js" />
     </list>
     <ignored path="maria.iws" />
     <ignored path=".idea/workspace.xml" />

@@ -1,0 +1,34 @@
+--------when updating pythonanywhere host----------------
+apply the following commands in bash to avoid deleting files when merged
+(for files not present in the git rep)
+
+$ git stash
+$ git fetch
+$ git merge FETCH_HEAD
+$ git stash apply --index
+
+--aditional information for setting up git--
+
+git config --list (gets the info of config file)
+
+$ git init
+$ git config --global user.name "Your Name"
+$ git config --global user.email you@example.com
+(for first initializing git MUST BE RUN IN ROOT DIR)
+
+---------for uploading to github------------
+$ git status
+(shows changed and so on)
+
+$ git commit -a -m "commit msg"
+adds changes made and commints the with msg
+
+$ git remote add origin "https://github.com/<your-github-username>/my-first-blog.git"
+(whats provided by github
+
+$ git push -u origin master
+(push changes to github)
+
+
+
+
