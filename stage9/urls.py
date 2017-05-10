@@ -30,6 +30,8 @@ urlpatterns = [
     url(r'^(?P<name>.+)/update/$', views.edit_user, name='update'),
     url(r'^search/$', views.search, name='search'),
     url(r'^tags/$', views.get_tags, name='tags'),
+    url(r'^diff_tags/$', views.get_diff_tags, name='diff_tags'),
+    url(r'^availble_tags/$', views.availble_tags, name='availble_tags'),
 
 ]
 

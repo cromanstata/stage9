@@ -154,6 +154,31 @@ a:active {
     position: relative;
 }
 
+.col-md-10 {
+    width: 60%;
+    display: inline-block;
+}
+
+.item_ingredient {
+    z-index: 1;
+    margin: 3px;
+    padding: 5px;
+    display: inline-block;
+    border: 1px solid #555555;
+    background: #e6e6e6;
+    font-weight: normal;
+    color: #555555;
+    border-radius: 6px;
+}
+
+.item_ingredient:hover {
+    cursor:pointer;
+}
+
+.ingredient_name:hover {
+    cursor:pointer;
+}
+
 .copyright {
     display: inline-block;
     position: absolute;

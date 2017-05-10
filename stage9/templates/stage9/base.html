@@ -42,15 +42,19 @@
                 $(".dropdown_menu").on("click", function (event) {
                     event.stopPropagation();
                 });
-                $(".cook_item").hover(function () {
-                    $(this).find(".cook_item_back").css("opacity", "0.9");
-                    }, function(){
-                        $(this).find(".cook_item_back").css("opacity", "0.3");
+
+                $(document).on('click', ".item_ingredient" ,function () {
+                    $(".myTags").tagit("createTag", $(this).children('.ingredient_name').text());
                 });
             });
 
             $( window ).on( "load", function() {
                 console.log( "window loaded" );
+                $(".cook_item").hover(function () {
+                    $(this).find(".cook_item_back").css("opacity", "0.9");
+                    }, function(){
+                        $(this).find(".cook_item_back").css("opacity", "0.3");
+                });
             });
 
             $(document).on("click", function () {
@@ -105,6 +109,8 @@
             <div class="container_body">
                     <div class="col-md-10 cont"> <!-- content !-->
                         {% block content %}{% endblock %}
+                    </div>
+                    <div id="ingredients_choices" style="display: inline-block;  width: 20%;">
                     </div>
             </div>
 

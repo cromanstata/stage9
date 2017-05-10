@@ -1,0 +1,11 @@
+
+{% if not all_ingrident_tags.length %}
+    <h5>Availble ingredients</h5>
+    {% for ingredient in all_ingrident_tags %}
+        <div class="item_ingredient">
+                <span class="ingredient_name">{{ ingredient }}</span>
+        </div>
+    {% endfor %}
+{% else %}
+    <h5>NO INGREDIENTS</h5>
+{% endif %}

@@ -63,6 +63,16 @@ def home(request):
     }
     return render(request, 'stage9/home.html', context)
 
+def availble_tags (request):
+    list_tags = ''
+    if request.method == "GET":
+        tags = Ingredient.objects.all().values('ingredient').distinct()
+        list_tags = [d['ingredient'] for d in tags]
+    else:
+        tags = ''
+    context = {'all_ingrident_tags': list_tags}
+    return render(request, 'stage9/availble_tags.html', context)
+
 def search(request):
     if request.method == "POST":
         search_text = request.POST['search_text']
@@ -70,22 +80,28 @@ def search(request):
         search_text = ''
     results=[]
     search2 = Q()
-    search_text = search_text.split()
+    search_text = search_text.split(',')
 
-    for title_ing in search_text:
-        recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing))
-        f_search = Recipe.objects.filter(recipe_list_search).distinct()
-        for recipe in f_search:
-            results.append(str(recipe.id))
-    for ids in results:
-        if results.count(ids) == len(search_text):
-            search2 = search2 | (Q(id=ids))
-    if len(search2) != 0:
-        f_search = Recipe.objects.filter(search2).distinct()
-    else:
+    if (isinstance(search_text, list) and search_text[0]==''):
         f_search=''
-    context = {'recipe_list_search': f_search}
-    return render(request, 'stage9/ajax_search.html', context)
+        context = {'recipe_list_search': f_search}
+        return render(request, 'stage9/ajax_search.html', context)
+
+    else:
+        for title_ing in search_text:
+            recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing))
+            f_search = Recipe.objects.filter(recipe_list_search).distinct()
+            for recipe in f_search:
+                results.append(str(recipe.id))
+        for ids in results:
+            if results.count(ids) == len(search_text):
+                search2 = search2 | (Q(id=ids))
+        if len(search2) != 0:
+            f_search = Recipe.objects.filter(search2).distinct()
+        else:
+            f_search=''
+        context = {'recipe_list_search': f_search}
+        return render(request, 'stage9/ajax_search.html', context)
 
 def get_tags(request):
     if request.method == "GET":
@@ -95,3 +111,13 @@ def get_tags(request):
     json_tags = Ingredient.objects.filter(ingredient__istartswith=search_tags).values('ingredient').distinct()
     json_items = json.dumps(list(json_tags))
     return HttpResponse(json_items, content_type='application/json')
+
+def get_diff_tags(request):
+    if request.method == "GET":
+        search_tags = request.GET['term']
+    else:
+        search_tags = ''
+    if search_tags == "all":
+        json_tags = Ingredient.objects.all().values('ingredient').distinct()
+        json_items = json.dumps(list(json_tags))
+        return HttpResponse(json_items, content_type='application/json')
