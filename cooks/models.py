@@ -1,6 +1,7 @@
 from django.db import models
 from . import fields
 from django.utils.translation import ugettext_lazy as _
+from django.forms import ModelForm
 
 class Recipe(models.Model):
     title = models.CharField("Title", blank=True, null=True, max_length=200)
@@ -32,15 +33,24 @@ class Ingredient(models.Model):
     ingredient = models.CharField(_("Ingredient"), max_length=100)
     note = models.CharField(_("Note"), max_length=200, blank=True, null=True)
 
+    #tring out django-taggit
+
     def __str__(self):
         _ingredient = '%s' % self.ingredient
 
         if self.unit:
             _ingredient = '%s %s' % (self.get_unit_display(), _ingredient)
 
+        #for python anywhere should work:
+        #if self.unit:
+         #   if 'NoneType' in self.request.GET:
+          #      _ingredient = '%s %s' % (None,_ingredient)
+           # else:
+            #    _ingredient = '%s %s' % (self.get_unit_display(), _ingredient)
+
         if self.quantity:
             _ingredient = '%s %s' % (self.quantity, _ingredient)
-
+        #python anywhere doesnt register len for somereason so should be changed
         if len(self.note):
            _ingredient = '%s - %s' % (_ingredient, self.note)
 
@@ -49,6 +59,12 @@ class Ingredient(models.Model):
     class Meta:
         verbose_name = _("Ingredient")
         verbose_name_plural = _("Ingredients")
+
+
+class IngredientSearch(ModelForm):
+    class Meta:
+        model = Ingredient
+        fields = ['ingredient']
 
 
 class Difficulty (models.Model):

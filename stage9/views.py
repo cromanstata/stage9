@@ -1,9 +1,4 @@
-from django.shortcuts import get_object_or_404, render
 from .forms import MyLoginForm
-from django.contrib.auth.models import User
-from profiles.forms import UserForm
-from django.forms.models import inlineformset_factory
-from profiles.models import UserProfile
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404, render
 from django.shortcuts import render, HttpResponseRedirect
@@ -13,6 +8,12 @@ from profiles.models import UserProfile
 from profiles.forms import UserForm
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
+from cooks.models import Recipe, IngredientSearch, Ingredient
+from django.db.models import Q
+from itertools import chain
+import json
+from django.core import serializers
+from django.http import HttpResponse
 
 
 @login_required() # only logged in users should access this
@@ -58,11 +59,39 @@ def profile(request, name):
 def home(request):
     context = {
         'login_form': MyLoginForm(),
+        #'formset': IngredientSearch()
     }
     return render(request, 'stage9/home.html', context)
 
-# def profile(request):
-    #user=UserProfile
-    #name=request.user.username
-    #return render(request, 'profiles/profile.html', {'profile': user})
-    #return HttpResponseRedirect(reverse('profiles:profile', args=(name)))
+def search(request):
+    if request.method == "POST":
+        search_text = request.POST['search_text']
+    else:
+        search_text = ''
+    results=[]
+    search2 = Q()
+    search_text = search_text.split()
+
+    for title_ing in search_text:
+        recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing))
+        f_search = Recipe.objects.filter(recipe_list_search).distinct()
+        for recipe in f_search:
+            results.append(str(recipe.id))
+    for ids in results:
+        if results.count(ids) == len(search_text):
+            search2 = search2 | (Q(id=ids))
+    if len(search2) != 0:
+        f_search = Recipe.objects.filter(search2).distinct()
+    else:
+        f_search=''
+    context = {'recipe_list_search': f_search}
+    return render(request, 'stage9/ajax_search.html', context)
+
+def get_tags(request):
+    if request.method == "GET":
+        search_tags = request.GET['term']
+    else:
+        search_tags = ''
+    json_tags = Ingredient.objects.filter(ingredient__istartswith=search_tags).values('ingredient').distinct()
+    json_items = json.dumps(list(json_tags))
+    return HttpResponse(json_items, content_type='application/json')

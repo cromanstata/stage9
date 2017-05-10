@@ -1,11 +1,18 @@
 {% extends "stage9/base.html" %}
-
+{% load static %}
 {% block content %}
-    <h1>HELLO WORLD</h1>
-    <ul>
-        <p><a href="{% url 'polls:index' %}">Go deeper?</a></p>
-        <p><a href="{% url 'account_login' %}">Login</a></p>
-        <p><a href="{% url 'cooks:list' %}">LOOK AT RECIPES</a></p>
-    </ul>
+    <p><a href="{% url 'cooks:list' %}">LOOK AT RECIPES</a></p>
+    <div style="display: inline-block;">
+        <h4>SEARCH:</h4>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="text" name="tags" id="search_recipe" title="search" style="background-image: url({% static 'stage9/img/fridge-icon.png' %});" class="myTags" readonly />
+    </div>
+    <hr>
+    <h4>RESULTS:</h4>
+
+    <div id="search-results">
+
+    </div>
 
 {% endblock %}

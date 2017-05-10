@@ -8,21 +8,33 @@
         <title>stage9</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
         <!-- Custom styles for this templete -->
         {% load static %}
+
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/loader.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/recipe_cards.css' %}" />
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-        <script type="text/javascript" src="{% static 'stage9/js/jquery-1.11.0.min.js' %}"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <script src="{% static 'stage9/js/layout.js' %}"></script>
-        <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
-        {% include 'material/includes/material_js.html' %}
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
+        <link href="{% static 'stage9/css/jquery.tagit.css' %}" rel="stylesheet" />
+
+        <script type="text/javascript" src="{% static 'stage9/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{% static 'stage9/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/ajax_search.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/ajax_tags.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/layout.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/my_functions.js' %}"></script>
 
         <script>
             $( document ).ready(function() {
                 console.log( "document loaded" );
+                //var sampleTags = ['egg', 'milk', 'java', 'javascript', 'asp', 'ruby', 'python', 'c'];
+
                 $('.menu_btn').click(function(event){
                     event.stopPropagation();
                     $(".dropdown_menu").toggle();
@@ -46,13 +58,13 @@
             });
 
 
-
          </script>
     </head>
     <body>
             <div class="header">
                 <div class="header_cont">
                     <div class="login_form block">{% include "stage9/stage9_login.html" %}</div>
+                    <div style="display: inline-block;">{% include "stage9/search.html" %}</div>
                         <img id="box33" class="block logo_bug" src="{% static 'stage9/img/rsz_bug.png' %}" alt="bug logo">
                     <div class="btn">
                         <img class="block menu_btn" src="{% static 'stage9/img/rsz_menuw.png' %}" alt="menu">

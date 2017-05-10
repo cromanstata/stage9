@@ -27,7 +27,10 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='stage9/home.html'),name='home'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^(?P<name>.+)/profile/$', views.profile, name='user'),
-    url(r'^(?P<name>.+)/update/$', views.edit_user, name='update')
+    url(r'^(?P<name>.+)/update/$', views.edit_user, name='update'),
+    url(r'^search/$', views.search, name='search'),
+    url(r'^tags/$', views.get_tags, name='tags'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

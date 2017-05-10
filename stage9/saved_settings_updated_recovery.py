@@ -190,6 +190,10 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# trying out the email backend for confirmation
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 #SOCIALACCOUNT_PROVIDERS = {
 #    'facebook': {
 #        'SCOPE': ['email', 'publish_stream'],
