@@ -2,8 +2,10 @@ from django.shortcuts import redirect
 
 def edit_user(request):
     name=request.user.username
-    return redirect('/' + name + '/update')
+    nameid=str(request.user.id)
+    return redirect('/profile/' + name + '/' + nameid + '/update')
 
 def profile(request):
     name=request.user.username
-    return redirect('/' + name + '/profile')
+    nameid = str(request.user.id)
+    return redirect('/profile/' + name + '/' + nameid + '/')

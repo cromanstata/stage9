@@ -4,8 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.forms import ModelForm
 
 class Recipe(models.Model):
-    title = models.CharField("Title", blank=True, null=True, max_length=200)
-    photo = models.ImageField(upload_to="media/cooks/img")
+    title = models.CharField("Title", blank=True, null=True, max_length=200, unique=True)
+    photo = models.ImageField(upload_to="media/cooks/img", blank=True, null=True)
     summary = models.TextField("Summary", blank=True, null=True)
     description = models.TextField("Description", blank=True, null=True)
     portions = models.IntegerField("Portions", blank=True, null=True)
@@ -76,7 +76,67 @@ class Difficulty (models.Model):
         return self.difficulty
 
     class Meta:
-        verbose_name = _("difficulty")
+        verbose_name = _("Difficulty")
 
+
+class MealType (models.Model):
+    recipe = models.ForeignKey("Recipe", verbose_name=_("Recipe"), related_name="meal_type", on_delete=models.CASCADE)
+    mealtype = models.CharField(_("Meal type"), choices = fields.MEALTYPE, blank=True, null=True, max_length = 50)
+
+    def __str__(self):
+        _mealtype = '%s' % self.mealtype
+        return _mealtype
+
+    class Meta:
+        verbose_name = _("Mealtype")
+        verbose_name_plural = _("Mealtypes")
+
+
+class Cuisine (models.Model):
+    recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="cuisine", on_delete=models.CASCADE)
+    cuisine = models.CharField(_("Cuisine"), choices=fields.CUISINE, blank=True, null=True, max_length=50)
+
+    def __str__(self):
+        return self.cuisine
+
+    class Meta:
+        verbose_name = _("Cuisine")
+        verbose_name_plural = verbose_name
+
+
+class Period(models.Model):
+    """
+    Provides fields for a period of time
+    """
+    hours = models.IntegerField(_("hours"), default=0)
+    minutes = models.IntegerField(_("minutes"), default=0)
+
+    def __unicode__(self):
+        return "%02d:%02d" %(self.hours, self.minutes)
+
+    class Meta:
+        abstract = True
+
+
+class WorkingTime(Period):
+    """
+    Provides working hour fields for cooking a recipe
+    """
+    recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="working_hours")
+
+    class Meta:
+        verbose_name = _("working hour")
+        verbose_name_plural = verbose_name
+
+
+class CookingTime(Period):
+    """
+    Provides cooking time fields for cooking a recipe
+    """
+    recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="cooking_time")
+
+    class Meta:
+        verbose_name = _("cooking time")
+        verbose_name_plural = verbose_name
 
 # Create your models here.

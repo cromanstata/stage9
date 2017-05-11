@@ -1,8 +1,7 @@
 <div onload="showPage()" style="display:none;" id="myDiv" class="animate-bottom">
 {% if recipe_list_search.count > 0 %}
-    <p>{{ recipe_list_search }}</p>
     {% for recipe in recipe_list_search %}
-        <a href="{% url 'cooks:detail' recipe.id %}">
+        <a href="{% url 'cooks:detail' recipe.title %}">
             <div class="cook_item">
                 <div class="cook_item_cont" >
                     <h3>{{ recipe.title }}</h3>
@@ -11,8 +10,11 @@
                     {% for ingredient in recipe.ingredients.all %}
                         <p style="display:inline-block">{{ ingredient.ingredient }} ,</p>
                     {% endfor %}
-                <div class="cook_item_back" style="background-image: url({{ MEDIA_URL }}{{ recipe.photo }});">
-                </div>
+                {% if recipe.photo %}
+                <div class="cook_item_back" style="background-image: url({{ MEDIA_URL }}{{ recipe.photo }});"></div>
+                {% else %}
+                <div class="cook_item_back"></div>
+                {% endif %}
                 </div>
             </div>
         </a>

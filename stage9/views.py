@@ -1,4 +1,4 @@
-from .forms import MyLoginForm
+from .forms import MyLoginForm, CousineForm
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404, render
 from django.shortcuts import render, HttpResponseRedirect
@@ -14,14 +14,15 @@ from itertools import chain
 import json
 from django.core import serializers
 from django.http import HttpResponse
+from cooks import fields
 
 
 @login_required() # only logged in users should access this
 
 
-def edit_user(request, name):
+def edit_user(request, name, nameid):
     # querying the User object with pk from url
-    user = get_object_or_404(User, username=name)
+    user = get_object_or_404(User, username=name, id=nameid)
     pk = request.user.pk
 
     # prepopulate UserProfileForm with retrieved user values from above.
@@ -52,13 +53,14 @@ def edit_user(request, name):
     else:
         raise PermissionDenied
 
-def profile(request, name):
-    user = get_object_or_404(User, username=name)
+def profile(request, name, nameid):
+    user = get_object_or_404(User, username=name, id=nameid)
     return render(request, 'stage9/user.html', {'profile': user})
+
 
 def home(request):
     context = {
-        'login_form': MyLoginForm(),
+        'fields': fields,
         #'formset': IngredientSearch()
     }
     return render(request, 'stage9/home.html', context)
@@ -76,32 +78,74 @@ def availble_tags (request):
 def search(request):
     if request.method == "POST":
         search_text = request.POST['search_text']
+        search_cuisine = request.POST['search_cuisine']
+        search_mealtype = request.POST['search_mealtype']
     else:
         search_text = ''
+        search_cuisine = ''
+        search_mealtype = ''
     results=[]
     search2 = Q()
     search_text = search_text.split(',')
+    recipe_list_search=''
 
+    print("search text",search_text)
+    print(search_cuisine)
+    print(search_mealtype)
+    #if no ingredient tags where searched:
     if (isinstance(search_text, list) and search_text[0]==''):
-        f_search=''
-        context = {'recipe_list_search': f_search}
-        return render(request, 'stage9/ajax_search.html', context)
-
-    else:
-        for title_ing in search_text:
-            recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing))
+        print ("no ingredients")
+        if search_cuisine:
+            if search_mealtype:
+                recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+            else:
+                recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine))
+        if search_mealtype:
+            if search_cuisine:
+                recipe_list_search =  (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+            else:
+                recipe_list_search = (Q(meal_type__mealtype__iexact=search_mealtype))
+        if recipe_list_search:
+            print(recipe_list_search)
             f_search = Recipe.objects.filter(recipe_list_search).distinct()
+            print(f_search)
             for recipe in f_search:
                 results.append(str(recipe.id))
-        for ids in results:
-            if results.count(ids) == len(search_text):
-                search2 = search2 | (Q(id=ids))
-        if len(search2) != 0:
-            f_search = Recipe.objects.filter(search2).distinct()
         else:
-            f_search=''
-        context = {'recipe_list_search': f_search}
-        return render(request, 'stage9/ajax_search.html', context)
+            f_search= Recipe.objects.order_by('publish_date')[:20]
+            context = {'recipe_list_search': f_search}
+            return render(request, 'stage9/ajax_search.html', context)
+    # if ingredient tags where searched:
+    else:
+        for title_ing in search_text:
+            if search_cuisine:
+                if search_mealtype:
+                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(
+                        meal_type__mealtype__iexact=search_mealtype))
+                else:
+                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine))
+            if search_mealtype:
+                if search_cuisine:
+                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(
+                        meal_type__mealtype__iexact=search_mealtype))
+                else:
+                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+            if not search_cuisine and not search_mealtype:
+                recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing))
+            print(recipe_list_search)
+            f_search = Recipe.objects.filter(recipe_list_search).distinct()
+            print(f_search)
+            for recipe in f_search:
+                results.append(str(recipe.id))
+    for ids in results:
+        if results.count(ids) == len(search_text):
+            search2 = search2 | (Q(id=ids))
+    if len(search2) != 0:
+        f_search = Recipe.objects.filter(search2).distinct()
+    else:
+        f_search=''
+    context = {'recipe_list_search': f_search}
+    return render(request, 'stage9/ajax_search.html', context)
 
 def get_tags(request):
     if request.method == "GET":

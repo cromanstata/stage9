@@ -8,7 +8,9 @@ $(function () {
                 type: "POST",
                 url: "/search/",
                 data: {
-                    'search_text': $('#search_recipe').val(),
+                    'search_text': $('#search_ingredient').val(),
+                    'search_cuisine': $('#search_cuisine').val(),
+                    'search_mealtype': $('#search_mealtype').val(),
                     'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
                 },
                 dataType: 'html',
@@ -18,7 +20,11 @@ $(function () {
             });
         };
 
-    $('#search_recipe').on("keyup",searchUpdate)
+    $('#search_ingredient').on("keyup",searchUpdate)
+    .on("change", searchUpdate);
+    $('#search_cuisine').on("keyup",searchUpdate)
+    .on("change", searchUpdate);
+    $('#search_mealtype').on("keyup",searchUpdate)
     .on("change", searchUpdate);
 });
 

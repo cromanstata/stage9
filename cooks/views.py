@@ -10,8 +10,8 @@ def cook_list(request):
     return render(request, 'cooks/cooks_list.html', context)
 
 
-def cook_detail(request, recipe_id):
-    recipe = get_object_or_404(Recipe, pk=recipe_id)
+def cook_detail(request, recipe_title):
+    recipe = get_object_or_404(Recipe, title=recipe_title)
     return render(request, 'cooks/cook_detail.html', {'recipe': recipe})
 
 
