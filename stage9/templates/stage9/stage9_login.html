@@ -1,9 +1,15 @@
-{% load socialaccount %}
-{% providers_media_js %}
 {% if user.is_authenticated %}
-    <p>Hi: {{ request.user.username }}</p>
-    <a href="{% url "account_logout" %}">Logout</a>
+    <div style="display: inline; width: 200px; max-height: inherit; position: absolute; right:100px;" >
+        <div style="display: inline-block; margin-right: 20px;">
+            <p>Hi: {{ request.user.username }}</p>
+            <a href="{% url 'profiles:profile' %}">My profile   /</a>
+            <a href="{% url "account_logout" %}">Logout</a>
+        </div>
+        <img style=" position: absolute; height: 50px; width: 50px; display: inline;" src="{{ request.user.profile.profile_image_url }}" alt="profile picture">
+    </div>
 {% else %}
+    {% load socialaccount %}
+    {% providers_media_js %}
     <form action="{% url "account_login" %}" method="post">
         {% csrf_token %}
         <input type="username" placeholder="Username" name="login">

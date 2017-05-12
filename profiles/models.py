@@ -37,10 +37,9 @@ class UserProfile(models.Model):
         if len(fb_uid):
             return "http://graph.facebook.com/{}/picture?width=40&height=40".format(fb_uid[0].uid)
 
-        # return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.user.email).hexdigest())
-
-        return "http://www.gravatar.com/avatar/{0}?s={1}".format(
-            hashlib.md5(self.user.email.encode('UTF-8')).hexdigest(), 40)
+        #return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.user.email).hexdigest())
+        print("no facebook avater")
+        return "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y"
 
     post_save.connect(create_profile, sender=User)
 

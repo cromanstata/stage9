@@ -67,7 +67,11 @@
     <body>
             <div class="header">
                 <div class="header_cont">
+                    {% if request.user.is_authenticated %}
+                    <div style="display: inline-block;">{% include "stage9/stage9_login.html" %}</div>
+                    {% else %}
                     <div class="login_form block">{% include "stage9/stage9_login.html" %}</div>
+                    {% endif %}
                     <div style="display: inline-block;">{% include "stage9/search.html" %}</div>
                         <img id="box33" class="block logo_bug" src="{% static 'stage9/img/rsz_bug.png' %}" alt="bug logo">
                     <div class="btn">
@@ -97,13 +101,6 @@
                     </div>
             </div>
 
-            <div class="container_info">
-                <div style="position:relative; width: 100%; height: 100%;">
-                    <div class="liner"></div>
-                    {% block profile_pic %}{%  endblock  %}
-                </div>
-            </div>
-
             <div class="liner" style="position: fixed;"></div>
 
             <div class="container_body">
@@ -129,7 +126,7 @@
                           <div class="bot_items"><i class="glyphicon glyphicon-cog icon-muted"></i><a class="mini_links" href="{% url 'admin:index' %}">Settings</a></div>
                           <div class="bot_items"><i class="glyphicon glyphicon-globe icon-muted"></i><a class="mini_links" href="https://webchat.freenode.net/?channels=pyramid">Language</a></div>
                           {% if request.user.is_authenticated %}
-                          <div class="bot_items"><i class="glyphicon glyphicon-home icon-muted"></i><a class="mini_links" href="{% url 'profiles:profile' %}">Home</a></div>
+                          <div class="bot_items"><i class="glyphicon glyphicon-home icon-muted"></i><a class="mini_links" href="{% url 'home' %}">Home</a></div>
                           {% else %}
                           <div class="bot_items"><i class="glyphicon glyphicon-home icon-muted"></i><a class="mini_links" href="{% url 'home' %}">Home</a></div>
                           {% endif %}

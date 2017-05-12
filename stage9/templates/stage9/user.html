@@ -1,27 +1,32 @@
 {% extends "stage9/base.html" %}
 
 {% block content %}
-
-    <h1> welcome {{ user.username }}</h1>
+{% if request.user.username == profile_view.username %}
+    <h1>HELLO {{ request.user.username }}</h1>
+{% else %}
+    <h1>PROFILE OF: {{ profile_view.username }}</h1>
+{% endif %}
     {% if request.user.profile.account_verified %}
         <p>(verified)</p>
     {% else %}
         <p>(unverified)</p>
     {% endif %}
+    <img src="{{ profile_view.profile.profile_image_url }}" alt="profile picture">
+    {% if request.user.username == profile_view.username %}
     <p><a href="{% url 'profiles:account_update' %}">Update your profile NOW</a></p>
+    {% endif %}
     <p><a href="{% url 'cooks:list' %}">LOOK AT RECIPES</a></p>
-    <p>{{ user.first_name }}</p>
-    <p>{{ user.last_name }}</p>
-    <p>{{ user.email }}</p>
-    <p>{{ user.profile.bio }}</p>
-    <p>{{ user.profile.country }}</p>
-    <p>{{ user.profile.city }}</p>
-    <p>{{ user.profile.phone }}</p>
-    <p>{{ user.profile.organization }}</p>
-    <p>{{ user.profile.website }}</p>
-    <p>{{ user.profile.photo }}</p>
+    <p>{{ profile_view.first_name }}</p>
+    <p>{{ profile_view.last_name }}</p>
+    <p>{{ profile_view.email }}</p>
+    <p>{{ profile_view.profile.bio }}</p>
+    <p>{{ profile_view.profile.country }}</p>
+    <p>{{ profile_view.profile.city }}</p>
+    <p>{{ profile_view.profile.phone }}</p>
+    <p>{{ profile_view.profile.organization }}</p>
+    <p>{{ profile_view.profile.website }}</p>
+    <p>{{ profile_view.profile.photo }}</p>
 {% endblock %}
 
 {% block profile_pic %}
-    <img src="{{ UserProfile.profile_image_url }}" alt="profile picture">
 {% endblock %}

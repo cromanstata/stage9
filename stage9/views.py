@@ -2,6 +2,7 @@ from .forms import MyLoginForm, CousineForm
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404, render
 from django.shortcuts import render, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from profiles.models import UserProfile
@@ -20,8 +21,11 @@ from cooks import fields
 @login_required() # only logged in users should access this
 
 
-def edit_user(request, name, nameid):
+def edit_user(request, name):
     # querying the User object with pk from url
+    nameid = str(request.user.id)
+    print("edit user in stage9.views.profile")
+    print(name)
     user = get_object_or_404(User, username=name, id=nameid)
     pk = request.user.pk
 
@@ -53,9 +57,30 @@ def edit_user(request, name, nameid):
     else:
         raise PermissionDenied
 
-def profile(request, name, nameid):
-    user = get_object_or_404(User, username=name, id=nameid)
-    return render(request, 'stage9/user.html', {'profile': user})
+def profile(request, name):
+    print("user profile - 'name' in stage9.views.profile")
+    print(name)
+    print("user profile - 'request' in stage9.views.profile")
+    print (request)
+    print("user profile - 'query' in stage9.views.profile")
+    userq = get_object_or_404(User, username=name)
+    print(userq)
+    print("user profile - 'the user requesting this:' in stage9.views.profile")
+    print(request.user)
+    #if userq:
+    if request.user.is_authenticated and request.user == userq:
+        print ("the user here is authenticated and same as requested profile:")
+        nameid = str(request.user.id)
+        user = get_object_or_404(User, username=name, id=nameid)
+        return render(request, 'stage9/user.html', {'profile_view': user})
+    if request.user.is_authenticated:
+        print ("the user here is authenticated but looking for other profile:")
+        #nameid = str(request.user.id)
+        #user = get_object_or_404(User, username=name, id=nameid)
+        return render(request, 'stage9/user.html', {'profile_view': userq})
+    else:
+        print("the user here is anon:")
+        return render(request, 'stage9/user.html', {'profile_view': userq})
 
 
 def home(request):
