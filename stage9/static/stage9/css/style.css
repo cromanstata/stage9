@@ -173,6 +173,36 @@ a:active {
 
 .item_ingredient:hover {
     cursor:pointer;
+    border: 1px solid #555555;
+    background: #e6e6e6;
+    font-weight: normal;
+    color: #555555;
+    border-radius: 6px;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.follow_btn {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #555555;
+    background: #93cfe6;
+    font-weight: normal;
+    color: #555555;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+
+.friend_rqst_btn {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #555555;
+    background: #93cfe6;
+    font-weight: normal;
+    color: #555555;
+    border-radius: 6px;
 }
 
 .ingredient_name:hover {

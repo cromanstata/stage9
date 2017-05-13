@@ -6,6 +6,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from profiles.models import UserProfile
+from friendship.models import Friend, Follow
 from profiles.forms import UserForm
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
@@ -24,8 +25,6 @@ from cooks import fields
 def edit_user(request, name):
     # querying the User object with pk from url
     nameid = str(request.user.id)
-    print("edit user in stage9.views.profile")
-    print(name)
     user = get_object_or_404(User, username=name, id=nameid)
     pk = request.user.pk
 
@@ -58,28 +57,23 @@ def edit_user(request, name):
         raise PermissionDenied
 
 def profile(request, name):
-    print("user profile - 'name' in stage9.views.profile")
-    print(name)
-    print("user profile - 'request' in stage9.views.profile")
-    print (request)
-    print("user profile - 'query' in stage9.views.profile")
     userq = get_object_or_404(User, username=name)
-    print(userq)
-    print("user profile - 'the user requesting this:' in stage9.views.profile")
-    print(request.user)
-    #if userq:
+    #MY PROFILE: (request.user)
     if request.user.is_authenticated and request.user == userq:
-        print ("the user here is authenticated and same as requested profile:")
         nameid = str(request.user.id)
         user = get_object_or_404(User, username=name, id=nameid)
-        return render(request, 'stage9/user.html', {'profile_view': user})
+        followers = Follow.objects.followers(user)
+        return render(request, 'stage9/user.html', {'profile_view': user,
+                                                    'followers': followers})
+    # IM REGISTERED USER LOOKING AT SOMEONE ELSES PROFILE
     if request.user.is_authenticated:
-        print ("the user here is authenticated but looking for other profile:")
-        #nameid = str(request.user.id)
-        #user = get_object_or_404(User, username=name, id=nameid)
-        return render(request, 'stage9/user.html', {'profile_view': userq})
+        #DO OR SHOW STUFF RELATED
+        is_following = Follow.objects.follows(request.user, userq)
+        return render(request, 'stage9/user.html', {'profile_view': userq,
+                                                    'is_following': is_following})
+    # IM NOT REGISTERED AKA ANON LOOKING AT PROFILES
     else:
-        print("the user here is anon:")
+        #DO OR SHOW STUFF RELATED
         return render(request, 'stage9/user.html', {'profile_view': userq})
 
 
@@ -113,13 +107,8 @@ def search(request):
     search2 = Q()
     search_text = search_text.split(',')
     recipe_list_search=''
-
-    print("search text",search_text)
-    print(search_cuisine)
-    print(search_mealtype)
     #if no ingredient tags where searched:
     if (isinstance(search_text, list) and search_text[0]==''):
-        print ("no ingredients")
         if search_cuisine:
             if search_mealtype:
                 recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
@@ -131,9 +120,7 @@ def search(request):
             else:
                 recipe_list_search = (Q(meal_type__mealtype__iexact=search_mealtype))
         if recipe_list_search:
-            print(recipe_list_search)
             f_search = Recipe.objects.filter(recipe_list_search).distinct()
-            print(f_search)
             for recipe in f_search:
                 results.append(str(recipe.id))
         else:
@@ -157,9 +144,7 @@ def search(request):
                     recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(meal_type__mealtype__iexact=search_mealtype))
             if not search_cuisine and not search_mealtype:
                 recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing))
-            print(recipe_list_search)
             f_search = Recipe.objects.filter(recipe_list_search).distinct()
-            print(f_search)
             for recipe in f_search:
                 results.append(str(recipe.id))
     for ids in results:
@@ -190,3 +175,27 @@ def get_diff_tags(request):
         json_tags = Ingredient.objects.all().values('ingredient').distinct()
         json_items = json.dumps(list(json_tags))
         return HttpResponse(json_items, content_type='application/json')
+
+
+def follow(request):
+    if request.method == "GET":
+        profile_view = request.GET['profile_view']
+        action = request.GET['action']
+    else:
+        profile_view = ''
+        action = ''
+    print("profile_view ",profile_view)
+    print("action ",action)
+    userq = User.objects.get(username=profile_view)
+    print("userq ",userq)
+    print("request.user ", request.user)
+    print("follower:",request.user.id,"who",userq.id)
+    if action == 'follow':
+        print ("FOLLOW!!!!!!!!!!")
+        Follow.objects.add_follower(request.user, userq)
+        return render(request, 'stage9/follow_form.html')
+
+    if action == 'unfollow':
+        print("UN-FOLLOW!!!!!!!!!!")
+        Follow.objects.remove_follower(request.user, userq)
+        return render(request, 'stage9/follow_form.html')

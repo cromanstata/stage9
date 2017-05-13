@@ -1,0 +1,9 @@
+
+<form {% if is_following %}hidden{% endif %} id="follow">
+    <input type="submit" class="follow_btn clickable" value="follow {{ profile_view.username }}" name="follow">
+    <input type="hidden" name="profile_view" value="{{profile_view.username}}">
+</form>
+<form {% if not is_following %}hidden{% endif %} id="unfollow">
+    <input type="submit" class="follow_btn clickable" value="unfollow {{ profile_view.username }}" name="unfollow">
+    <input type="hidden" name="profile_view" value="{{profile_view.username}}">
+</form>

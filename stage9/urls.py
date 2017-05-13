@@ -23,6 +23,7 @@ from . import settings
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^Recipes/', include('cooks.urls')),
+    url(r'^friendship/', include('friendship.urls')),
     url(r'^admin/', admin.site.urls),
     #url(r'^$', TemplateView.as_view(template_name='stage9/home.html'),name='home'),
     url(r'^$', views.home, name='home'),
@@ -33,10 +34,9 @@ urlpatterns = [
     url(r'^tags/$', views.get_tags, name='tags'),
     url(r'^diff_tags/$', views.get_diff_tags, name='diff_tags'),
     url(r'^availble_tags/$', views.availble_tags, name='availble_tags'),
-
+    url(r'^follow/$', views.follow, name='follow'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #(?P<nameid>[0-9]+)
-

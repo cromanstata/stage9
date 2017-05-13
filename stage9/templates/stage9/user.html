@@ -1,5 +1,5 @@
 {% extends "stage9/base.html" %}
-
+{% load friendshiptags %}
 {% block content %}
 {% if request.user.username == profile_view.username %}
     <h1>HELLO {{ request.user.username }}</h1>
@@ -13,7 +13,15 @@
     {% endif %}
     <img src="{{ profile_view.profile.profile_image_url }}" alt="profile picture">
     {% if request.user.username == profile_view.username %}
-    <p><a href="{% url 'profiles:account_update' %}">Update your profile NOW</a></p>
+        <div style="display: inline-block; margin-right: 20px;">
+            <p>followers: {{ followers }}</p>
+        </div>
+        <p><a href="{% url 'profiles:account_update' %}">Update your profile NOW</a></p>
+    {% endif %}
+    {% if request.user.username != profile_view.username and request.user.is_authenticated %}
+        <div class="friendstuff" style="margin:10px;">
+            {% include "stage9/follow_form.html" %}
+        </div>
     {% endif %}
     <p><a href="{% url 'cooks:list' %}">LOOK AT RECIPES</a></p>
     <p>{{ profile_view.first_name }}</p>

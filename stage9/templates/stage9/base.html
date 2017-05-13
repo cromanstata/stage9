@@ -27,6 +27,7 @@
         <script src="{% static 'stage9/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_search.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_tags.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/ajax_relations.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/layout.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/my_functions.js' %}"></script>
 
@@ -34,7 +35,6 @@
             $( document ).ready(function() {
                 console.log( "document loaded" );
                 //var sampleTags = ['egg', 'milk', 'java', 'javascript', 'asp', 'ruby', 'python', 'c'];
-
                 $('.menu_btn').click(function(event){
                     event.stopPropagation();
                     $(".dropdown_menu").toggle();
