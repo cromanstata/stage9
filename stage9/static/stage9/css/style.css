@@ -317,10 +317,11 @@ a:active {
     color: #434343;
     clear: both;
     width: 100%;
-    height: 420px;
+    min-height: 420px;
     top: 150px;
     right: 0px;
     left: 0px;
+    overflow:auto;
 }
 
 .header {
@@ -415,7 +416,8 @@ a:active {
 }
 
 .cook_detail {
-    display: inline-block; border: 1px solid #434343;
+    display: block;
+    border: 1px solid #434343;
     margin-right: 10px; margin-top: 20px;
     padding: 5px;
     background: #f0f8ff;

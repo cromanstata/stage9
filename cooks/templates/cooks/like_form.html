@@ -1,10 +1,10 @@
 <!-- #for getiing ip in pythonanywhere request.META.get('HTTP_X_REAL_IP') -->
 <form {% if is_like %}hidden{% endif %} id="like_recipe">
-    <input type="submit" class="like_btn clickable" value="Like {{ recipe }}" name="like">
+    <input type="submit" class="like_btn clickable" value="Like" name="like">
     <input type="hidden" name="recipe_view" value="{{recipe}}">
 </form>
 <form hidden id="unlike_recipe">
-    <input type="submit" class="unlike_btn clickable" value="Unlike {{ recipe }}" name="unlike">
+    <input type="submit" class="unlike_btn clickable" value="Unlike" name="unlike">
     <input type="hidden" name="recipe_view" value="{{recipe}}">
 </form>
 <p class="like_count block">{{ likes }}</p><p class="block">users like this</p>

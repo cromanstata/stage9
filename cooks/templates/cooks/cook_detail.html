@@ -15,7 +15,7 @@
         <div class="like block" style="margin:10px; position: absolute; top:10px; right:10px;">
             {% include "cooks/like_form.html" %}
         </div>
-        <div class="cook_cont" style="display:inline-block; position: absolute; left: 300px; top:35px;">
+        <div class="cook_cont" style="display:inline-block; position: relative; padding-bottom: 80px; padding-right: 30px; left: 300px; top:35px;">
             <h1>{{ recipe.title }}</h1>
             <p>{{ favorers }} users have this recipe as favorite</p>
             <h3>{{ recipe.summary }}</h3>
@@ -23,9 +23,11 @@
             {% for ingredient in recipe.ingredients.all %}
               <p style="display:inline-block"> {{ ingredient }} ,</p>
             {% endfor %}
-            <P>{{ recipe.description }}</P>
+            <p>HOW TO MAKE:</p>
+            <p style="display: inline-block;">{{ recipe.description }}</p>
         </div>
     <a href="{% url 'home' %}" class="back_bt" style="display: inline-block; font-size: 20px;">back</a>
+    <p></p>
     </div>
     {% block main %}{% endblock %}
 

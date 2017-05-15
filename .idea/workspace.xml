@@ -2,59 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75218757-83e0-46de-a827-b3e6c2ee3210" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/static/comments/css/comments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/static/comments/js/comments.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templates/comments/base_comment.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templates/comments/comment.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templates/comments/comment_edit_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templates/comments/comment_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templates/comments/comments.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templatetags/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templatetags/comments_tags.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/signals.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/static/cooks/js/ajax_recipe.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/templates/cooks/cooks_comments.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/templates/cooks/favorite_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/templates/cooks/like_form.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cooks/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cooks/migrations/0002_auto_20170504_0905.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cooks/migrations/0003_auto_20170504_1620.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cooks/migrations/0004_auto_20170504_1652.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/friendship/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polls/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/profiles/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/profiles/migrations/0002_auto_20170502_1934.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/profiles/migrations/0003_auto_20170503_0108.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cooks/migrations/0005_auto_20170504_1658.py" afterPath="$PROJECT_DIR$/comments/migrations/0002_auto_20170514_0429.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/allauth/templates/account/account_update.html" afterPath="$PROJECT_DIR$/allauth/templates/account/account_update.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/models.py" afterPath="$PROJECT_DIR$/cooks/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html" afterPath="$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/urls.py" afterPath="$PROJECT_DIR$/cooks/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/views.py" afterPath="$PROJECT_DIR$/cooks/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info_git" afterPath="$PROJECT_DIR$/info_git" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/profiles/urls.py" afterPath="$PROJECT_DIR$/profiles/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/profiles/views.py" afterPath="$PROJECT_DIR$/profiles/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/forms.py" afterPath="$PROJECT_DIR$/stage9/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html" afterPath="$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/templates/cooks/like_form.html" afterPath="$PROJECT_DIR$/cooks/templates/cooks/like_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/static/stage9/css/style.css" afterPath="$PROJECT_DIR$/stage9/static/stage9/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/static/stage9/js/ajax_tags.js" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/ajax_tags.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/templates/stage9/ajax_search.html" afterPath="$PROJECT_DIR$/stage9/templates/stage9/ajax_search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/templates/stage9/base.html" afterPath="$PROJECT_DIR$/stage9/templates/stage9/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/urls.py" afterPath="$PROJECT_DIR$/stage9/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/views.py" afterPath="$PROJECT_DIR$/stage9/views.py" />
     </list>
     <ignored path="maria.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,38 +46,28 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="2006">
+              <caret line="118" column="72" selection-start-line="118" selection-start-column="72" selection-end-line="118" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ajax_search.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/ajax_search.js">
+      <file leaf-file-name="comments.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comments/static/comments/js/comments.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="52" />
+              <caret line="47" column="22" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comments.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comments/static/comments/css/comments.css">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/comments/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="availble_tags.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/availble_tags.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="10" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -141,45 +83,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="info_git" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/info_git">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profiles/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="323">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stage9/urls.py">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="35" column="64" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
+            <state relative-caret-position="110">
+              <caret line="455" column="7" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cook_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
               <folding>
-                <element signature="e#640#681#0" expanded="true" />
+                <element signature="e#868#983#0#HTML" expanded="true" />
+                <element signature="e#1244#1272#0#HTML" expanded="true" />
+                <element signature="e#1369#1399#0#HTML" expanded="true" />
+                <element signature="e#1491#1538#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stage9/views.py">
+      <file leaf-file-name="like_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/like_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="165" column="12" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="67" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comments/templates/comments/comment.html">
+      <file leaf-file-name="favorite_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            <state relative-caret-position="85">
+              <caret line="5" column="68" selection-start-line="5" selection-start-column="68" selection-end-line="5" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -242,14 +195,10 @@
         <option value="$PROJECT_DIR$/cooks/signals.py" />
         <option value="$PROJECT_DIR$/cooks/urls.py" />
         <option value="$PROJECT_DIR$/cooks/static/cooks/js/ajax_recipe.js" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/like_form.html" />
         <option value="$PROJECT_DIR$/cooks/templates/cooks/favorite_list.html" />
         <option value="$PROJECT_DIR$/profiles/views.py" />
         <option value="$PROJECT_DIR$/profiles/urls.py" />
         <option value="$PROJECT_DIR$/stage9/templates/stage9/ajax_search.html" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html" />
-        <option value="$PROJECT_DIR$/stage9/static/stage9/css/style.css" />
         <option value="$PROJECT_DIR$/comments/static/css/comments.css" />
         <option value="$PROJECT_DIR$/comments/templates/comments/base_comment.html" />
         <option value="$PROJECT_DIR$/comments/templatetags/comments_tags.py" />
@@ -262,8 +211,12 @@
         <option value="$PROJECT_DIR$/comments/templates/comments/comment.html" />
         <option value="$PROJECT_DIR$/comments/static/comments/css/comments.css" />
         <option value="$PROJECT_DIR$/stage9/views.py" />
-        <option value="$PROJECT_DIR$/stage9/templates/stage9/base.html" />
         <option value="$PROJECT_DIR$/stage9/static/stage9/js/ajax_tags.js" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/css/style.css" />
+        <option value="$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html" />
+        <option value="$PROJECT_DIR$/stage9/templates/stage9/base.html" />
+        <option value="$PROJECT_DIR$/cooks/templates/cooks/like_form.html" />
+        <option value="$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html" />
       </list>
     </option>
   </component>
@@ -337,6 +290,136 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="profiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -711,7 +794,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1284" height="696" extended-state="0" />
+    <frame x="-8" y="-8" width="1284" height="696" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28349674" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -758,16 +841,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/polls/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_like">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -814,14 +887,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
           <caret line="76" column="11" selection-start-line="76" selection-start-column="11" selection-end-line="76" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/like_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
-          <folding />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -878,28 +946,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="98" selection-start-line="10" selection-start-column="98" selection-end-line="10" selection-end-column="98" />
-          <folding>
-            <element signature="e#167#267#0#HTML" expanded="false" />
-            <element signature="e#315#396#0#HTML" expanded="false" />
-            <element signature="e#524#587#0#HTML" expanded="false" />
-            <element signature="e#709#771#0#HTML" expanded="false" />
-            <element signature="e#868#940#0#HTML" expanded="false" />
-            <element signature="e#1385#1432#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.comments_comment">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -916,13 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="202" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="421" column="4" selection-start-line="421" selection-start-column="4" selection-end-line="421" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -959,26 +998,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/comments/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3404">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/comments/templates/comments/comment_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="5" column="87" selection-start-line="5" selection-start-column="71" selection-end-line="5" selection-end-column="87" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comments/static/comments/js/comments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1105,14 +1129,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stage9/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -1139,26 +1155,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/availble_tags.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1181,6 +1181,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/info_git">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiles/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiles/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="455" column="7" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/ajax_tags.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1189,10 +1229,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/info_git">
+    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding>
+            <element signature="e#868#983#0#HTML" expanded="true" />
+            <element signature="e#1244#1272#0#HTML" expanded="true" />
+            <element signature="e#1369#1399#0#HTML" expanded="true" />
+            <element signature="e#1491#1538#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/like_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="67" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="68" selection-start-line="5" selection-start-column="68" selection-end-line="5" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="118" column="72" selection-start-line="118" selection-start-column="72" selection-end-line="118" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/static/comments/js/comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
           <folding />
         </state>
       </provider>
