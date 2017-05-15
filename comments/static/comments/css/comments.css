@@ -1,16 +1,18 @@
 .comments {
     padding: 10px;
-    background: grey;
+    background: #f0f8ff;
     border-radius: 6px;
+    border: 1px solid #434343;
 }
 
 .comment {
-    background: black;
-    color: #93cfe6;
+    background: #f0f8ff;
+    color: #444444;
     border-radius: 6px;
     padding: 20px;
     margin-top: 20px;
     position: relative;
+    border: 1px solid #434343;
 
 }
 
@@ -39,20 +41,24 @@
 }
 
 #comment-input-div {
-    background: grey;
-    color: black;
+    background: #f0f8ff;
+    color: #444444;
     border-radius: 6px;
     padding: 10px;
     margin-top: 20px;
+    border: 1px solid #434343;
+
 }
 
 .add-comment-form {
-    border: dashed;
 }
 
 textarea {
   outline: none;
-    background: black;
-    color: white;
+    background: #ffffff;
+    color: #444444;
     border-radius: 6px;
+    border: 1px solid #434343;
+    padding: 20px;
+    width: 680px;
 }

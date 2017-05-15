@@ -5,8 +5,14 @@
         {% if recipe.photo %}
         <img src="{{ MEDIA_URL }}{{ recipe.photo }}" style="display: inline-block; height: 250px; width: 250px; position:absolute; left:10px; top: 10px;">
         {% else %}
-        <div class="block" style="height: 250px; width: 250px; background: lightblue; left:10px; top: 10px;"><h4>NO PHOTO</h4></div>
+        <div class="block" style="height: 250px; position: absolute; width: 250px; background: lightblue; left:10px; top: 10px;"><h4>NO PHOTO</h4></div>
         {% endif %}
+        <div class="ingredient_box">
+            <p>INGREDIENTS:</p>
+            {% for ingredient in recipe.ingredients.all %}
+              <p style="display:inline-block"> {{ ingredient }} ,</p>
+            {% endfor %}
+        </div>
         {% if request.user.is_authenticated %}
         <div class="favorite block" style="margin:10px; position: absolute; top:10px; right:110px;">
             {% include "cooks/favorite_form.html" %}
@@ -19,10 +25,6 @@
             <h1>{{ recipe.title }}</h1>
             <p>{{ favorers }} users have this recipe as favorite</p>
             <h3>{{ recipe.summary }}</h3>
-            <p>INGREDIENTS:</p>
-            {% for ingredient in recipe.ingredients.all %}
-              <p style="display:inline-block"> {{ ingredient }} ,</p>
-            {% endfor %}
             <p>HOW TO MAKE:</p>
             <p style="display: inline-block;">{{ recipe.description }}</p>
         </div>

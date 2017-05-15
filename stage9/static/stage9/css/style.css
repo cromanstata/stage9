@@ -423,8 +423,20 @@ a:active {
     background: #f0f8ff;
     border-radius: 6px;
     width: 700px;
-    min-height: 400px;
+    min-height: 500px;
     position: relative;
+}
+
+.ingredient_box {
+    position: absolute;
+    left:10px;
+    top: 260px;
+    width: 250px;
+    min-height: 208px;
+    margin-top:20px;
+    padding: 20px;
+    border: 1px solid #434343;
+    border-radius: 6px;
 }
 
 .cook_item_cont {
