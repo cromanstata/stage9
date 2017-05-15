@@ -1,0 +1,58 @@
+.comments {
+    padding: 10px;
+    background: grey;
+    border-radius: 6px;
+}
+
+.comment {
+    background: black;
+    color: #93cfe6;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+
+}
+
+.like-comment-btn {
+    color: black;
+    display: inline;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.comment-edit-class {
+    color: black;
+    display: inline;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.comment-delete-btn {
+    color: black;
+}
+
+.comment-delete-form {
+    display: inline;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+#comment-input-div {
+    background: grey;
+    color: black;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.add-comment-form {
+    border: dashed;
+}
+
+textarea {
+  outline: none;
+    background: black;
+    color: white;
+    border-radius: 6px;
+}

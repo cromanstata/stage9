@@ -2,11 +2,13 @@
  * Created by Admin on 5/9/2017.
  */
 $(function () {
+    console.log("trying to load tags function");
     var loaded_tags = false;
     var loaded_tags_side = false;
-    //a request for all or any other term like "veggies" or "milk products" to get a list of ingredients
+    //loads the ingridents allowed
     var ingredients_allowed = function (request) {
         var tmp = null;
+        console.log("trying to load ingredients allowed");
         if(loaded_tags) return;
         $.ajax({
             'async': false,
@@ -18,6 +20,7 @@ $(function () {
                     },
             'success': function (data) {
                 tmp = data;
+                console.log(tmp);
             }
         });
         loaded_tags = true;
@@ -26,8 +29,11 @@ $(function () {
     //list of --all-- availble ingredients
     var all_ingrident_tags = getFields(ingredients_allowed('all'), "ingredient");
     //$(".ingredients_choices").innerHTML(all_ingrident_tags);
+    
+    //puts the ingredients aloowedn in side bar
     $(window).on( "load", function() {
         var tmp = null;
+        console.log("trying to load side tags");
         if(loaded_tags_side) return;
         $.ajax({
          type: "GET",

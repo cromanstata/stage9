@@ -22,14 +22,15 @@ from . import settings
 
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
-    url(r'^Recipes/', include('cooks.urls')),
+    url(r'^recipes/', include('cooks.urls')),
     url(r'^friendship/', include('friendship.urls')),
+    url(r'^comments/', include('comments.urls')),
     url(r'^admin/', admin.site.urls),
-    #url(r'^$', TemplateView.as_view(template_name='stage9/home.html'),name='home'),
     url(r'^$', views.home, name='home'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/(?P<name>[\w.@+-]+)/$', views.profile, name='user'),
     url(r'^profile/(?P<name>[\w.@+-]+)/update/$', views.edit_user, name='update'),
+    url(r'^profile/(?P<name>[\w.@+-]+)/favs/$', views.favorites, name='favs'),
     url(r'^search/$', views.search, name='search'),
     url(r'^tags/$', views.get_tags, name='tags'),
     url(r'^diff_tags/$', views.get_diff_tags, name='diff_tags'),

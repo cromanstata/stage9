@@ -7,15 +7,6 @@ $ git fetch
 $ git merge FETCH_HEAD
 $ git stash apply --index
 
---aditional information for setting up git--
-
-git config --list (gets the info of config file)
-
-$ git init
-$ git config --global user.name "Your Name"
-$ git config --global user.email you@example.com
-(for first initializing git MUST BE RUN IN ROOT DIR)
-
 ---------for uploading to github------------
 $ git status
 (shows changed and so on)
@@ -28,6 +19,15 @@ $ git remote add origin "https://github.com/<your-github-username>/my-first-blog
 
 $ git push -u origin master
 (push changes to github)
+
+--aditional information for setting up git--
+
+git config --list (gets the info of config file)
+
+$ git init
+$ git config --global user.name "Your Name"
+$ git config --global user.email you@example.com
+(for first initializing git MUST BE RUN IN ROOT DIR)
 
 
 

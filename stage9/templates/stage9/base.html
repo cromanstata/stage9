@@ -10,7 +10,7 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
         <!-- Custom styles for this templete -->
         {% load static %}
 
@@ -18,23 +18,27 @@
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/loader.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/recipe_cards.css' %}" />
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
         <link href="{% static 'stage9/css/jquery.tagit.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{% static 'comments/css/comments.css' %}" />
 
         <script type="text/javascript" src="{% static 'stage9/js/jquery-3.2.1.min.js' %}"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="{% static 'stage9/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_search.js' %}"></script>
-        <script type="text/javascript" src="{% static 'stage9/js/ajax_tags.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_relations.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/layout.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/my_functions.js' %}"></script>
+        <script type="text/javascript" src="{% static "comments/js/comments.js" %}"></script>
+        <script type="text/javascript" src="{% static 'cooks/js/ajax_recipe.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/ajax_tags.js' %}"></script>
 
         <script>
             $( document ).ready(function() {
                 console.log( "document loaded" );
+                var loaded_tags = false;
+                var loaded_tags_side = false;
                 //var sampleTags = ['egg', 'milk', 'java', 'javascript', 'asp', 'ruby', 'python', 'c'];
+
                 $('.menu_btn').click(function(event){
                     event.stopPropagation();
                     $(".dropdown_menu").toggle();
@@ -85,14 +89,22 @@
                     <div style="position: relative; top: 10px;"></div>
                     <div class="menu_liner"></div>
                 <div class="menu_it">first one</div>
-                <div class="menu_it">first one</div>
+                {% if request.user.is_authenticated %}
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">Post Recipe<span class="link_span"></span></a></div>
+                {% else %}
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">Post Recipe<span class="link_span"></span></a></div>
+                {% endif %}
                 <div class="menu_it">first one</div>
                 <div class="menu_liner"></div>
-                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'admin:index' %}">Blog<span class="link_span"></span></a></div>
-                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">Cooks<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'admin:index' %}">Admin<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">All recipes<span class="link_span"></span></a></div>
                 <div class="menu_liner"></div>
-                <div class="menu_it">first one</div>
-                <div class="menu_it">first one</div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'home' %}">Search Ingredients<span class="link_span"></span></a></div>
+                {% if request.user.is_authenticated %}
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'profiles:favs' %}">Favorite recipes<span class="link_span"></span></a></div>
+                {% else %}
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'account_signup' %}">Favorite recipes<span class="link_span"></span></a></div>
+                {% endif %}
                 <div class="menu_it">first one</div>
                 <div class="menu_it">first one</div>
                 <div class="menu_it">first one</div>

@@ -1,7 +1,6 @@
 from allauth.account.forms import LoginForm, SignupForm
 from django import forms
 from django.contrib.auth.models import User
-from cooks.models import Recipe, Ingredient, Cuisine, MealType
 from django.utils.translation import ugettext_lazy as _
 
 from django.forms import ModelForm

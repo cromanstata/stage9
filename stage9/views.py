@@ -10,7 +10,7 @@ from friendship.models import Friend, Follow
 from profiles.forms import UserForm
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
-from cooks.models import Recipe, IngredientSearch, Ingredient
+from cooks.models import Recipe, Ingredient, Favorite
 from django.db.models import Q
 from itertools import chain
 import json
@@ -20,8 +20,6 @@ from cooks import fields
 
 
 @login_required() # only logged in users should access this
-
-
 def edit_user(request, name):
     # querying the User object with pk from url
     nameid = str(request.user.id)
@@ -80,7 +78,6 @@ def profile(request, name):
 def home(request):
     context = {
         'fields': fields,
-        #'formset': IngredientSearch()
     }
     return render(request, 'stage9/home.html', context)
 
@@ -116,7 +113,7 @@ def search(request):
                 recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine))
         if search_mealtype:
             if search_cuisine:
-                recipe_list_search =  (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+                recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
             else:
                 recipe_list_search = (Q(meal_type__mealtype__iexact=search_mealtype))
         if recipe_list_search:
@@ -184,18 +181,26 @@ def follow(request):
     else:
         profile_view = ''
         action = ''
-    print("profile_view ",profile_view)
-    print("action ",action)
     userq = User.objects.get(username=profile_view)
-    print("userq ",userq)
-    print("request.user ", request.user)
-    print("follower:",request.user.id,"who",userq.id)
     if action == 'follow':
-        print ("FOLLOW!!!!!!!!!!")
         Follow.objects.add_follower(request.user, userq)
         return render(request, 'stage9/follow_form.html')
 
     if action == 'unfollow':
-        print("UN-FOLLOW!!!!!!!!!!")
         Follow.objects.remove_follower(request.user, userq)
         return render(request, 'stage9/follow_form.html')
+
+def favorites(request, name):
+    favorite_ids = Favorite.objects.filter(favorer_id=request.user.id).values('recipe_id').distinct()
+    search3 = Q()
+    if favorite_ids:
+        for id in favorite_ids:
+            i = (id['recipe_id'])
+            search3 = search3 | (Q(favorite__recipe_id=i))
+        d_search = Recipe.objects.filter(search3).distinct()
+    else:
+        d_search=''
+    context = {'recipe_list': d_search}
+    return render(request, 'cooks/favorite_list.html', context)
+
+

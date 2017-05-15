@@ -1,0 +1,8 @@
+<form {% if is_favorite %}hidden{% endif %} id="favorite">
+    <input type="submit" class="favorite_btn clickable" value="Add {{ recipe }} to favorites" name="favorite">
+    <input type="hidden" name="recipe_view" value="{{recipe}}">
+</form>
+<form {% if not is_favorite %}hidden{% endif %} id="unfavor">
+    <input type="submit" class="unfavor_btn clickable" value="Remove {{ recipe }} from favorites" name="unfavor">
+    <input type="hidden" name="recipe_view" value="{{recipe}}">
+</form>

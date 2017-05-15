@@ -3,12 +3,21 @@
 {% block content %}
     <div class="cook_detail">
         {% if recipe.photo %}
-        <img src="{{ MEDIA_URL }}{{ recipe.photo }}" style="display: inline-block; height: 300px; width: 300px;">
+        <img src="{{ MEDIA_URL }}{{ recipe.photo }}" style="display: inline-block; height: 250px; width: 250px; position:absolute; left:10px; top: 10px;">
         {% else %}
-        <h4>NO PHOTO</h4>
+        <div class="block" style="height: 250px; width: 250px; background: lightblue; left:10px; top: 10px;"><h4>NO PHOTO</h4></div>
         {% endif %}
-        <div class="cook_cont" style="display:inline-block; width: 400px">
+        {% if request.user.is_authenticated %}
+        <div class="favorite block" style="margin:10px; position: absolute; top:10px; right:110px;">
+            {% include "cooks/favorite_form.html" %}
+        </div>
+        {% endif %}
+        <div class="like block" style="margin:10px; position: absolute; top:10px; right:10px;">
+            {% include "cooks/like_form.html" %}
+        </div>
+        <div class="cook_cont" style="display:inline-block; position: absolute; left: 300px; top:35px;">
             <h1>{{ recipe.title }}</h1>
+            <p>{{ favorers }} users have this recipe as favorite</p>
             <h3>{{ recipe.summary }}</h3>
             <p>INGREDIENTS:</p>
             {% for ingredient in recipe.ingredients.all %}
@@ -16,8 +25,10 @@
             {% endfor %}
             <P>{{ recipe.description }}</P>
         </div>
-        <a href="{% url 'cooks:list' %}" style="display: inline-block; font-size: 20px;">back</a>
+    <a href="{% url 'home' %}" class="back_bt" style="display: inline-block; font-size: 20px;">back</a>
     </div>
+    {% block main %}{% endblock %}
 
+{% include "cooks/cooks_comments.html" %}
 
 {%  endblock %}
