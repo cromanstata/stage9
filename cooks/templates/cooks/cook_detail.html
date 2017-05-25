@@ -17,13 +17,21 @@
         <div class="favorite block" style="margin:10px; position: absolute; top:10px; right:110px;">
             {% include "cooks/favorite_form.html" %}
         </div>
-        {% endif %}
         <div class="like block" style="margin:10px; position: absolute; top:10px; right:10px;">
             {% include "cooks/like_form.html" %}
         </div>
+        {% if request.user.id == recipe.author_id %}
+            <a href="{% url 'cooks:edit_recipe' recipe.title %}" class="edit_bt"><p>edit recipe</p></a>
+        {%  endif %}
+        {% endif %}
         <div class="cook_cont" style="display:inline-block; position: relative; padding-bottom: 80px; padding-right: 30px; left: 300px; top:35px;">
             <h1>{{ recipe.title }}</h1>
+            {% if recipe.author_id %}
+                <p>AUTHOR:</p>
+                <a href="{% url 'user' author %}"><img style="height: 50px; width: 50px; display: inline;" src="{{ author.profile.profile_image_url }}" alt="{{ author.username }}"></a>
+            {% endif %}
             <p>{{ favorers }} users have this recipe as favorite</p>
+            <p class="like_count block">{{ likes }}</p><p class="block">users like this</p>
             <h3>{{ recipe.summary }}</h3>
             <p>HOW TO MAKE:</p>
             <p style="display: inline-block;">{{ recipe.description }}</p>

@@ -30,6 +30,7 @@
         <script type="text/javascript" src="{% static 'stage9/js/my_functions.js' %}"></script>
         <script type="text/javascript" src="{% static "comments/js/comments.js" %}"></script>
         <script type="text/javascript" src="{% static 'cooks/js/ajax_recipe.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/jquery.formset.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_tags.js' %}"></script>
 
         <script>
@@ -38,6 +39,14 @@
                 var loaded_tags = false;
                 var loaded_tags_side = false;
                 //var sampleTags = ['egg', 'milk', 'java', 'javascript', 'asp', 'ruby', 'python', 'c'];
+                $('#ingredient_formsetTable tbody tr').formset({
+                    prefix: '{{ ingredient_formset.prefix }}',
+                    formCssClass: 'dynamic-ingredient_formset'
+                });
+                $('#mealtype_formsetTable tbody tr').formset({
+                    prefix: '{{ mealtype_formset.prefix }}',
+                    formCssClass: 'dynamic-mealtype_formset'
+                });
 
                 $('.menu_btn').click(function(event){
                     event.stopPropagation();
@@ -88,13 +97,15 @@
                 <div>
                     <div style="position: relative; top: 10px;"></div>
                     <div class="menu_liner"></div>
-                <div class="menu_it">first one</div>
                 {% if request.user.is_authenticated %}
-                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">Post Recipe<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'profiles:profile' %}">My Profile<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'profiles:add_recipe' %}">Post Recipe<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'profiles:my_recipes' %}">My Recipes<span class="link_span"></span></a></div>
                 {% else %}
-                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">Post Recipe<span class="link_span"></span></a></div>
-                {% endif %}
                 <div class="menu_it">first one</div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'account_login' %}">Post Recipe<span class="link_span"></span></a></div>
+                <div class="menu_it">first one</div>
+                {% endif %}
                 <div class="menu_liner"></div>
                 <div class="menu_it"><a class="mini_links_menu"  href="{% url 'admin:index' %}">Admin<span class="link_span"></span></a></div>
                 <div class="menu_it"><a class="mini_links_menu"  href="{% url 'cooks:list' %}">All recipes<span class="link_span"></span></a></div>
@@ -103,7 +114,7 @@
                 {% if request.user.is_authenticated %}
                 <div class="menu_it"><a class="mini_links_menu"  href="{% url 'profiles:favs' %}">Favorite recipes<span class="link_span"></span></a></div>
                 {% else %}
-                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'account_signup' %}">Favorite recipes<span class="link_span"></span></a></div>
+                <div class="menu_it"><a class="mini_links_menu"  href="{% url 'account_login' %}">Favorite recipes<span class="link_span"></span></a></div>
                 {% endif %}
                 <div class="menu_it">first one</div>
                 <div class="menu_it">first one</div>

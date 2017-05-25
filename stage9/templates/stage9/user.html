@@ -6,7 +6,7 @@
 {% else %}
     <h1>PROFILE OF: {{ profile_view.username }}</h1>
 {% endif %}
-    {% if request.user.profile.account_verified %}
+    {% if profile_view.profile.account_verified %}
         <p>(verified)</p>
     {% else %}
         <p>(unverified)</p>
@@ -17,13 +17,14 @@
             <p>followers: {{ followers }}</p>
         </div>
         <p><a href="{% url 'profiles:account_update' %}">Update your profile NOW</a></p>
+        <a href="{% url 'profiles:my_recipes' %}">LOOK AT MY RECIPES</a>
     {% endif %}
     {% if request.user.username != profile_view.username and request.user.is_authenticated %}
         <div class="friendstuff" style="margin:10px;">
             {% include "stage9/follow_form.html" %}
         </div>
+        <a href="{% url 'my_recipes' profile_view %}">LOOK AT HIS RECIPES</a>
     {% endif %}
-    <p><a href="{% url 'cooks:list' %}">LOOK AT RECIPES</a></p>
     <p>{{ profile_view.first_name }}</p>
     <p>{{ profile_view.last_name }}</p>
     <p>{{ profile_view.email }}</p>
@@ -33,7 +34,6 @@
     <p>{{ profile_view.profile.phone }}</p>
     <p>{{ profile_view.profile.organization }}</p>
     <p>{{ profile_view.profile.website }}</p>
-    <p>{{ profile_view.profile.photo }}</p>
 {% endblock %}
 
 {% block profile_pic %}

@@ -6,7 +6,7 @@
         <h4>SEARCH:</h4>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="text" name="tags" id="search_ingredient" title="search" style="background-image: url({% static 'stage9/img/fridge-icon.png' %});" class="myTags" readonly />
+        <input type="text" name="tags" id="search_ingredient" title="search" style="background-image: url({% static 'stage9/img/fridge-icon.png' %});" class="myTags search_input_main" readonly />
         <h5 style="display: inline-block">Cuisine</h5>
         <select style="margin-right: 14px;" name="cuisine" id="search_cuisine" class="multiselect" title="search">
             <option selected disabled hidden>Choose Cousine</option>

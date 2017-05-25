@@ -14,7 +14,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from cooks.signals import (
     favorite_created, favorite_removed,
-    favorer_created, favorer_removed, favorite_recipe_created, favorite_recipe_removed
+    favorer_created, favorer_removed, favorite_recipe_created, favorite_recipe_removed,
+    like_created, like_removed, like_recipe_created, like_recipe_removed
 )
 
 CACHE_TYPES = {
@@ -91,7 +92,7 @@ class Ingredient(models.Model):
         if self.quantity:
             _ingredient = '%s %s' % (self.quantity, _ingredient)
         #python anywhere doesnt register len for somereason so should be changed
-        if len(self.note):
+        if self.note:
            _ingredient = '%s - %s' % (_ingredient, self.note)
 
         return _ingredient
@@ -137,11 +138,11 @@ class Cuisine (models.Model):
         verbose_name = _("Cuisine")
         verbose_name_plural = verbose_name
 
-
-class Period(models.Model):
+class WorkingTime(models.Model):
     """
-    Provides fields for a period of time
+    Provides working hour fields for cooking a recipe
     """
+    recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="working_hours")
     hours = models.IntegerField(_("hours"), default=0)
     minutes = models.IntegerField(_("minutes"), default=0)
 
@@ -149,25 +150,20 @@ class Period(models.Model):
         return "%02d:%02d" %(self.hours, self.minutes)
 
     class Meta:
-        abstract = True
-
-
-class WorkingTime(Period):
-    """
-    Provides working hour fields for cooking a recipe
-    """
-    recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="working_hours")
-
-    class Meta:
         verbose_name = _("working hour")
         verbose_name_plural = verbose_name
 
 
-class CookingTime(Period):
+class CookingTime(models.Model):
     """
     Provides cooking time fields for cooking a recipe
     """
     recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="cooking_time")
+    hours = models.IntegerField(_("hours"), default=0)
+    minutes = models.IntegerField(_("minutes"), default=0)
+
+    def __unicode__(self):
+        return "%02d:%02d" %(self.hours, self.minutes)
 
     class Meta:
         verbose_name = _("cooking time")
@@ -209,7 +205,7 @@ class FavoriteManager(models.Manager):
             raise AlreadyExistsError("User '%s' already favors '%s'" % (favorer, recipe))
 
         favorite_created.send(sender=self, favorer=favorer)
-        favorer_created.send(sender=self, recipee=recipe)
+        favorer_created.send(sender=self, recipe=recipe)
         favorite_recipe_created.send(sender=self, favorers=relation)
 
         return relation
@@ -258,44 +254,61 @@ class Favorite (models.Model):
 class LikesManager(models.Manager):
     """ Favorites manager """
 
-    def add_like(self, recipe):
-        """ ADD LIKE """
-        likes = Like.objects.get(recipe=recipe)
-        setattr(likes, 'likes_count', likes.likes_count + 1)
-        likes.save()
+    def add_like(self, liker, recipe):
+        """ Create a like for a spesific user """
+        like, created = Like.objects.get_or_create(liker=liker, recipe=recipe)
 
-        #signals i might add:
-        #Recipe_liked.send(sender=self, favorer=favorer)
-        #favorer_created.send(sender=self, recipee=recipe)
-        #favorite_recipe_created.send(sender=self, favorers=relation)
+        if created is False:
+            raise AlreadyExistsError("User '%s' already likes '%s'" % (liker, recipe))
 
-    def remove_like(self, recipe):
-        """ REMOVE LIKE """
-        likes = Like.objects.get(recipe=recipe)
-        setattr(likes, 'likes_count', likes.likes_count - 1)
-        likes.save()
+        like_created.send(sender=self, liker=liker)
+        like_recipe_created.send(sender=self, recipe=recipe)
+
+        return like
+
+    def remove_like(self, liker, recipe):
+        """ Removes like of a spesific user """
+        try:
+            rel = Like.objects.get(liker=liker, recipe=recipe)
+            like_removed.send(sender=rel, liker=rel.liker)
+            like_recipe_removed.send(sender=rel, recipe=recipe)
+            rel.delete()
+            return True
+        except Like.DoesNotExist:
+            return False
+
+    def likes(self, liker, recipe):
+        """ Does user faorites recipe? Smartly uses caches if exists """
+        try:
+            Like.objects.get(liker=liker, recipe=recipe)
+            return True
+        except Like.DoesNotExist:
+            return False
 
     def get_likes(self, recipe):
         #number of likes for the recipe
         try:
-            likes = Like.objects.get(recipe=recipe)
+            likes = Like.objects.filter(recipe=recipe)
+            like_count = likes.count()
+            print (like_count)
+            return (like_count)
 
         except ObjectDoesNotExist:
-            recipe = Recipe.objects.get(id=recipe)
-            likes = Like(recipe=recipe, likes_count=0, updated=timezone.now())
-            likes.save()
-            return likes
-
-        return likes
+            #recipe = Recipe.objects.get(id=recipe)
+            #likes = Like(recipe=recipe, likes_count=0, updated=timezone.now())
+            #likes.save()
+            #return likes
+            print ("no counts for this recipe")
+            like_count = 0
+            return like_count
 
 class Like(models.Model):
     """
     Count likes for a recipe
     Need to add users later?
     """
-    recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="like" ,on_delete=models.CASCADE)
-    #user = models.ForeignKey("User", verbose_name=_("User"), related_name="liker", on_delete=models.CASCADE)
-    likes_count = models.IntegerField(default=0,validators=[MinValueValidator(0)])
+    recipe = models.ForeignKey("Recipe", verbose_name=_("Recipe"), related_name="like" ,on_delete=models.CASCADE)
+    liker = models.ForeignKey(AUTH_USER_MODEL, related_name="liking", on_delete=models.CASCADE)
     updated = models.DateTimeField(default=timezone.now)
 
     # all methods for getting info on this class
@@ -305,8 +318,10 @@ class Like(models.Model):
         verbose_name = _('Likes')
         verbose_name_plural = verbose_name
 
+    #def __str__(self):
+        #return str(self.likes)
+    #def __int__(self):
+        #return self.likes
     def __str__(self):
-        return str(self.likes_count)
-    def __int__(self):
-        return self.likes_count
+        return "User #%s likes #%s" % (self.liker_id, self.recipe_id)
 # Create your models here.

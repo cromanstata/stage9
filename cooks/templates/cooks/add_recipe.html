@@ -1,0 +1,58 @@
+{% extends "stage9/base.html" %}
+
+{% block content %}
+    <div class="recipe_form">
+        <h1>New recipe by {{ user }}</h1>
+        <form method="POST" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ recipe_form.as_p }}
+            {{ ingredient_formset.management_form }}
+            <table id="ingredient_formsetTable" border="0" cellpadding="0" cellspacing="0">
+                <caption>Ingredients</caption>
+                <tbody>
+                <tr>
+                    <td>Ingredient name</td>
+                    <td>quantity</td>
+                    <td>units</td>
+                    <td>note</td>
+                </tr>
+                    {% for form in ingredient_formset.forms %}
+                    <tr>
+                        <td>{{ form.ingredient }}</td>
+                        <td>{{ form.quantity }}</td>
+                        <td>{{ form.unit }}</td>
+                        <td>{{ form.note }}</td>
+                    </tr>
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            {{ difficulty_form.as_p }}
+            {{ cuisine_form.as_p }}
+            {{ mealtype_formset.management_form }}
+            <table id="mealtype_formsetTable" border="0" cellpadding="0" cellspacing="0">
+                <caption>Meal type</caption>
+                <tbody>
+                    {% for form in mealtype_formset.forms %}
+                    <tr>
+                        <td>{{ form.mealtype }}</td>
+                    </tr>
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <p>working time</p>
+            {{ workingtime_form.as_p }}
+            <p>cooking time</p>
+            {{ cookingtime_form.as_p }}
+            <button type="submit" class="" style="position: absolute; right:10px; bottom: 10px;">Save</button>
+            <button type="submit" class="" name="delete" value="delete" style="position: absolute; right:10px; top: 10px;">Delete</button>
+        </form>
+    </div>
+{% endblock %}
