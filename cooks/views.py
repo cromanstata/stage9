@@ -140,10 +140,10 @@ def edit_recipe(request, recipe_title):
             recipe_post = recipe_form.save(commit=False)
             recipe_post.author = user
             recipe_post.publish_date = timezone.now()
-            if recipe_post.photo:
-                print("adding photo?")
-                recipe_post.photo = request.FILES['photo']
-            print("NOT adding photo?")
+            #if recipe_post.photo:
+            #    print("adding photo?")
+            #    recipe_post.photo = request.FILES['photo']
+            #print("NOT adding photo?")
             difficulty_post = difficulty_form.save(commit=False)
             difficulty_post.recipe_id = recipe_post.id
             cuisine_post = cuisine_form.save(commit=False)

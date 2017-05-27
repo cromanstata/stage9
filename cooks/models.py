@@ -43,9 +43,9 @@ def bust_cache(type, user_pk):
 
 
 class Recipe(models.Model):
-    title = models.CharField("Title", blank=True, null=True, max_length=200, unique=True)
+    title = models.CharField("Title", max_length=200, unique=True)
     photo = models.ImageField(upload_to="media/cooks/img", blank=True, null=True)
-    summary = models.TextField("Summary", blank=True, null=True)
+    summary = models.TextField("Summary", max_length=400, blank=True, null=True)
     description = models.TextField("Description", blank=True, null=True)
     portions = models.IntegerField("Portions", blank=True, null=True)
     publish_date = models.DateTimeField("publish_date")
@@ -55,7 +55,10 @@ class Recipe(models.Model):
     search_fields = ("title", "summary", "description",)
 
     def __str__(self):
-        return self.title
+        if self.title == None:
+            return ''
+        else:
+            return self.title
 
     class Meta:
         verbose_name = "Recipe"

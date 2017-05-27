@@ -10,7 +10,7 @@
         <div class="ingredient_box">
             <p>INGREDIENTS:</p>
             {% for ingredient in recipe.ingredients.all %}
-              <p style="display:inline-block"> {{ ingredient }} ,</p>
+              <p> {{ ingredient }} </p>
             {% endfor %}
         </div>
         {% if request.user.is_authenticated %}
@@ -32,9 +32,9 @@
             {% endif %}
             <p>{{ favorers }} users have this recipe as favorite</p>
             <p class="like_count block">{{ likes }}</p><p class="block">users like this</p>
-            <h3>{{ recipe.summary }}</h3>
+            <h3>{{ recipe.summary|safe }}</h3>
             <p>HOW TO MAKE:</p>
-            <p style="display: inline-block;">{{ recipe.description }}</p>
+            <p style="display: inline-block;">{{ recipe.description|safe }}</p>
         </div>
     <a href="{% url 'home' %}" class="back_bt" style="display: inline-block; font-size: 20px;">back</a>
     <p></p>

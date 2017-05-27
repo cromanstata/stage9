@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^comments/', include('comments.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
+    url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/(?P<name>[\w.@+-]+)/$', views.profile, name='user'),
     url(r'^profile/(?P<name>[\w.@+-]+)/update/$', views.edit_user, name='update'),
