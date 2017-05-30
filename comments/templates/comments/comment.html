@@ -1,5 +1,10 @@
+ {% load comments_tags %}
  {% if object.user %}
     <p>{{ object.user.username }}</p>
+    {% if object.rating %}
+        <script>$('span.stars_{{ object.id }}').stars();</script>
+        <span class="stars stars_{{ object.id }}">{{ object.rating }}</span>
+    {% endif %}
 	<a href="{% url 'user' object.user %}"><img style="height: 50px; width: 50px; display: inline;" src="{{ object.user.profile.profile_image_url }}" alt="{{ object.user.username }}"></a>
 {% else %}
 	<p>By: Guest </p>

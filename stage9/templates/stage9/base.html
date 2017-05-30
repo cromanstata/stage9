@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
         <link href="{% static 'stage9/css/jquery.tagit.css' %}" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="{% static 'comments/css/comments.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/star-ratings.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'cooks/css/recipe_form.css' %}" />
 
         <script type="text/javascript" src="{% static 'stage9/js/jquery-3.2.1.min.js' %}"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -33,6 +35,7 @@
         <script type="text/javascript" src="{% static 'stage9/js/jquery.formset.js' %}"></script>
         <script type="text/javascript" src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'tinymce/js/tiny_mce/tiny_mce.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/ajax_star_rating.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_tags.js' %}"></script>
 
         <script>
@@ -57,10 +60,10 @@
                 $(".dropdown_menu").on("click", function (event) {
                     event.stopPropagation();
                 });
-
                 $(document).on('click', ".item_ingredient" ,function () {
                     $(".myTags").tagit("createTag", $(this).children('.ingredient_name').text());
                 });
+                $('span.stars').stars();
             });
 
             $( window ).on( "load", function() {

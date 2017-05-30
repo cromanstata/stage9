@@ -1,4 +1,5 @@
 {% extends "stage9/base.html" %}
+{% load comments_tags %}
 
 {% block content %}
     <div class="cook_detail">
@@ -26,6 +27,7 @@
         {% endif %}
         <div class="cook_cont" style="display:inline-block; position: relative; padding-bottom: 80px; padding-right: 30px; left: 300px; top:35px;">
             <h1>{{ recipe.title }}</h1>
+            <span class="stars">{% get_rating recipe %}</span>
             {% if recipe.author_id %}
                 <p>AUTHOR:</p>
                 <a href="{% url 'user' author %}"><img style="height: 50px; width: 50px; display: inline;" src="{{ author.profile.profile_image_url }}" alt="{{ author.username }}"></a>

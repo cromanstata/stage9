@@ -9,13 +9,14 @@ from comments.models import Comment
 from django.conf import settings
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 from django.utils import timezone
-from django.core.validators import MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.exceptions import ObjectDoesNotExist
 
 from cooks.signals import (
     favorite_created, favorite_removed,
     favorer_created, favorer_removed, favorite_recipe_created, favorite_recipe_removed,
-    like_created, like_removed, like_recipe_created, like_recipe_removed
+    like_created, like_removed, like_recipe_created, like_recipe_removed,
+    rating_created, rating_removed, rating_recipe_created, rating_recipe_removed
 )
 
 CACHE_TYPES = {
@@ -162,8 +163,8 @@ class CookingTime(models.Model):
     Provides cooking time fields for cooking a recipe
     """
     recipe = models.OneToOneField("Recipe", verbose_name=_("Recipe"), related_name="cooking_time")
-    hours = models.IntegerField(_("hours"), default=0)
-    minutes = models.IntegerField(_("minutes"), default=0)
+    hours = models.IntegerField(_("hours"), blank=True, null=True, default=0)
+    minutes = models.IntegerField(_("minutes"), blank=True, null=True, default=0)
 
     def __unicode__(self):
         return "%02d:%02d" %(self.hours, self.minutes)
@@ -327,4 +328,78 @@ class Like(models.Model):
         #return self.likes
     def __str__(self):
         return "User #%s likes #%s" % (self.liker_id, self.recipe_id)
+
+
+class RatingManager(models.Manager):
+    """ Rating manager """
+
+    def add_rating(self, rater, recipe, rating):
+        """ Create a like for a spesific user """
+        rating, created = Rating.objects.get_or_create(rater=rater, recipe=recipe, rating=rating)
+
+        if created is False:
+            raise AlreadyExistsError("User '%s' already rated '%s' with '%s'" % (rater, recipe, rating))
+
+        rating_created.send(sender=self, rater=rater)
+        rating_recipe_created.send(sender=self, recipe=recipe, rating=rating)
+
+        return rating
+
+    def remove_rating(self, rater, recipe):
+        """ Removes rating of a spesific user """
+        try:
+            rel = Rating.objects.get(rater=rater, recipe=recipe)
+            rating_removed.send(sender=rel, rater=rel.rater)
+            rating_recipe_removed.send(sender=rel, recipe=recipe)
+            rel.delete()
+            return True
+        except Rating.DoesNotExist:
+            return False
+
+    def rated(self, rater, recipe):
+        """ Did user rate the recipe? Smartly uses caches if exists """
+        try:
+            Rating.objects.get(rater=rater, recipe=recipe)
+            return True
+        except Like.DoesNotExist:
+            return False
+
+    def get_rating(self, recipe):
+        #number of likes for the recipe
+        try:
+            ratings = Rating.objects.filter(recipe=recipe)
+            rating_count = 0
+            rating_sum = 0
+            for rating in ratings:
+                rating_sum += rating.rating
+                rating_count += 1
+            return round(rating_sum/rating_count * 2) / 2
+
+        except ObjectDoesNotExist:
+            #recipe = Recipe.objects.get(id=recipe)
+            #likes = Like(recipe=recipe, likes_count=0, updated=timezone.now())
+            #likes.save()
+            #return likes
+            print ("no ratings for this recipe")
+            rating_avg = 0
+            return rating_avg
+
+class Rating(models.Model):
+    recipe = models.ForeignKey("Recipe", verbose_name=_("Recipe"), related_name="rating", on_delete=models.CASCADE)
+    rating = models.DecimalField("Rating", blank=True, null=True,
+                                 max_digits=2, decimal_places=1,
+                                 validators=[MaxValueValidator(5), MinValueValidator(0)])
+    rater = models.ForeignKey(AUTH_USER_MODEL, related_name="rater", on_delete=models.CASCADE)
+    updated = models.DateTimeField(default=timezone.now)
+    comment_key = models.ForeignKey("comments.Comment", verbose_name=_("Comment"), related_name="rating4cooks", on_delete=models.CASCADE)
+
+    # all methods for getting info on this class
+    objects = RatingManager()
+
+    class Meta:
+        verbose_name = _('Rating')
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return "User #%s rates #%s recipe #%s " % (self.rater_id, self.rating, self.recipe_id)
 # Create your models here.

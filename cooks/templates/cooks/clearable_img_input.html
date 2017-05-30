@@ -1,0 +1,11 @@
+{% load static %}
+{% if is_initial %}
+    <div id=img_holder" style="display:inline-block; width: 140px; height: 140px; border: 1px solid #9a9a9a;"><img id="img_id" src="{{ widget.value.url }}" alt="" style="display:inline; width: 140px; height: 140px;" /></div>
+    {% if not widget.required %}
+        <input type="checkbox" name="{{ checkbox_name }}" id="{{ checkbox_id }}" />
+        <label for="{{ checkbox_id }}">{{ clear_checkbox_label }}</label>
+    {% endif %}
+{% else %}
+    <div id=img_holder" style="display:inline-block; width: 140px; height: 140px; border: 1px solid #9a9a9a;"><img id="img_id" src="{% static 'cooks/img/photo-here.png' %}" alt="" style="display:inline; width: 140px; height: 140px;" /></div>
+{% endif %}
+<input type="{{ widget.type }}" name="{{ widget.name }}"{% include "cooks/attrs.html" %} />

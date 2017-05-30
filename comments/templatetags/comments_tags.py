@@ -1,10 +1,22 @@
 from django import template
-from comments.models import Like
+from comments.models import Like, Comment
 from comments.forms import CommentForm
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
+from django.template import Node, TemplateSyntaxError
 
 
 register = template.Library()
+
+@register.simple_tag(name='can_rate')
+def has_rated(object, user):
+    """ returns boolean for if a user already rated a recipe """
+    ratings = Comment.objects.filter(object_id=object.id, user_id=user.id)
+    ratings = ratings.exclude(rating=None)
+    if ratings:
+        return False
+    else:
+        return True
 
 
 @register.simple_tag(name='get_model_name')
@@ -17,6 +29,80 @@ def get_model_name(object):
 def get_app_name(object):
     """ returns the app name of an object """
     return type(object)._meta.app_label
+
+
+@register.tag(name='mkrange')
+def mkrange(parser, token):
+    """
+    Accepts the same arguments as the 'range' builtin and creates
+    a list containing the result of 'range'.
+
+    Syntax:
+        {% mkrange [start,] stop[, step] as context_name %}
+
+    For example:
+        {% mkrange 5 10 2 as some_range %}
+        {% for i in some_range %}
+          {{ i }}: Something I want to repeat\n
+        {% endfor %}
+
+    Produces:
+        5: Something I want to repeat
+        7: Something I want to repeat
+        9: Something I want to repeat
+    """
+
+    tokens = token.split_contents()
+    fnctl = tokens.pop(0)
+
+    range_args = []
+    while True:
+        token = tokens.pop(0)
+
+        if token == "as":
+            break
+
+        range_args.append(int(token))
+
+    context_name = tokens.pop()
+
+    return RangeNode(range_args, context_name)
+
+
+class RangeNode(Node):
+    def __init__(self, range_args, context_name):
+        self.range_args = range_args
+        self.context_name = context_name
+
+    def render(self, context):
+        context[self.context_name] = range(*self.range_args)
+        return ""
+
+
+@register.simple_tag(name='get_rating')
+def get_rating(object):
+    # the avarge rating for the recipe
+    try:
+        ratings = Comment.objects.filter(object_id=object.id)
+        ratings = ratings.exclude(rating=None)
+        rating_count = 0
+        rating_sum = 0
+        for rating in ratings:
+            rating_sum += rating.rating
+            rating_count += 1
+        if rating_count==0:
+            return ("No rating")
+        else:
+            return round(rating_sum / rating_count * 2) / 2
+
+    except ObjectDoesNotExist:
+        # recipe = Recipe.objects.get(id=recipe)
+        # likes = Like(recipe=recipe, likes_count=0, updated=timezone.now())
+        # likes.save()
+        # return likes
+        print("no ratings for this recipe")
+        rating_avg = 0
+        return rating_avg
 
 
 @register.simple_tag(name='get_comment_count')

@@ -1,0 +1,24 @@
+{% load comments_tags %}
+{% load static %}
+{% load i18n %}
+
+<style>
+    .star-ratings-rating-empty {
+        width: 32px;
+        height: 32px;
+        background-image: url({% static 'stage9/img/fridge-icon.png' %});
+    }
+</style>
+
+<div id="{{ id }}" class="star-ratings" data-max-rating="{{ star_count }}" data-avg-rating="{{ rating.average }}">
+        <div class="star-ratings-rating-stars-container">
+            <ul class="star-ratings-rating-background">
+                {% mkrange 0 5 1 as star_list %}
+                {% for star in star_list %}
+                    <li>
+                        <span class="star-ratings-rating-empty rate_{{ star }}"></span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+</div>

@@ -41,4 +41,43 @@
                 output.push(input[i][field]);
         return output;
     };
+
+/**************************
+ * Check if an element has a class
+ **************************/
+function hasClass (el, name) {
+    return (' ' + el.className + ' ').indexOf(' ' + name + ' ') > -1;
+}
+
+
+/**************************
+ * Find parent element
+ **************************/
+function findParent(el, className) {
+    var parentNode = el.parentNode;
+    while (hasClass(parentNode, className) === false) {
+        if (parentNode.parentNode === undefined) {
+            return null;
+        }
+        parentNode = parentNode.parentNode;
+    }
+    return parentNode
+}
+
+/**************************
+ * Create stars froma float
+ **************************/
+
+$.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+}
 //});

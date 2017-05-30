@@ -10,4 +10,7 @@ like_created = Signal(providing_args=['liker'])
 like_removed = Signal(providing_args=['liker'])
 like_recipe_created = Signal(providing_args=['recipe'])
 like_recipe_removed = Signal(providing_args=['recipe'])
-
+rating_created = Signal(providing_args=['rater'])
+rating_removed = Signal(providing_args=['rater'])
+rating_recipe_created = Signal(providing_args=['recipe', 'rating'])
+rating_recipe_removed = Signal(providing_args=['recipe'])

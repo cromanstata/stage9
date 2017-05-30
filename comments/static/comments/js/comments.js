@@ -29,6 +29,11 @@ $(document).ready(function() {
                     html = "<div id='comment-div-" + json['id'] + "' class='comment'>" +json['html'] +"</div>"
                 	$('.comments').append(html);
                 	$('textarea#id_comment').val(" ");
+                    console.log($('#id_rating').val());
+                    if ($('#id_rating').val()>0) {
+                        console.log("got inside IFFFF");
+                        $('#rate_the_recipe').hide()
+                    }
                     $('#no-comments').hide()
                 }
 

@@ -2,17 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75218757-83e0-46de-a827-b3e6c2ee3210" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tinymce/templates/tinymce/recipe_textareas.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/signals.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comments/templates/comments/comment_rating.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/static/cooks/css/recipe_form.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/templates/cooks/attrs.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/templates/cooks/clearable_img_input.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cooks/widgets.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/css/tiny_editor.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/ajax_star_rating.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stage9/static/stage9/css/forms.css" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/fields.py" afterPath="$PROJECT_DIR$/cooks/fields.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/forms.py" afterPath="$PROJECT_DIR$/comments/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/models.py" afterPath="$PROJECT_DIR$/comments/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/static/comments/css/comments.css" afterPath="$PROJECT_DIR$/comments/static/comments/css/comments.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/static/comments/js/comments.js" afterPath="$PROJECT_DIR$/comments/static/comments/js/comments.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/templates/comments/comment.html" afterPath="$PROJECT_DIR$/comments/templates/comments/comment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/templates/comments/comment_form.html" afterPath="$PROJECT_DIR$/comments/templates/comments/comment_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/templates/comments/comments.html" afterPath="$PROJECT_DIR$/comments/templates/comments/comments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/templatetags/comments_tags.py" afterPath="$PROJECT_DIR$/comments/templatetags/comments_tags.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/views.py" afterPath="$PROJECT_DIR$/comments/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/forms.py" afterPath="$PROJECT_DIR$/cooks/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/models.py" afterPath="$PROJECT_DIR$/cooks/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/signals.py" afterPath="$PROJECT_DIR$/cooks/signals.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/templates/cooks/add_recipe.html" afterPath="$PROJECT_DIR$/cooks/templates/cooks/add_recipe.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html" afterPath="$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cooks/views.py" afterPath="$PROJECT_DIR$/cooks/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/static/stage9/css/style.css" afterPath="$PROJECT_DIR$/stage9/static/stage9/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/static/stage9/js/jquery.formset.js" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/jquery.formset.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/static/stage9/js/my_functions.js" afterPath="$PROJECT_DIR$/stage9/static/stage9/js/my_functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/templates/stage9/base.html" afterPath="$PROJECT_DIR$/stage9/templates/stage9/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/urls.py" afterPath="$PROJECT_DIR$/stage9/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stage9/views.py" afterPath="$PROJECT_DIR$/stage9/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/themes/advanced/skins/default/content.css" afterPath="$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/themes/advanced/skins/default/content.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/tiny_mce.js" afterPath="$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/tiny_mce.js" />
     </list>
     <ignored path="maria.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,11 +72,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="add_recipe.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/add_recipe.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="info_git" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/info_git">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-102">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cooks/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1443">
-              <caret line="145" column="13" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
+            <state relative-caret-position="2584">
+              <caret line="156" column="13" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
               <folding>
                 <element signature="e#1#118#0" expanded="true" />
               </folding>
@@ -61,12 +104,45 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stage9/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4080">
+              <caret line="256" column="13" selection-start-line="256" selection-start-column="8" selection-end-line="256" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stage9.public.cooks_recipe" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_recipe">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attrs.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/attrs.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="155" selection-start-line="0" selection-start-column="155" selection-end-line="0" selection-end-column="155" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cooks/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="153">
+              <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,72 +150,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cooks/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="52" column="59" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_recipe.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/add_recipe.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" column="175" selection-start-line="15" selection-start-column="175" selection-end-line="15" selection-end-column="175" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stage9/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="136" column="20" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
-              <folding>
-                <element signature="e#308#317#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cook_detail.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-345">
-              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe_textareas.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tinymce/templates/tinymce/recipe_textareas.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#41#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="34" column="101" selection-start-line="34" selection-start-column="101" selection-end-line="34" selection-end-column="101" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tinymce/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="2720">
+              <caret line="168" column="26" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -150,10 +162,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Python Script" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -163,37 +175,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/stage9/static/stage9/js/ajaxcomments.js" />
-        <option value="$PROJECT_DIR$/fluent_comments/__init__.py" />
-        <option value="$PROJECT_DIR$/stage9/forms.py" />
-        <option value="$PROJECT_DIR$/django_comments/models.py" />
-        <option value="$PROJECT_DIR$/django_comments/__init__.py" />
-        <option value="$PROJECT_DIR$/fluent_comments/models.py" />
-        <option value="$PROJECT_DIR$/stage9/app_remove.py" />
-        <option value="C:/Python36-32/Lib/site-packages/comments/urls.py" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/cooks_comments.html" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/favourtie_form.html" />
-        <option value="$PROJECT_DIR$/cooks/static/cooks/js/ajax_favourite.js" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/favortie_form.html" />
-        <option value="$PROJECT_DIR$/cooks/exceptions.py" />
-        <option value="$PROJECT_DIR$/cooks/static/cooks/js/ajax_recipe.js" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/favorite_list.html" />
-        <option value="$PROJECT_DIR$/stage9/templates/stage9/ajax_search.html" />
         <option value="$PROJECT_DIR$/comments/static/css/comments.css" />
         <option value="$PROJECT_DIR$/comments/templates/comments/base_comment.html" />
-        <option value="$PROJECT_DIR$/comments/templatetags/comments_tags.py" />
-        <option value="$PROJECT_DIR$/comments/static/comments/js/comments.js" />
-        <option value="$PROJECT_DIR$/comments/templates/comments/comments.html" />
-        <option value="$PROJECT_DIR$/comments/forms.py" />
         <option value="$PROJECT_DIR$/stage9/static/stage9/js/ajax_tags.js" />
         <option value="$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html" />
-        <option value="$PROJECT_DIR$/comments/templates/comments/comment.html" />
-        <option value="$PROJECT_DIR$/stage9/static/stage9/css/forms.css" />
-        <option value="$PROJECT_DIR$/comments/templates/comments/comment_form.html" />
-        <option value="$PROJECT_DIR$/comments/static/comments/css/comments.css" />
-        <option value="$PROJECT_DIR$/cooks/signals.py" />
         <option value="$PROJECT_DIR$/cooks/templates/cooks/like_form.html" />
-        <option value="$PROJECT_DIR$/stage9/static/stage9/js/jquery.formset.js" />
         <option value="$PROJECT_DIR$/stage9/templates/stage9/home.html" />
         <option value="$PROJECT_DIR$/profiles/urls.py" />
         <option value="$PROJECT_DIR$/profiles/views.py" />
@@ -201,19 +187,45 @@
         <option value="$PROJECT_DIR$/stage9/templates/stage9/user.html" />
         <option value="$PROJECT_DIR$/cooks/templates/cooks/my_recipes.html" />
         <option value="$PROJECT_DIR$/cooks/urls.py" />
-        <option value="$PROJECT_DIR$/stage9/static/stage9/css/style.css" />
-        <option value="$PROJECT_DIR$/stage9/views.py" />
-        <option value="$PROJECT_DIR$/cooks/views.py" />
         <option value="$PROJECT_DIR$/cooks/fields.py" />
         <option value="$PROJECT_DIR$/stage9/urls.py" />
         <option value="$PROJECT_DIR$/tinymce/templates/tinymce/recipe_textareas.js" />
-        <option value="$PROJECT_DIR$/stage9/templates/stage9/base.html" />
-        <option value="$PROJECT_DIR$/cooks/forms.py" />
         <option value="$PROJECT_DIR$/stage9/settings.py" />
         <option value="$PROJECT_DIR$/stage9/settings.py" />
-        <option value="$PROJECT_DIR$/cooks/models.py" />
-        <option value="$PROJECT_DIR$/cooks/templates/cooks/add_recipe.html" />
+        <option value="$PROJECT_DIR$/cooks/signals.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/comments/models.py" />
+        <option value="$PROJECT_DIR$/comments/widgets.py" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/css/star-ratings.css" />
+        <option value="$PROJECT_DIR$/comments/templates/comments/comment_rating.html" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/js/ajax_star_rating.js" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/js/my_functions.js" />
         <option value="$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html" />
+        <option value="$PROJECT_DIR$/comments/templates/comments/comments.html" />
+        <option value="$PROJECT_DIR$/comments/templates/comments/comment.html" />
+        <option value="$PROJECT_DIR$/comments/templatetags/comments_tags.py" />
+        <option value="$PROJECT_DIR$/comments/forms.py" />
+        <option value="$PROJECT_DIR$/comments/templates/comments/comment_form.html" />
+        <option value="$PROJECT_DIR$/comments/static/comments/js/comments.js" />
+        <option value="$PROJECT_DIR$/comments/signals.py" />
+        <option value="$PROJECT_DIR$/comments/views.py" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/css/forms.css" />
+        <option value="$PROJECT_DIR$/comments/static/comments/css/comments.css" />
+        <option value="$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/tiny_mce.js" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/js/jquery.formset.js" />
+        <option value="$PROJECT_DIR$/stage9/templates/stage9/base.html" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/css/style.css" />
+        <option value="$PROJECT_DIR$/cooks/static/cooks/css/recipe_form.css" />
+        <option value="$PROJECT_DIR$/stage9/static/stage9/css/tiny_editor.css" />
+        <option value="$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/themes/advanced/skins/default/content.css" />
+        <option value="$PROJECT_DIR$/cooks/templates/cooks/attrs.html" />
+        <option value="$PROJECT_DIR$/cooks/widgets.py" />
+        <option value="$PROJECT_DIR$/cooks/templates/cooks/clearable_img_input.html" />
+        <option value="$PROJECT_DIR$/stage9/views.py" />
+        <option value="$PROJECT_DIR$/cooks/models.py" />
+        <option value="$PROJECT_DIR$/cooks/views.py" />
+        <option value="$PROJECT_DIR$/cooks/forms.py" />
+        <option value="$PROJECT_DIR$/cooks/templates/cooks/add_recipe.html" />
       </list>
     </option>
   </component>
@@ -224,7 +236,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1284" />
+    <option name="y" value="-8" />
+    <option name="width" value="1292" />
     <option name="height" value="696" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -280,54 +293,6 @@
               <option name="myItemId" value="stage9" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 3.6.1 virtualenv at C:\Users\Admin\stage9_env &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stage9" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 3.6.1 virtualenv at C:\Users\Admin\stage9_env &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site-packages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stage9" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 3.6.1 virtualenv at C:\Users\Admin\stage9_env &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site-packages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -349,7 +314,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
+              <option name="myItemId" value="stage9" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -363,7 +328,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
+              <option name="myItemId" value="cooks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cooks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -371,7 +350,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
+              <option name="myItemId" value="cooks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -385,7 +364,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
+              <option name="myItemId" value="cooks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -393,20 +372,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stage9" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stage9" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="cooks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -425,11 +390,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cooks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -448,13 +417,14 @@
     <property name="SearchEverywhereHistoryKey" value="stage9&#9;RUN_CONFIGURATION&#9;stage9" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\PycharmProjects\stage9\comments\static\comments" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\PycharmProjects\stage9" />
       <recent name="C:\Users\Admin\PycharmProjects\stage9\stage9\templates\stage9" />
       <recent name="C:\Users\Admin\PycharmProjects\stage9\stage9\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\stage9\cooks\static\cooks\img" />
+      <recent name="C:\Users\Admin\PycharmProjects\stage9\comments\static\comments" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.stage9">
@@ -802,26 +772,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1284" height="696" extended-state="1" />
+    <frame x="-8" y="-8" width="1292" height="696" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24183007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32224026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3250444" sideWeight="0.49671593" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25932506" sideWeight="0.5226537" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24754901" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3268206" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30195382" sideWeight="0.52597404" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24675325" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3250444" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285968" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26820603" sideWeight="0.47734627" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30195382" sideWeight="0.47402596" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.339254" sideWeight="0.49671593" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.339254" sideWeight="0.49671593" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38365898" sideWeight="0.490625" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38010657" sideWeight="0.490625" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3268206" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -853,268 +823,72 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/comments/templatetags/comments_tags.py">
+    <entry file="file://$PROJECT_DIR$/comments/widgets.py" />
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/layout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="39" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/comments/static/comments/css/comments.css">
+    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/static/cooks/js/ajax_recipe.js">
+    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/ajax_search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="60" column="86" selection-start-line="60" selection-start-column="86" selection-end-line="60" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/like_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/signals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/cooks_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="32" column="92" selection-start-line="32" selection-start-column="77" selection-end-line="32" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/7e0c61e0-5158-444d-ba7b-dc01f4a860d0">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>7e0c61e0-5158-444d-ba7b-dc01f4a860d0</OriginalElement>
-          <nodes>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_foreign_server</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_ts_dict</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_operator</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.polls_question</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_conversion</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.taggit_tag</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_group</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.polls_choice</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_favorite</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_available_extensions</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_collation</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.auth_user</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_language</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_sys_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_indexes</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_all_indexes</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_constraint</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_ingredient</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_range</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_user_mappings</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_views</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_timezone_abbrevs</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_timezone_names</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.comments_like</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.auth_group_permissions</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_replication_slots</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_replication_origin</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.auth_permission</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_mealtype</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_database</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.friendship_follow</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_settings</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_namespace</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_index</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.account_emailaddress</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_amproc</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_seclabel</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_tablespace</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_user_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_file_settings</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_all_sequences</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_attribute</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_inherits</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_matviews</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_largeobject_metadata</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.socialaccount_socialapp</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_user_sequences</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_xact_sys_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_user_indexes</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_rules</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_policies</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_class</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_opclass</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_prepared_xacts</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_ts_parser</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_statistic</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_proc</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_authid</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.django_admin_log</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_xact_user_functions</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_transform</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_aggregate</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_user_mapping</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_workingtime</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_opfamily</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_xact_all_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_event_trigger</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_shadow</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_prepared_statements</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.account_emailconfirmation</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_cast</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_type</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_depend</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.django_site</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_user_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.friendship_friend</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.socialaccount_socialaccount</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stats</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_foreign_table</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_shdescription</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_roles</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.friendship_friendshiprequest</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_ts_template</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_recipe</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_user_functions</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_user_indexes</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_sys_indexes</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_description</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_replication_origin_status</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_cursors</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_cuisine</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_sys_sequences</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_trigger</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_auth_members</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_foreign_data_wrapper</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_init_privs</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_cookingtime</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_ssl</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_all_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.socialaccount_socialapp_sites</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_shseclabel</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_amop</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.taggit_taggeditem</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_config</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_replication</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_sys_indexes</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_sys_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_all_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.comments_comment</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_policy</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.django_migrations</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_archiver</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_enum</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_xact_user_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_statio_all_indexes</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_activity</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.auth_group</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_default_acl</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.socialaccount_socialtoken</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_tables</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_difficulty</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_wal_receiver</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_seclabels</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_ts_config_map</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_database</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_ts_config</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_user</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_bgwriter</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_available_extension_versions</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_largeobject</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.cooks_like</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.django_content_type</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_locks</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_am</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_rewrite</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_shdepend</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_progress_vacuum</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.profiles_userprofile</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.django_session</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.auth_user_groups</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.VIEW:stage9.pg_catalog.pg_stat_database_conflicts</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_db_role_setting</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.public.auth_user_user_permissions</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_extension</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_pltemplate</node>
-            <node x="" y="">7e0c61e0-5158-444d-ba7b-dc01f4a860d0.TABLE:stage9.pg_catalog.pg_attrdef</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.19433962264150945" x="1192.0" y="1857.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/star-ratings.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="48" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/ajax_tags.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/ajax_star_rating.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/my_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="79" column="22" selection-start-line="79" selection-start-column="22" selection-end-line="79" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/stage9_login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="46" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/favorite_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/loader.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_mealtype">
+    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_rating">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -1126,17 +900,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_cuisine">
+    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.comments_comment">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -1145,274 +909,252 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_cookingtime">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <marker date="1495636700818" expanded="true" signature="90:391" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_ingredient">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/jquery.formset.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="31" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_difficulty">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/favorite_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comments/templates/comments/comments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/templatetags/comments_tags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comments/templates/comments/comment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="187" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="187" />
+        <state relative-caret-position="68">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/comments/views.py">
+    <entry file="file://$PROJECT_DIR$/comments/static/comments/js/comments.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="78" column="25" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="510">
+          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.profiles_userprofile">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.auth_user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_workingtime">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/my_recipes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/info_git">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/migrations/0005_auto_20170517_1548.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/migrations/0004_auto_20170517_1548.py">
+    <entry file="file://$PROJECT_DIR$/comments/templates/comments/comment_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="24" column="48" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="48" />
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_favorite">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a41af3d5/7e0c61e0-5158-444d-ba7b-dc01f4a860d0/stage9.public.cooks_like">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/style.css">
+    <entry file="file://$PROJECT_DIR$/comments/signals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="454" column="30" selection-start-line="454" selection-start-column="30" selection-end-line="454" selection-end-column="30" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/forms.css" />
+    <entry file="file://$PROJECT_DIR$/comments/static/comments/css/comments.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tinymce/static/tinymce/js/tinymce/tinymce.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tinymce/static/tinymce/js/django_tinymce/init_tinymce.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-547">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tinymce/media/tiny_mce/themes/advanced/skins/default/ui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-969">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/tiny_mce.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="0" column="169330" selection-start-line="0" selection-start-column="169330" selection-end-line="0" selection-end-column="169330" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/js/jquery.formset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="78" column="53" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cooks/fields.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/tiny_editor.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="93" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/static/cooks/css/recipe_form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage9/static/stage9/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tinymce/static/tinymce/js/tiny_mce/themes/advanced/skins/default/content.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="113" selection-start-line="1" selection-start-column="113" selection-end-line="1" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python36-32/Lib/site-packages/django/forms/templates/django/forms/widgets/attrs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="80" selection-start-line="0" selection-start-column="80" selection-end-line="0" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python36-32/Lib/site-packages/django/forms/widgets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="377" column="16" selection-start-line="377" selection-start-column="4" selection-end-line="377" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/templates/comments/comment_rating.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="67" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/clearable_img_input.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="91" selection-start-line="10" selection-start-column="91" selection-end-line="10" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1301">
+          <caret line="88" column="147" selection-start-line="87" selection-start-column="8" selection-end-line="88" selection-end-column="147" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python36-32/Lib/site-packages/django/forms/templates/django/forms/widgets/clearable_file_input.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="70" selection-start-line="0" selection-start-column="48" selection-end-line="0" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2720">
+          <caret line="168" column="26" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stage9/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4182">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+        <state relative-caret-position="4080">
+          <caret line="256" column="13" selection-start-line="256" selection-start-column="8" selection-end-line="256" selection-end-column="13" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tinymce/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="11" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cooks/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1443">
-          <caret line="145" column="13" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
+        <state relative-caret-position="2584">
+          <caret line="156" column="13" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
           <folding>
             <element signature="e#1#118#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/urls.py">
+    <entry file="file://$PROJECT_DIR$/cooks/widgets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#640#681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tinymce/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/templates/stage9/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="34" column="101" selection-start-line="34" selection-start-column="101" selection-end-line="34" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tinymce/templates/tinymce/recipe_textareas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1425,40 +1167,39 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/attrs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="155" selection-start-line="0" selection-start-column="155" selection-end-line="0" selection-end-column="155" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stage9/settings.py">
+    <entry file="file://$PROJECT_DIR$/cooks/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="136" column="20" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
+        <state relative-caret-position="153">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
           <folding>
-            <element signature="e#308#317#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="52" column="59" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/add_recipe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="175" selection-start-line="15" selection-start-column="175" selection-end-line="15" selection-end-column="175" />
+        <state relative-caret-position="259">
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cooks/templates/cooks/cook_detail.html">
+    <entry file="file://$PROJECT_DIR$/info_git">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        <state relative-caret-position="-102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -1,0 +1,165 @@
+#recipe_form_h {
+    margin-left: 50%;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.label_form {
+    margin-right: 16px;
+    display:inline-block;
+    font-weight: bold;
+    color: #020202;
+    font-size: 12pt;
+    vertical-align: top;
+}
+
+.label_form_time {
+    margin-right: 7px;
+    display:inline-block;
+    font-weight: bold;
+    color: #020202;
+    font-size: 12pt;
+}
+
+.icon-x{
+    color: #b3b3b3;
+    margin-left: 5px;
+}
+
+.icon-x:hover{
+    color: #020202;
+}
+
+.ingredient_formset_css {
+    width: 120px;
+    text-align: center;
+}
+
+.quantity_formset_css {
+    width: 60px;
+}
+
+.note_formset_css {
+    width: 200px;
+}
+
+.unit_formset_css {
+    height: 26px;
+}
+
+.float_labels {
+    float: right;
+}
+
+#ingredient_formsetTable {
+}
+.dynamic-ingredient_formset {
+    margin-bottom: 10px;
+}
+.portions_css {
+    width: 100px;
+    text-align: center;
+}
+
+.photo_css {
+    margin-top:16px;
+    margin-left:70px;
+}
+
+.hours_css {
+    width: 50px;
+    text-align: center;
+}
+
+.minutes_css {
+    width: 50px;
+    text-align: center;
+}
+
+.cuisine_css {
+    width: 100px;
+    text-align: center;
+}
+
+.mealtype_css {
+    text-align: center;
+}
+
+.difficulty_css {
+    width: 100px;
+    text-align: center;
+}
+
+td {
+    padding-bottom: 5px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.inline_form_item {
+    display: inline;
+}
+
+.inline_p {
+    display: inline;
+    text-align: center;
+}
+
+.help_form {
+    color: #676767;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    clear: both;
+}
+
+.label_title {
+    margin-left: 80px;
+}
+
+.example_form {
+    color: #676767;
+    font-style: italic;
+    margin-bottom: 25px;
+    clear: both;
+
+}
+
+.recipe_field {
+    vertical-align: top;
+    horiz-align: left;
+    position: relative;
+    min-width: 614px;
+}
+
+input:focus {
+    color: #020202;
+}
+
+.title_css {
+    color: #020202;
+    font-size: 12pt;
+    width: 230px;
+    height: 30px;
+    display: inline;
+}
+
+.summary_css {
+    resize: none;
+    display: inline;
+    width: 475px;
+    height: 60px;
+    color: #020202;
+    font-size: 12pt;
+}
+
+.recipe_field_allign {
+    float: right;
+    display:inline-block;
+    vertical-align: top;
+}
+
+.recipe_field_allign_title {
+    display:inline-block;
+    vertical-align: top;
+}
+

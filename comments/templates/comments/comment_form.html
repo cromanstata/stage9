@@ -1,4 +1,5 @@
 {% load comments_tags %}
+{% can_rate target user as can_rate_flag %}
 
 {% if not user.is_authenticated and not allow_anonymous %}
 {% else %}
@@ -9,6 +10,13 @@
         <h4>Post a comment</h4>
 			<br>
 			{{ form.comment }}
+            {{ form.rating }}
+            {% if can_rate_flag %}
+                <div id="rate_the_recipe">
+                     <p>RATE THE RECIPE:</p>
+                    {% include "comments/comment_rating.html" %}
+                </div>
+            {% endif %}
 			{% if target %}	
 				<input name="model" value="{% get_model_name target %}" hidden>
 				<input name="model_id" value="{{ target.id }}" hidden>

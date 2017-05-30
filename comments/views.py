@@ -6,6 +6,8 @@ from django.template.loader import render_to_string
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.middleware.csrf import get_token
 from comments.models import Comment, Like
+from cooks.models import Recipe
+from comments.signals import rating_recipe_created, comment_recipe_created
 from comments.forms import CommentForm
 from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
@@ -83,6 +85,8 @@ class CommentCreateView(AjaxableResponseMixin, CreateView):
             comment.content_object = model_object
         except:
             pass
+        comment_recipe_created.send(sender=self, recipe=Recipe.objects.filter(id=self.request.POST['model_id']), comment=self.request.POST['comment'])
+        rating_recipe_created.send(sender=self, recipe=Recipe.objects.filter(id=self.request.POST['model_id']), rating=self.request.POST['rating'])
         comment.save()
         return super(CommentCreateView, self).form_valid(form)
 
@@ -105,10 +109,12 @@ class CommentDeleteView(DeleteView):
             id = request.GET['id']
             self.object = Comment.objects.get(id=id)
             if (self.object.user.id == request.user.id):
+                print ("SAME USER AS THE ONE POSTED")
                 self.object.delete()
                 data = {"success": "1",
                         "count": Comment.objects.count()}
             else:
+                print("NOT???? SAME USER AS THE ONE POSTED")
                 data = {"success": "0"}
         except:
             data = {"success": "0"}

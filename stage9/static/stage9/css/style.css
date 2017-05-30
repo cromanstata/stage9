@@ -3,7 +3,7 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   color: #ffffff;
-  background: #F0F8FF;
+  background: white;
 }
 h1,
 h2,
@@ -451,8 +451,9 @@ a:active {
 }
 
 .recipe_form {
+    background: white;
     padding: 20px;
-    border: 1px solid #434343;
+    padding-right: 68px;
     border-radius: 6px;
     position: relative;
 }

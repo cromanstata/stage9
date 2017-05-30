@@ -1,7 +1,7 @@
 
 from .models import User, Recipe, Favorite, Like, Ingredient, MealType, Difficulty, Cuisine, WorkingTime, CookingTime
 from django.shortcuts import get_object_or_404, render, redirect
-from cooks.forms import RecipeForm, IngredientForm, DifficultyForm, MealTypeForm, CuisineForm, WorkingTimeForm, CookingTimeForm
+from cooks.forms import RecipeForm, IngredientForm, DifficultyForm, MealTypeForm, CuisineForm, CookingTimeForm, BaseIngredientFormSet
 from django.utils import timezone
 from django.forms.models import inlineformset_factory
 
@@ -72,6 +72,7 @@ def edit_recipe(request, recipe_title):
     user = request.user
     recipe = get_object_or_404(Recipe, title=recipe_title, author_id=user.id)
     recipe_form = RecipeForm(instance=recipe)
+    #photo_path = recipe_form.photo(request.FILES or None)
     try:
         difficulty = Difficulty.objects.get(recipe_id=recipe.id)
         difficulty_form = DifficultyForm(instance=difficulty)
@@ -83,30 +84,25 @@ def edit_recipe(request, recipe_title):
     except:
         cuisine_form = CuisineForm(instance=recipe)
     try:
-        workingtime = WorkingTime.objects.get(recipe_id=recipe.id)
-        workingtime_form = WorkingTimeForm(prefix='working', instance=workingtime)
-    except:
-        workingtime_form = WorkingTimeForm(prefix='working',instance=recipe)
-    try:
         cookingtime = CookingTime.objects.get(recipe_id=recipe.id)
         cookingtime_form = CookingTimeForm(prefix='cooking', instance=cookingtime)
     except:
         cookingtime_form = CookingTimeForm(prefix='cooking', instance=recipe)
+
     ingredientInlineFormSet = inlineformset_factory(Recipe, Ingredient,
-                                                    fields=('ingredient', 'quantity', 'unit', 'note'),
+                                                    form=IngredientForm,
                                                     extra=3,
                                                     can_delete=True,
                                                     )
     ingredient_formset = ingredientInlineFormSet(prefix='fs1', instance=recipe)
     mealTypeInlineFormSet = inlineformset_factory(Recipe, MealType,
-                                                  fields=('mealtype',),
+                                                  form=MealTypeForm,
                                                   extra=1,
                                                   can_delete=True)
     mealtype_formset = mealTypeInlineFormSet(prefix='fs2', instance=recipe)
     #works up to here
     if request.method == "POST":
         if request.POST.get('delete'):
-            print("got delete command")
             recipe.delete()
             return redirect('profiles:my_recipes')
         recipe_form = RecipeForm(request.POST, request.FILES, instance=recipe)
@@ -123,20 +119,18 @@ def edit_recipe(request, recipe_title):
         except:
             cuisine_form = CuisineForm(request.POST, instance=recipe)
         try:
-            workingtime = WorkingTime.objects.get(recipe_id=recipe.id)
-            workingtime_form = WorkingTimeForm(request.POST, prefix='working', instance=workingtime)
-            print("should be saving working time")
-        except:
-            print ("except for working time")
-            workingtime_form = WorkingTimeForm(request.POST, prefix='working', instance=recipe)
-        try:
             cookingtime = CookingTime.objects.get(recipe_id=recipe.id)
             cookingtime_form = CookingTimeForm(request.POST, prefix='cooking', instance=cookingtime)
-            print("should be saving cooking time")
         except:
-            print("except for cooking time time")
             cookingtime_form = CookingTimeForm(request.POST, prefix='cooking', instance=recipe)
-        if recipe_form.is_valid() and ingredient_formset.is_valid() and mealtype_formset.is_valid() and difficulty_form.is_valid() and cuisine_form.is_valid() and workingtime_form.is_valid() and cookingtime_form.is_valid():
+        print("recipe_form.is_valid()", recipe_form.is_valid())
+        print("ingredient_formset.is_valid()", ingredient_formset.is_valid())
+        print("mealtype_formset.is_valid()", mealtype_formset.is_valid())
+        print("difficulty_form.is_valid()", difficulty_form.is_valid())
+        print("cuisine_form.is_valid()", cuisine_form.is_valid())
+        print("cookingtime_form.is_valid()", cookingtime_form.is_valid())
+
+        if recipe_form.is_valid() and ingredient_formset.is_valid() and mealtype_formset.is_valid() and difficulty_form.is_valid() and cuisine_form.is_valid() and cookingtime_form.is_valid():
             recipe_post = recipe_form.save(commit=False)
             recipe_post.author = user
             recipe_post.publish_date = timezone.now()
@@ -148,8 +142,6 @@ def edit_recipe(request, recipe_title):
             difficulty_post.recipe_id = recipe_post.id
             cuisine_post = cuisine_form.save(commit=False)
             cuisine_post.recipe_id = recipe_post.id
-            workingtime_post = workingtime_form.save(commit=False)
-            workingtime_post.recipe_id = recipe_post.id
             cookingtime_post = cookingtime_form.save(commit=False)
             cookingtime_post.recipe_id = recipe_post.id
             recipe_post.save()
@@ -157,22 +149,22 @@ def edit_recipe(request, recipe_title):
             mealtype_formset.save()
             difficulty_post.save()
             cuisine_post.save()
-            workingtime_post.save()
             cookingtime_post.save()
             # for post1 in ingredient_post:
             #    post1.recipe_id = recipe_post.id
             #    post1.save()
             return redirect('cooks:detail', recipe_post.title)
         else:
+            print("not saving")
             context = {'recipe_form': recipe_form, 'ingredient_formset': ingredient_formset,
                        'difficulty_form': difficulty_form, 'cuisine_form': cuisine_form,
-                       'workingtime_form': workingtime_form, 'cookingtime_form': cookingtime_form,
+                       'cookingtime_form': cookingtime_form,
                        'mealtype_formset': mealtype_formset, 'user': user}
             return render(request, 'cooks/add_recipe.html', context)
 
     else:
         context = {'recipe_form': recipe_form, 'ingredient_formset': ingredient_formset,
                    'difficulty_form': difficulty_form, 'cuisine_form': cuisine_form,
-                   'workingtime_form': workingtime_form, 'cookingtime_form': cookingtime_form,
+                   'cookingtime_form': cookingtime_form,
                    'mealtype_formset': mealtype_formset, 'user': user}
         return render(request, 'cooks/add_recipe.html', context)
