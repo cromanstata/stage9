@@ -7,7 +7,7 @@ from django.forms.models import inlineformset_factory
 class CommentForm(forms.ModelForm):
 
     """Author: Aly Yakan"""
-    comment = forms.CharField(widget=forms.Textarea(attrs = {'cols': 85, 'rows': 5}))
+    comment = forms.CharField(widget=forms.Textarea(attrs = {'placeholder': "Write a review or leave a comment..."}))
     rating = forms.DecimalField(required=False, widget=forms
                                 .HiddenInput(attrs={}))
                                 #.NumberInput(attrs={'step': 0.5}))

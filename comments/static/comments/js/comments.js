@@ -21,17 +21,17 @@ $(document).ready(function() {
                 }
                 else {
                     var comment_count = document.getElementById('comments-count');
+                    var comment_text = json['html'];
+                    console.log (comment_text);
                     if (parseInt(comment_count.innerHTML) == 0) {
                         comment_count.innerHTML = parseInt(comment_count.innerHTML) + 1 + " Comment";
                     } else {
                         comment_count.innerHTML = parseInt(comment_count.innerHTML) + 1 + " Comments";
                     }
-                    html = "<div id='comment-div-" + json['id'] + "' class='comment'>" +json['html'] +"</div>"
-                	$('.comments').append(html);
+                    html = "<div id='comment-div-" + json['id'] + "' class='comment'>"+json['html']+"</div>"
+                	$('.comments').prepend(html);
                 	$('textarea#id_comment').val(" ");
-                    console.log($('#id_rating').val());
                     if ($('#id_rating').val()>0) {
-                        console.log("got inside IFFFF");
                         $('#rate_the_recipe').hide()
                     }
                     $('#no-comments').hide()
@@ -45,7 +45,7 @@ $(document).ready(function() {
     });
     
     // DELETE COMMENT //
-    $('.comments-wrapper').on('click', '.comment-delete-btn', function(event) {
+    $('.comments-wrapper').on('click', '.comment-delete-class', function(event) {
         event.preventDefault();
         var id = $(this).attr('data-id');
         if(confirm("Are you sure you want to delete this comment?")){
@@ -60,6 +60,12 @@ $(document).ready(function() {
                                 $('#no-comments').show()
                           }
                           else {
+                                var comment_count = document.getElementById('comments-count');
+                                if (data['count'] == 1) {
+                                    comment_count.innerHTML = parseInt(comment_count.innerHTML) - 1 + " Comment";
+                                } else {
+                                    comment_count.innerHTML = parseInt(comment_count.innerHTML) - 1 + " Comments";
+                                }
                                 $('#no-comments').hide()
                           }
                     }
@@ -71,12 +77,29 @@ $(document).ready(function() {
         }
     });
 
-    // COMMENT EDIT //
-    $('.comments-wrapper').on('click', '.comment-edit-class', function(event){
+        // THREE DOTS MENU POP //
+    $('.comments-wrapper').on('click', '.comment_more', function(event){
+        event.stopPropagation();
+        var id = $(this).attr('data-id');
+        $('#comment-more-arrow-' + id).toggle();
+        $('#comment-more-' + id).toggle();
+    });
 
+    $(".comment_more_menu_arrow").on("click", function (event) {
+        event.stopPropagation();
+    });
+
+    $(".ccomment_more_menu").on("click", function (event) {
+        event.stopPropagation();
+    });
+
+        // COMMENT EDIT //
+
+    $('.comments-wrapper').on('click', '.comment-edit-class', function(event){
         var id = $(this).attr('data-id');
         $('#comment-edit-' + id).show();
         $('#comment-' + id).hide();
+        $('#comment-likes-' + id).hide();
     });
 
     $('.comments-wrapper').on('submit', '.edit-form', function(event){
@@ -98,12 +121,14 @@ $(document).ready(function() {
                     $('#comment-edit-' + id).hide();
                     $('#comment-' + id).show();
                 } else if(json.success == 0){
+                    console.log("FALUERE");
                      errors = ""
                   for (var err in json.error){
                     errors += "" + json.error[err] + "\n";
                 }
                 error.innerHTML = errors;
             }
+                $('#comment-likes-' + id).show();
             },
             dataType: 'html'
         });
@@ -121,8 +146,10 @@ $(document).ready(function() {
                 success: function(data){
                     if(data['success'] == 1) {
                         $('#like-btn-' + id).attr('data-like', 'liked');
-                        $('#like-btn-' + id).text('Unlike');
-                        $('#likes-count-' + id).text("Likes: " + data['likes_count']);
+                        $('#like-btn-' + id).removeClass('not_pressed_grey');
+                        $('#like-btn-' + id).addClass('pressed_blue');
+                        console.log (data['likes_count']);
+                        $('#likes-count-' + id).text(data['likes_count']);
                     } else{
                         alert(data['error']);
                     }
@@ -136,8 +163,9 @@ $(document).ready(function() {
                 success: function(data){
                     if(data['success'] == 1) {
                         $('#like-btn-' + id).attr('data-like', 'like');
-                        $('#like-btn-' + id).text('Like');
-                        $('#likes-count-' + id).text("Likes: " + data['likes_count']);
+                        $('#like-btn-' + id).removeClass('pressed_blue');
+                        $('#like-btn-' + id).addClass('not_pressed_grey');
+                        $('#likes-count-' + id).text(data['likes_count']);
                     } else{
                         alert(data['error']);
                     }

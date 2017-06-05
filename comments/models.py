@@ -7,6 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 
 
+
 class Comment(models.Model):
     """ Represents an instance of Comment """
 
@@ -24,6 +25,9 @@ class Comment(models.Model):
         validators=[MinValueValidator(0)])
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name='Created at')
+
+    class Meta:
+        ordering = ['created_at']
 
 
 class Like(models.Model):

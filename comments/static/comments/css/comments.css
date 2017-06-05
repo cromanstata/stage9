@@ -1,33 +1,54 @@
 .comments {
-    padding: 10px;
-    background: #f0f8ff;
-    border-radius: 6px;
-    border: 1px solid #434343;
+    padding: 0px;
+    background: white;
+    position: relative;
 }
 
 .comment {
-    background: #f0f8ff;
+    background: white;
     color: #444444;
-    border-radius: 6px;
-    padding: 20px;
-    margin-top: 20px;
+    border-radius: 14px;
+    padding: 14px;
+    padding-top: 8px;
+    padding-left: 10px;
+    margin-top: 40px;
     position: relative;
-    border: 1px solid #434343;
+    border: 2px solid #9a9999;
 
 }
 
+.comments-count {
+    font-weight: 600;
+    margin-bottom: 1px;
+    margin-top: 34px;
+}
+
+/*
 .like-comment-btn {
     color: black;
     display: inline;
     margin-top: 10px;
     margin-right: 5px;
 }
+*/
+
+.pressed_blue {
+    color: #5991ff;
+}
+
+.pressed_blue:hover {
+    color: darkgrey;
+}
+
+.not_pressed_grey {
+    color: darkgrey;
+}
+
+.not_pressed_grey:hover {
+    color: #5991ff;
+}
 
 .comment-edit-class {
-    color: black;
-    display: inline;
-    margin-top: 10px;
-    margin-right: 5px;
 }
 
 .comment-delete-btn {
@@ -35,17 +56,15 @@
 }
 
 .comment-delete-form {
-    display: inline;
-    margin-top: 10px;
-    margin-right: 5px;
 }
 
 #comment-input-div {
-    background: #f0f8ff;
+    position: relative;
+    background: white;
     color: #444444;
     border-radius: 6px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
     border: 1px solid #434343;
 
 }
@@ -53,14 +72,164 @@
 .add-comment-form {
 }
 
+.padTextarea {
+    background-color: white;
+    padding: 12px;
+    padding-bottom: 0;
+    width: 487px;
+    display: inline-block;
+    border: 1px solid #CCC;
+}
+
 #id_comment {
-  outline: none;
-    background: #ffffff;
-    color: #444444;
-    border-radius: 6px;
-    border: 1px solid #434343;
-    padding: 20px;
-    width: 680px;
+    resize: none;
+    display: inline;
+    width: 454px;
+    min-height: 35px;
+    height: 35px;
+    color: #020202;
+    font-size: 12pt;
+    outline: none;
+    background-color: white;
+    border: 0px;
+    overflow: hidden;
+}
+
+.comment-edit-form {
+    resize: none;
+    display: inline;
+    width: 454px;
+    min-height: 35px;
+    height: 35px;
+    color: #020202;
+    font-size: 12pt;
+    outline: none;
+    background-color: white;
+    border: 0px;
+    overflow: hidden;
+}
+
+.hiddendiv {
+    display: none;
+    white-space: pre-wrap;
+    width: 486px;
+    min-height: 10px;
+    font-size: 12pt;
+    padding: 14px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    word-wrap: break-word;
+}
+
+.submit_comments_edits {
+    margin-left: 424px;
+    margin-top: 5px;
+    border:1px groove #9a9999;
+    cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
+    padding: 2px 15px;
+    /*give the background a gradient - see cssdemos.tupence.co.uk/gradients.htm for more info*/
+    background-color: #ffffff; /*required for browsers that don't support gradients*/
+    background: -webkit-gradient(linear, right top, right bottom, from(#ffffff), to(#ffffff));
+    background: -webkit-linear-gradient(top, #ffffff, #ffffff);
+    background: -moz-linear-gradient(top, #ffffff, #ffffff);
+    background: -o-linear-gradient(top, #ffffff, #ffffff);
+    background: linear-gradient(top, #ffffff, #ffffff);
+    /*style to the text inside the button*/
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /*Andkia is available at http://www.google.com/webfonts/specimen/Andika*/
+    font-weight: 500;
+    color:black;
+    font-size:1.1em;
+    /*give the corners a small curve*/
+    /*-webkit-border-radius: 0 15px 0 15px;
+    -moz-border-radius: 0 15px 0 15px;
+    border-radius: 0 15px 0 15px;*/
+    /*add a drop shadow to the button*/
+    -webkit-box-shadow: rgba(0, 0, 0, .75) 0 1px 2px;
+    -moz-box-shadow: rgba(0, 0, 0, .75) 0 1px 2px;
+    box-shadow: rgba(0, 0, 0, .75) 0 1px 2px;
+    }
+    /***NOW STYLE THE BUTTON'S HOVER AND FOCUS STATES***/
+    #add-comment:hover, #add-comment:focus {
+    /*reduce the spread of the shadow to give a pushed effect*/
+    -webkit-box-shadow: rgba(0, 0, 0, .25) 0 1px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, .25) 0 1px 0px;
+    box-shadow: rgba(0, 0, 0, .25) 0 1px 0px;
+}
+
+.comment_top_bar {
+    position: relative;
+}
+
+.profile_comment_position {
+    position: absolute;
+    top: -34px;
+    left: 1px;
+}
+
+.comment_name_time {
+    display: inline-block;
+    margin-left: 70px;
+}
+
+.comment_name {
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.comment_time {
+    color: darkgrey;
+}
+
+.comment_rating {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 64px;
+}
+.comment_more {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    display:inline;
+    color: darkgrey;
+    font-size:1.5em;
+}
+
+.comment_more:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.comment_text {
+    font-weight: 500;
+    display: inline;
+}
+
+.comment_content {
+    margin-left: 10px;
+    margin-bottom: 6px;
+}
+
+.comment_likes {
+    position: absolute;
+    margin-top: 5px;
+    bottom:1px;
+    right:10px;
+}
+
+.like_count_comment {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.comment_like_icon {
+    display: inline-block;
+}
+
+.comment_like_icon:hover {
+    cursor: pointer;
+}
+
+#rate_the_recipe {
+    text-align: center;
 }
 
 span.stars, span.stars span {
@@ -72,4 +241,56 @@ span.stars, span.stars span {
 
 span.stars span {
     background-position: 0 0;
+}
+
+.comment_more_menu_arrow {
+    width: 100px;
+    height: 0px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 34px;
+    right: 32px;
+    margin-left: -60px;
+    display: none;
+}
+
+.comment_more_menu_arrow::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%; /* To the right of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+.comment_more_menu {
+    width: 100px;
+    height: auto;
+    border-radius: 6px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 2;
+    bottom: 16px;
+    right: 32px;
+    margin-left: -60px;
+    display: none;
+}
+
+.comment_more_menu_item {
+    margin-bottom: 5px;
+}
+
+.comment_more_menu_item:hover {
+    cursor: pointer;
+    background-color: darkgrey;
+    color: black;
 }

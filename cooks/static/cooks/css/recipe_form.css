@@ -1,3 +1,13 @@
+.recipe_form {
+    width:100%;
+    min-width:702px;
+    background: white;
+    padding: 20px;
+    padding-right: 162px;
+    border-radius: 6px;
+    position: relative;
+}
+
 #recipe_form_h {
     margin-left: 50%;
     margin-bottom: 30px;
@@ -96,6 +106,10 @@ td {
     vertical-align: top;
 }
 
+.grey_info {
+    color: #b3b3b3;
+}
+
 .inline_form_item {
     display: inline;
 }
@@ -125,10 +139,18 @@ td {
 }
 
 .recipe_field {
-    vertical-align: top;
-    horiz-align: left;
-    position: relative;
-    min-width: 614px;
+    width:100%;
+    min-width:614px;
+}
+
+.recipe_field:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.recipe_field_submit {
+    padding-left: 100px;
 }
 
 input:focus {
@@ -156,6 +178,11 @@ input:focus {
     float: right;
     display:inline-block;
     vertical-align: top;
+    max-width: 480px;
+}
+
+.center {
+    text-align: center;
 }
 
 .recipe_field_allign_title {

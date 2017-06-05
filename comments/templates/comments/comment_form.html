@@ -1,29 +1,38 @@
 {% load comments_tags %}
 {% can_rate target user as can_rate_flag %}
 
+<h5 class="comments-count" id="comments-count" >
+    {% if comments_count == 1%}
+        {% get_comment_count target %}
+        COMMENT
+    {% else %}
+        {% get_comment_count target %}
+        COMMENTS
+    {% endif %}
+</h5>
+
 {% if not user.is_authenticated and not allow_anonymous %}
 {% else %}
 	<div id="comment-input-div">
 		<form method="POST" action="{% url "comment-create" %}" class="add-comment-form">
 			{% csrf_token %}
 			{{ form.errors }}
-        <h4>Post a comment</h4>
-			<br>
-			{{ form.comment }}
-            {{ form.rating }}
             {% if can_rate_flag %}
-                <div id="rate_the_recipe">
-                     <p>RATE THE RECIPE:</p>
+                <div data-toggle="tooltip" data-placement="bottom" title="Rate the recipe" id="rate_the_recipe">
                     {% include "comments/comment_rating.html" %}
                 </div>
             {% endif %}
+            <div class="padTextarea">
+                {{ form.comment }}
+            </div>
+            {{ form.rating }}
 			{% if target %}	
 				<input name="model" value="{% get_model_name target %}" hidden>
 				<input name="model_id" value="{{ target.id }}" hidden>
 				<input name="app_name" value="{% get_app_name target %}" hidden>
 			{% endif %}
 			<input id="id_user" name="user" value="{% if user.is_authenticated %}{{ user.id }}{% endif %}" hidden>
-			<input type="submit" value="Submit" id="add-comment" />
+			<input type="submit" value="Post" class="submit_comments_edits" id="add-comment" />
 		</form>
 	</div>
 {% endif %}

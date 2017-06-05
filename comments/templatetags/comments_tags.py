@@ -4,9 +4,86 @@ from comments.forms import CommentForm
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import Node, TemplateSyntaxError
+from django.utils import timezone
+import calendar
+import datetime
+from django.utils.translation import ugettext, ungettext_lazy
+from django.utils.timezone import is_aware, utc
+from django.utils.html import avoid_wrapping
 
 
 register = template.Library()
+
+TIMESINCE_CHUNKS = (
+    (60 * 60 * 24 * 365, ungettext_lazy('%d year', '%d years')),
+    (60 * 60 * 24 * 30, ungettext_lazy('%d month', '%d months')),
+    (60 * 60 * 24 * 7, ungettext_lazy('%d week', '%d weeks')),
+    (60 * 60 * 24, ungettext_lazy('%d day', '%d days')),
+    (60 * 60, ungettext_lazy('%d hour', '%d hours')),
+    (60, ungettext_lazy('%d minute', '%d minutes'))
+)
+
+@register.filter(name='trim')
+def trim(value):
+    return value.strip()
+
+
+@register.filter(name='timesincehumanize')
+def timesincehumanize(d, now=None, reversed=False):
+    """
+    Takes two datetime objects and returns the time between d and now
+    as a nicely formatted string, e.g. "10 minutes".  If d occurs after now,
+    then "Just now" is returned.
+
+    Units used are years, months, weeks, days, hours, and minutes.
+    Seconds and microseconds are ignored.  Up to one unit will be
+    displayed.  For example, "2 weeks" and "1 year" are
+    possible outputs, but "2 weeks, 3 hours" and "1 year, 5 days" are not.
+
+    Adapted from
+    http://web.archive.org/web/20060617175230/http://blog.natbat.co.uk/archive/2003/Jun/14/time_since
+    """
+    # Convert datetime.date to datetime.datetime for comparison.
+    if not isinstance(d, datetime.datetime):
+        d = datetime.datetime(d.year, d.month, d.day)
+    if now and not isinstance(now, datetime.datetime):
+        now = datetime.datetime(now.year, now.month, now.day)
+
+    if not now:
+        now = datetime.datetime.now(utc if is_aware(d) else None)
+
+    if reversed:
+        d, now = now, d
+    delta = now - d
+
+    # Deal with leapyears by subtracing the number of leapdays
+    leapdays = calendar.leapdays(d.year, now.year)
+    if leapdays != 0:
+        if calendar.isleap(d.year):
+            leapdays -= 1
+        elif calendar.isleap(now.year):
+            leapdays += 1
+    delta -= datetime.timedelta(leapdays)
+
+    # ignore microseconds
+    since = delta.days * 24 * 60 * 60 + delta.seconds
+    if since <= 0:
+        # d is in the future compared to now, stop processing.
+        return avoid_wrapping(ugettext('Just now'))
+    for i, (seconds, name) in enumerate(TIMESINCE_CHUNKS):
+        count = since // seconds
+        if count != 0:
+            break
+    result = avoid_wrapping(name % count) + (' ago')
+    """
+    if i + 1 < len(TIMESINCE_CHUNKS):
+        # Now get the second item
+        seconds2, name2 = TIMESINCE_CHUNKS[i + 1]
+        count2 = (since - (seconds * count)) // seconds2
+        if count2 != 0:
+            result += ugettext(', ') + avoid_wrapping(name2 % count2)
+    """
+    return result
 
 @register.simple_tag(name='can_rate')
 def has_rated(object, user):

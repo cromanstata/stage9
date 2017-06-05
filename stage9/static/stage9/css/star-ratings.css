@@ -3,6 +3,13 @@
   display: inline-block;
   position: relative;
 }
+
+  .star-ratings-rating-empty {
+      width: 16px;
+      height: 16px;
+      background-position: bottom;
+  }
+
 /* line 7, ../sass/star-ratings.scss */
 .star-ratings ul {
   padding: 0;

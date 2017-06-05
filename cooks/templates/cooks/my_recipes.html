@@ -1,10 +1,11 @@
 {% extends "stage9/base.html" %}
+{% load costume_filters %}
 
 {% block content %}
     <h2>MY RECIPES</h2>
     <div id="search-results11">
     {% for recipe in recipe_list %}
-        <a href="{% url 'cooks:detail' recipe.title %}">
+        <a href="{% url 'cooks:detail' recipe.slug %}">
             <div class="cook_item">
                 <div class="cook_item_cont" >
                     <h3>{{ recipe.title }}</h3>
@@ -22,7 +23,7 @@
             </div>
         </a>
         {% if can_edit %}
-        <a href="{% url 'cooks:edit_recipe' recipe.title %}"><p>edit recipe</p></a>
+        <a href="{% url 'cooks:edit_recipe' recipe.slug %}"><p>edit recipe</p></a>
         {%  endif %}
     {% endfor %}
     </div>

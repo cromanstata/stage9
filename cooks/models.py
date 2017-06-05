@@ -7,10 +7,12 @@ from django.contrib.contenttypes.fields import GenericRelation
 from cooks.exceptions import AlreadyExistsError
 from comments.models import Comment
 from django.conf import settings
-AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.exceptions import ObjectDoesNotExist
+from slugify import slugify
+
+AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
 from cooks.signals import (
     favorite_created, favorite_removed,
@@ -47,11 +49,12 @@ class Recipe(models.Model):
     title = models.CharField("Title", max_length=200, unique=True)
     photo = models.ImageField(upload_to="media/cooks/img", blank=True, null=True)
     summary = models.TextField("Summary", max_length=400, blank=True, null=True)
-    description = models.TextField("Description", blank=True, null=True)
+    description = models.TextField("Description", max_length=2000, blank=True, null=True)
     portions = models.IntegerField("Portions", blank=True, null=True)
     publish_date = models.DateTimeField("publish_date")
     comments = GenericRelation(Comment)
     author = models.ForeignKey(User, null=True, blank=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
 
     search_fields = ("title", "summary", "description",)
 
@@ -60,6 +63,13 @@ class Recipe(models.Model):
             return ''
         else:
             return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Newly created object, so set slug
+            self.slug = slugify(self.title)
+
+        super(Recipe, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Recipe"
@@ -77,6 +87,7 @@ class Ingredient(models.Model):
     unit = models.CharField(_("Unit"), choices=fields.UNITS, blank=True, null=True, max_length=20)
     ingredient = models.CharField(_("Ingredient"), max_length=100)
     note = models.CharField(_("Note"), max_length=200, blank=True, null=True)
+    slug = models.SlugField(blank=True, null=True)
 
     #tring out django-taggit
 
@@ -101,6 +112,13 @@ class Ingredient(models.Model):
 
         return _ingredient
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Newly created object, so set slug
+            self.slug = slugify(self.ingredient)
+
+        super(Ingredient, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = _("Ingredient")
         verbose_name_plural = _("Ingredients")
@@ -123,8 +141,7 @@ class MealType (models.Model):
     mealtype = models.CharField(_("Meal type"), choices = fields.MEALTYPE, blank=True, null=True, max_length = 50)
 
     def __str__(self):
-        _mealtype = '%s' % self.mealtype
-        return _mealtype
+        return self.mealtype
 
     class Meta:
         verbose_name = _("Mealtype")
@@ -141,6 +158,7 @@ class Cuisine (models.Model):
     class Meta:
         verbose_name = _("Cuisine")
         verbose_name_plural = verbose_name
+
 
 class WorkingTime(models.Model):
     """
@@ -168,6 +186,16 @@ class CookingTime(models.Model):
 
     def __unicode__(self):
         return "%02d:%02d" %(self.hours, self.minutes)
+
+    def __str__(self):
+        if self.hours and self.minutes:
+            return "%02d:%02d" %(self.hours, self.minutes)
+        if self.minutes:
+            return "%02d:%02d" %(0, self.minutes)
+        if self.hours:
+            return "%02d:%02d" %(self.hours, 0)
+        else:
+            return "%02d:%02d" % (0, 0)
 
     class Meta:
         verbose_name = _("cooking time")
@@ -200,6 +228,21 @@ class FavoriteManager(models.Manager):
         #cache.set(key, following)
 
         return favorers
+
+    def num_favorers(self, recipe):
+        """ Return a list of all users who favour the given recipe """
+        # key = cache_key('following', user.pk)
+        # following = cache.get(key)
+
+        # if following is None:
+        qs = Favorite.objects.filter(recipe=recipe).all()
+        count = qs.__len__()
+
+        if count:
+            return count
+        else:
+            count == 0
+            return count
 
     def add_favorite(self, favorer, recipe):
         """ Create 'favorer' favorites 'recipe' relationship """

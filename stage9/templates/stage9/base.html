@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Custom styles for this templete -->
         {% load static %}
 
@@ -18,13 +19,15 @@
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/loader.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/recipe_cards.css' %}" />
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-        <link href="{% static 'stage9/css/jquery.tagit.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'stage9/css/jquery.tagit.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'comments/css/comments.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/star-ratings.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'cooks/css/recipe_form.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'cooks/css/recipe_view.css' %}" />
 
         <script type="text/javascript" src="{% static 'stage9/js/jquery-3.2.1.min.js' %}"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="{% static 'stage9/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_search.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_relations.js' %}"></script>
@@ -53,6 +56,14 @@
                     formCssClass: 'dynamic-mealtype_formset'
                 });
 
+                $('.cook_detail').on('change keyup keydown paste cut focus', 'textarea', function () {
+                        $(this).height(0).height(this.scrollHeight);
+                    }).find('textarea').change();
+
+                $('.recipe_form').on('change keyup keydown paste cut focus', 'textarea', function () {
+                        $(this).height(0).height(this.scrollHeight);
+                    }).find('textarea').change();
+
                 $('.menu_btn').click(function(event){
                     event.stopPropagation();
                     $(".dropdown_menu").toggle();
@@ -64,6 +75,10 @@
                     $(".myTags").tagit("createTag", $(this).children('.ingredient_name').text());
                 });
                 $('span.stars').stars();
+                $('[data-toggle="tooltip"]').tooltip({
+                    container: 'body'
+                }
+                );
             });
 
             $( window ).on( "load", function() {
@@ -77,8 +92,9 @@
 
             $(document).on("click", function () {
                 $(".dropdown_menu").hide();
+                $(".comment_more_menu_arrow").hide();
+                $(".comment_more_menu").hide();
             });
-
 
          </script>
     </head>

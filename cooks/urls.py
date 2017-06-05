@@ -8,6 +8,6 @@ urlpatterns = [
     url(r'^$', views.cook_list, name='list'),
     url(r'^like/$', views.like, name='like'),
     url(r'^favorite/$', views.favorite, name='favorite'),
-    url(r'^(?P<recipe_title>.+)/$', views.cook_detail, name='detail'),
-    url(r'^(?P<recipe_title>.+)/edit', views.edit_recipe, name='edit_recipe'),
+    url(r'^(?P<recipe_slug>.+)/$', views.cook_detail, name='detail'),
+    url(r'^(?P<recipe_slug>.+)/edit', views.edit_recipe, name='edit_recipe'),
 ]

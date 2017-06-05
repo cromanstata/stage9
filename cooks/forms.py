@@ -98,9 +98,13 @@ class DifficultyForm(forms.ModelForm):
 
 class MealTypeForm(forms.ModelForm):
 
-    mealtype = forms.CharField(required=False, widget=forms.Select(attrs={
-        'class': 'mealtype_css',
-    }, choices=(('', ''),) + fields.MEALTYPE))
+    def __init__(self, *args, **kwargs):
+        super(MealTypeForm, self).__init__(*args, **kwargs)
+
+        self.fields['mealtype'] = forms.CharField(required=False, widget=forms.Select(attrs={
+            'class': 'mealtype_css',
+        }, choices=(('', ''),) + fields.MEALTYPE))
+
 
     class Meta:
         model = MealType

@@ -15,10 +15,10 @@ $(function () {
         if(event.type == 'click') {
             if(activeItem == 0) {
                 for (i = 0; i < li_num+1; i++) {
-                    $(".rate_"+i).css({"background-color": "yellow"});
+                    $(".rate_"+i).css({"background-position": "top"});
                 }
                 for (i = 4; li_num < i; i--) {
-                    $(".rate_"+i).css({"background-color": ""});
+                    $(".rate_"+i).css({"background-position": "bottom"});
                 }
                 changeValue((li_num+1).toFixed(1));
             } else {
@@ -29,13 +29,13 @@ $(function () {
         else if(event.type == 'mouseenter') {
             if(activeItem != 0) {
                 for (i = 0; i < li_num+1; i++) {
-                    $(".rate_"+i).css({"background-color": "yellow"});
+                    $(".rate_"+i).css({"background-position": "top"});
                 }
             }
         } else if(event.type == 'mouseleave') {
             if(activeItem != 0) {
                 for (i = 0; i < li_num+1; i++) {
-                    $(".rate_"+i).css({"background-color": ""});
+                    $(".rate_"+i).css({"background-position": "bottom"});
                 }
             }
         }

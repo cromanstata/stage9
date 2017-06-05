@@ -1,8 +1,10 @@
 
 	<form action="{% url 'comment-update' object.id %}" method="post" class="edit-form" id="edit-form" data-id='{{ object.id }}'>
 	{% csrf_token %}
-		<P id="edit-form-errors"></P>
-		 Edit : <input id='input-comment-{{ object.id }}' name='comment' value="{{ object.comment }}">
-		 <input id="id_user" name="user" value="{% if user.is_authenticated %}{{ user.id }}{% endif %}" hidden>
-		 <input type="submit" value="Submit" />
+        <P id="edit-form-errors"></P>
+        <div class="padTextarea">
+            <textarea id="input-comment-{{ object.id }}" class="comment-edit-form" data-id="{{ object.id }}" name="comment">{{ object.comment }}</textarea>
+        </div>
+        <input id="id_user" name="user" value="{% if user.is_authenticated %}{{ user.id }}{% endif %}" hidden>
+        <input type="submit" value="Post" class="submit_comments_edits" id="add-edit" />
 	</form>

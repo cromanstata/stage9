@@ -168,7 +168,11 @@
                     // This fixes Issue 1, reported by Wilson.Andrew.J:
                     if (elem.is('input:checkbox') || elem.is('input:radio')) {
                         elem.attr('checked', false);
-                    } else {
+                    }
+                    if (elem.is('select')) {
+                        elem[0].selectedIndex = 0;
+                    }
+                    else {
                         elem.val('');
                     }
                 });
@@ -200,6 +204,10 @@
                 row.insertBefore(buttonRow).show();
                 row.find(childElementSelector).each(function() {
                     updateElementIndex($(this), options.prefix, formCount);
+                    var elem = $(this);
+                    if (elem.is('select')) {
+                        elem[0].selectedIndex = 0;
+                    }
                 });
                 totalForms.val(formCount + 1);
                 // Check if we're above the minimum allowed number of forms -> show all delete link(s)

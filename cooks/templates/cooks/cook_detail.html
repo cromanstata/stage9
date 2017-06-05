@@ -3,46 +3,111 @@
 
 {% block content %}
     <div class="cook_detail">
-        {% if recipe.photo %}
-        <img src="{{ MEDIA_URL }}{{ recipe.photo }}" style="display: inline-block; height: 250px; width: 250px; position:absolute; left:10px; top: 10px;">
-        {% else %}
-        <div class="block" style="height: 250px; position: absolute; width: 250px; background: lightblue; left:10px; top: 10px;"><h4>NO PHOTO</h4></div>
-        {% endif %}
-        <div class="ingredient_box">
-            <p>INGREDIENTS:</p>
-            {% for ingredient in recipe.ingredients.all %}
-              <p> {{ ingredient }} </p>
-            {% endfor %}
+        <div class="recipe_side_bar">
+            {% if recipe.photo %}
+            <img src="{{ MEDIA_URL }}{{ recipe.photo }}" class="recipe_img">
+            {% else %}
+            <div class="recipe_img recipe_img_blank"><h4>NO PHOTO</h4></div>
+            {% endif %}
+            <div class="ingredient_box">
+                <p class="recipe_view_label label_ingredients_decor">INGREDIENTS</p>
+                {% for ingredient in recipe.ingredients.all %}
+                    <div class="ingredient_full">
+                        <p class="ingredient_quantity_unit"> {{ ingredient.quantity }} {{ ingredient.unit }} </p>
+                        <p class="ingredient_ingredient">{{ ingredient.ingredient }}</p>
+                        <p class="ingredient_note">{{ ingredient.note }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="category_box">
+                <div class="category_diff">
+                    <p class="recipe_view_label">DIFFICULTY</p>
+                    <p class="diff_text">{{ recipe.difficulty }}</p>
+                </div>
+                <div class="category_cat">
+                    <p class="recipe_view_label">CATEGORY</p>
+                    <div class="categories_view">
+                        {% for mealtype1 in recipe.meal_type.all %}
+                            <p class="category_text">{{ mealtype1 }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="suggested_recipes_inview" class="temp_suggested"></div>
         </div>
         {% if request.user.is_authenticated %}
-        <div class="favorite block" style="margin:10px; position: absolute; top:10px; right:110px;">
-            {% include "cooks/favorite_form.html" %}
-        </div>
-        <div class="like block" style="margin:10px; position: absolute; top:10px; right:10px;">
-            {% include "cooks/like_form.html" %}
-        </div>
-        {% if request.user.id == recipe.author_id %}
-            <a href="{% url 'cooks:edit_recipe' recipe.title %}" class="edit_bt"><p>edit recipe</p></a>
-        {%  endif %}
+        {% include "cooks/favorite_form.html" %}
+        {% include "cooks/like_form.html" %}
         {% endif %}
-        <div class="cook_cont" style="display:inline-block; position: relative; padding-bottom: 80px; padding-right: 30px; left: 300px; top:35px;">
-            <h1>{{ recipe.title }}</h1>
-            <span class="stars">{% get_rating recipe %}</span>
-            {% if recipe.author_id %}
-                <p>AUTHOR:</p>
-                <a href="{% url 'user' author %}"><img style="height: 50px; width: 50px; display: inline;" src="{{ author.profile.profile_image_url }}" alt="{{ author.username }}"></a>
-            {% endif %}
-            <p>{{ favorers }} users have this recipe as favorite</p>
-            <p class="like_count block">{{ likes }}</p><p class="block">users like this</p>
-            <h3>{{ recipe.summary|safe }}</h3>
-            <p>HOW TO MAKE:</p>
-            <p style="display: inline-block;">{{ recipe.description|safe }}</p>
+        <div class="recipe_view_cont">
+            <div class="recipe_title_rating">
+                <h2 class="bold recipe_display_item">{{ recipe.title }}</h2>
+                {% if request.user.id == recipe.author_id %}
+                <a href="{% url 'cooks:edit_recipe' recipe.slug %}"><i data-toggle="tooltip" data-placement="top" title="Edit recipe" id="edit-dashboard" class="material-icons edit_recipe_view">mode_edit</i></a>
+                {%  endif %}
+                <br>
+                <div class="recipe_display_item"><span class="stars">{% get_rating recipe %}</span></div>
+            </div>
+            <div class="recipe_summery">
+                <p class="summery_style">{{ recipe.summary|safe }}</p>
+            </div>
+            <div class="recipe_portions_time">
+                <div class="recipe_portions">
+                    <i class="material-icons clock_recipe_view">room_service</i>
+                    <p class="recipe_view_label">PORTIONS</p>
+                    <p class="recipe_output">{{ recipe.portions }}</p>
+                </div>
+                <div class="recipe_time">
+                    <i class="material-icons clock_recipe_view">alarm</i>
+                    <p class="recipe_view_label">COOKING TIME</p>
+                    <p class="recipe_output">{{ recipe.cooking_time }}</p>
+                </div>
+            </div>
+            <div class="recipe_instructions">
+                <div class="center push_s"><p class="recipe_view_label">INSTRUCTIONS</p></div>
+                <div class="recipe_instructions_text">{{ recipe.description|safe }}</div>
+            </div>
+            <div class="dashboard">
+                <div class="green_bar">
+                    <div class="icon_dash">
+                        <div class="dashboard_item">
+                            {% if not is_favorite %}
+                            <i data-toggle="tooltip" data-placement="top" title="Add to favorite recipes" id="favorite-dashboard" class="material-icons dashboard_recipe_view not_pressed_grey_red">favorite</i>
+                            {% else %}
+                            <i data-toggle="tooltip" data-placement="top" title="Remove from favorites" id="unfavorite-dashboard" class="material-icons dashboard_recipe_view pressed_red_grey">favorite</i>
+                            {% endif %}
+                            <span class="badge favorite_count">{{ num_favorers }}</span>
+                        </div>
+                        <div class="dashboard_item">
+                            <i data-toggle="tooltip" data-placement="top" title="Print recipe" id="print-dashboard" class="material-icons dashboard_recipe_view">local_printshop</i>
+                        </div>
+                        <div class="dashboard_item">
+                            <i data-toggle="tooltip" data-placement="top" title="Share recipe" id="share-dashboard" class="material-icons dashboard_recipe_view">share</i>
+                        </div>
+                        <div class="dashboard_item">
+                            {% if not is_liked %}
+                            <i data-toggle="tooltip" data-placement="top" title="Like recipe" id="like-dashboard" class="material-icons dashboard_recipe_view not_pressed_grey_blue">thumb_up</i>
+                            {% else %}
+                            <i data-toggle="tooltip" data-placement="top" title="Remove like" id="unlike-dashboard" class="material-icons dashboard_recipe_view pressed_blue_grey">thumb_up</i>
+                            {% endif %}
+                            <span class="badge like_count">{{ likes }}</span>
+                        </div>
+                    </div>
+                    <div class="author_dash">
+                        <p class="author_text">AUTHOR OF RECIPE</p>
+                    </div>
+                </div>
+                <div class="author_box">
+                    {% if recipe.author_id %}
+                        <a href="{% url 'user' author %}"><img class="img-profile img-circle" style="" src="{{ author.profile.profile_image_url }}" alt="{{ author.username }}"></a>
+                        <a href="{% url 'user' author %}"><p class="author_name">{{ author.username }}</p></a>
+                    {% endif %}
+                </div>
+            </div>
+        <div class="comments_recipe_view_box">
+        {% include "cooks/cooks_comments.html" %}
         </div>
-    <a href="{% url 'home' %}" class="back_bt" style="display: inline-block; font-size: 20px;">back</a>
-    <p></p>
+        </div>
     </div>
-    {% block main %}{% endblock %}
-
-{% include "cooks/cooks_comments.html" %}
 
 {%  endblock %}

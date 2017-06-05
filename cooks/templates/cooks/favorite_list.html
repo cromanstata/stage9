@@ -4,7 +4,7 @@
     <h2>MY FAVORITE RECIPES</h2>
     <div id="search-results11">
     {% for recipe in recipe_list %}
-        <a href="{% url 'cooks:detail' recipe.title %}">
+        <a href="{% url 'cooks:detail' recipe.slug %}">
             <div class="cook_item">
                 <div class="cook_item_cont" >
                     <h3>{{ recipe.title }}</h3>

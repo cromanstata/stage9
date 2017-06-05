@@ -32,23 +32,15 @@
                 <p class="label_form label_title">TITLE</p>
                 <div class="recipe_field_allign_title">
                     {{ recipe_form.title }}
-                    <p class="help_form">Please fill this field, max 100 characters</p>
-                    <p class="example_form">ex: Southern Grits Casserole</p>
-                </div>
-            </div>
-            <div class="recipe_field">
-                <div class="recipe_field_allign">
-                    {{ recipe_form.summary }}
-                    <p class="help_form">Please fill this field, max 100 characters</p>
-                    <p class="example_form">ex: Southern Grits Casserole</p>
-                </div>
-                <p class="label_form float_labels">SUMMARY</p>
-            </div>
-            <div class="recipe_field">
-                <div class="recipe_field_allign">
-                    {{ recipe_form.description }}
-                    {% if recipe_form.description.errors %}
-                        {% for error in field.errors %}
+                    {% if recipe_form.errors %}
+                        {% for field in recipe_form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
                             <div class="alert alert-danger">
                                 <strong>{{ error|escape }}</strong>
                             </div>
@@ -57,18 +49,34 @@
                     <p class="help_form">Please fill this field, max 100 characters</p>
                     <p class="example_form">ex: Southern Grits Casserole</p>
                 </div>
+            </div>
+            <div class="recipe_field">
+                <div class="recipe_field_allign">
+                    {{ recipe_form.summary }}
+                    <p class="help_form">Please fill the field, max 200 characters</p>
+                    <p class="example_form">ex: This rosemary ranch chicken recipe is so delicious, tender, and juicy the chicken will melt in your mouth. Even the most picky eater will be begging for the last piece.</p>
+                </div>
+                <p class="label_form float_labels">SUMMARY</p>
+            </div>
+            <div class="recipe_field">
+                <div class="recipe_field_allign">
+                    {{ recipe_form.description }}
+                    <p class="help_form">Please fill the field, describe the cooking proccess.</p>
+                    <p class="example_form">max 1900 characters</p>
+                </div>
                 <p class="label_form float_labels">INSTRUCTIONS</p>
             </div>
             {{ ingredient_formset.management_form }}
             <div class="recipe_field">
                 <div class="recipe_field_allign">
+
                     <table id="ingredient_formsetTable" border="0" cellpadding="0" cellspacing="10">
                         <tbody>
                         <tr>
-                            <td>Ingredient</td>
-                            <td>quantity</td>
-                            <td>units</td>
-                            <td>note</td>
+                            <td class="grey_info">Ingredient</td>
+                            <td class="grey_info">quantity</td>
+                            <td class="grey_info">units</td>
+                            <td class="grey_info">note</td>
                         </tr>
                             {% for form in ingredient_formset.forms %}
                             <tr>
@@ -76,6 +84,7 @@
                                 <td>{{ form.quantity }}</td>
                                 <td>{{ form.unit }}</td>
                                 <td>{{ form.note }}</td>
+                                <td>{{ form.DELETE }}</td>
                             </tr>
                                 {% for hidden in form.hidden_fields %}
                                     {{ hidden }}
@@ -83,41 +92,44 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                    <p class="help_form">Please fill this field, max 100 characters</p>
-                    <p class="example_form">ex: Southern Grits Casserole</p>
+                    <p class="help_form">Please fill the fields, start typing the name of ingredient and it automatically offers you to pick from our base.</p>
+                    <p class="example_form">ex: hard cheese, 300, gr, i recommend to use Goiya</p>
                 </div>
                 <p class="label_form float_labels">INGREDIENTS</p>
             </div>
             {{ mealtype_formset.management_form }}
-            <div class="recipe_field" style="float: right; position: relative; width: 475px;">
-                <div class="recipe_field_allign" style="border-style: double; position: relative; width: 475px; border: 1px solid #9a9a9a; float: right; padding:12px; padding-top: 30px;">
-                    <div style="display: inline; float: right;">{{ difficulty_form.difficulty }}</div>
-                    <p class="label_form float_labels">DIFFICULTY</p>
-                    <div style="display: inline; float: right; margin-right:30px">{{ cuisine_form.cuisine }}</div>
-                    <p class="label_form float_labels" style="margin-right: 34px;">CUSINE</p>
-                    <div style="display: inline; float: right;">{{ recipe_form.portions }}</div>
-                    <p class="label_form float_labels">PORTIONS</p>
-                    <div style="display: inline; float: right; margin-right:20px">
-                        <table style="display: inline; float: right;" id="mealtype_formsetTable" border="0" cellpadding="0" cellspacing="0">
-                            <tbody>
-                                {% for form in mealtype_formset.forms %}
-                                <tr>
-                                    <td>{{ form.mealtype }}</td>
-                                </tr>
-                                    {% for hidden in form.hidden_fields %}
-                                        {{ hidden }}
+            <div class="recipe_field">
+                <div class="recipe_field_allign" style="border: 1px solid #9a9a9a; padding:4px;">
+                    <div class="double_border" style="border: 1px solid #9a9a9a; padding:8px; padding-top: 26px;">
+                        <div style="display: inline; float: right;">{{ difficulty_form.difficulty }}</div>
+                        <p class="label_form float_labels">DIFFICULTY</p>
+                        <div style="display: inline; float: right; margin-right:30px">{{ cuisine_form.cuisine }}</div>
+                        <p class="label_form float_labels" style="margin-right: 34px;">CUSINE</p>
+                        <div style="display: inline; float: right;">{{ recipe_form.portions }}</div>
+                        <p class="label_form float_labels">PORTIONS</p>
+                        <div style="display: inline; float: right; margin-right:20px">
+                            <table style="display: inline; float: right;" id="mealtype_formsetTable" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    {% for form in mealtype_formset.forms %}
+                                    <tr>
+                                        <td>{{ form.mealtype }}</td>
+                                        <td>{{ form.DELETE }}</td>
+                                    </tr>
+                                        {% for hidden in form.hidden_fields %}
+                                            {{ hidden }}
+                                        {% endfor %}
                                     {% endfor %}
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="label_form float_labels">MEAL TYPE</p>
-                    <div style="clear: both; padding-left:14px; position: relative; left: 74px; top: 27px; background: white; width:302px;">
-                        <div class="glyphicon glyphicon-time" style="top:4px; margin-right: 5px; color: #9a9a9a; font-size:1.5em; clear: both"></div>
-                        <p class="label_form_time" style="margin-top:3px; display: inline; clear: both;">COOKING TIME</p>
-                        {{ cookingtime_form.hours}}
-                        <p style="display: inline; font-weight: bold;">:</p>
-                        {{ cookingtime_form.minutes}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="label_form float_labels">MEAL TYPE</p>
+                        <div style="clear: both; padding-left:10px; position: relative; left: 74px; top: 27px; background: white; width:302px;">
+                            <i class="material-icons" style="vertical-align:bottom; top:4px; margin-right: 5px; color: #9a9a9a; font-size:2.5em; clear: both">alarm</i>
+                            <p class="label_form_time" style="margin-top:3px; display: inline; clear: both;">COOKING TIME</p>
+                            {{ cookingtime_form.hours}}
+                            <p style="display: inline; font-weight: bold;">:</p>
+                            {{ cookingtime_form.minutes}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,12 +147,17 @@
                 }
 
             </script>
-            <div style="clear: both; padding-left: 37%; padding-right: 12%; padding-top: 10%; margin-bottom: 40px;">
-                <p class="label_form" style="display: inline;">IMAGE</p>
-                {{ recipe_form.photo }}
+
+            <div class="recipe_field" style="padding-left: 37%; padding-right: 8%; padding-top: 10%; margin-bottom: 14px;">
+                <div class="recipe_field_allign">
+                    <p class="label_form" style="display: inline;">IMAGE</p>
+                    {{ recipe_form.photo }}
+                    <p class="help_form">Feel free to upload an image of your dish</p>
+                    <p class="example_form">max size 500 bytes</p>
+                </div>
             </div>
-            <br>
-            <div style="position: absolute; right:8%; bottom: 10px;">
+
+            <div class="recipe_field recipe_field_submit">
                 <div class="glyphicon glyphicon-option-horizontal" style="display:inline; color: #fabdb8; font-size:1.5em; clear: both"></div>
                 <div class="glyphicon glyphicon-option-horizontal" style="display:inline; color: #fabdb8; font-size:1.5em; clear: both"></div>
                 <div class="glyphicon glyphicon-option-horizontal" style="display:inline; color: #fabdb8; font-size:1.5em; clear: both"></div>
@@ -160,6 +177,8 @@
                 <div class="glyphicon glyphicon-option-horizontal" style="display:inline; color: #fabdb8; font-size:1.5em; clear: both"></div>
                 <div class="glyphicon glyphicon-option-horizontal" style="display:inline; color: #fabdb8; font-size:1.5em; clear: both"></div>
                 <div class="glyphicon glyphicon-option-horizontal" style="display:inline; color: #fabdb8; font-size:1.5em; clear: both"></div>
+                <p class="help_form center">Click on submit to publish your recipe.</p>
+                <p class="example_form center">You can edit it at any time by clicking "My recipes" on the floating panel on the right.</p>
             </div>
             <button type="submit" class="" name="delete" value="delete" style="position: absolute; right:10px; top: 10px;">Delete</button>
         </form>

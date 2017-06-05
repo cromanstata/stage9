@@ -273,8 +273,31 @@ def add_recipe(request, name):
             cuisine_post.recipe_id = recipe_post.id
             cookingtime_post = cookingtime_form.save(commit=False)
             cookingtime_post.recipe_id = recipe_post.id
-            ingredient_formset.save()
-            mealtype_formset.save()
+            for form in ingredient_formset:
+                data = form.cleaned_data
+                print(data)
+                try:
+                    field = data['ingredient']
+                except:
+                    field = ''
+                print(field, " name of the field")
+                if form.is_valid() and field:
+                    print(field, "SAVED")
+                    form_post = form.save(commit=False)
+                    form_post.recipe_id = recipe_post.id
+                    form_post.save()
+            for form in mealtype_formset:
+                data = form.cleaned_data
+                try:
+                    field = data['mealtype']
+                except:
+                    field = ''
+                if form.is_valid() and field:
+                    form_post = form.save(commit=False)
+                    form_post.recipe_id = recipe_post.id
+                    form_post.save()
+            #ingredient_formset.save()
+            #mealtype_formset.save()
             difficulty_post.save()
             cuisine_post.save()
             cookingtime_post.save()

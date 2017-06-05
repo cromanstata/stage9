@@ -11,8 +11,8 @@ def cook_list(request):
     return render(request, 'cooks/cooks_list.html', context)
 
 
-def cook_detail(request, recipe_title):
-    recipe = get_object_or_404(Recipe, title=recipe_title)
+def cook_detail(request, recipe_slug):
+    recipe = get_object_or_404(Recipe, slug=recipe_slug)
     try:
         author = User.objects.get(id=recipe.author_id)
     except:
@@ -25,6 +25,7 @@ def cook_detail(request, recipe_title):
         is_liked = Like.objects.likes(request.user, recipe)
     # IF ALL USERS ARE LOOKING - show counters for likes and favourites
     favorers = Favorite.objects.favorers(recipe)
+    num_favorers = Favorite.objects.num_favorers(recipe)
     #likes = int(Like.objects.get_likes(recipe.id))
     likes = Like.objects.get_likes(recipe)
     return render(request, 'cooks/cook_detail.html', {'recipe': recipe,
@@ -32,6 +33,7 @@ def cook_detail(request, recipe_title):
                                                       'is_liked': is_liked,
                                                       'likes': likes,
                                                       'favorers': favorers,
+                                                      'num_favorers': num_favorers,
                                                       'author': author})
 
 def favorite(request):
@@ -68,9 +70,9 @@ def like(request):
         return render(request, 'cooks/like_form.html')
 
 
-def edit_recipe(request, recipe_title):
+def edit_recipe(request, recipe_slug):
     user = request.user
-    recipe = get_object_or_404(Recipe, title=recipe_title, author_id=user.id)
+    recipe = get_object_or_404(Recipe, slug=recipe_slug, author_id=user.id)
     recipe_form = RecipeForm(instance=recipe)
     #photo_path = recipe_form.photo(request.FILES or None)
     try:
@@ -91,7 +93,7 @@ def edit_recipe(request, recipe_title):
 
     ingredientInlineFormSet = inlineformset_factory(Recipe, Ingredient,
                                                     form=IngredientForm,
-                                                    extra=3,
+                                                    extra=1,
                                                     can_delete=True,
                                                     )
     ingredient_formset = ingredientInlineFormSet(prefix='fs1', instance=recipe)
@@ -100,6 +102,10 @@ def edit_recipe(request, recipe_title):
                                                   extra=1,
                                                   can_delete=True)
     mealtype_formset = mealTypeInlineFormSet(prefix='fs2', instance=recipe)
+    print ("BEFORE POST____________________________")
+    check_inline = Ingredient.objects.filter(recipe_id=recipe.id)
+    print("INLINE CHECK!!!!!!_______________")
+    print(check_inline)
     #works up to here
     if request.method == "POST":
         if request.POST.get('delete'):
@@ -108,6 +114,7 @@ def edit_recipe(request, recipe_title):
         recipe_form = RecipeForm(request.POST, request.FILES, instance=recipe)
         ingredient_formset = ingredientInlineFormSet(request.POST, request.FILES, instance=recipe_form.instance, prefix='fs1')
         mealtype_formset = mealTypeInlineFormSet(request.POST, request.FILES, instance=recipe_form.instance, prefix='fs2')
+        print("TRY AFTER POST_____________________________________________________")
         try:
             difficulty = Difficulty.objects.get(recipe_id=recipe.id)
             difficulty_form = DifficultyForm(request.POST, instance=difficulty)
@@ -131,6 +138,10 @@ def edit_recipe(request, recipe_title):
         print("cookingtime_form.is_valid()", cookingtime_form.is_valid())
 
         if recipe_form.is_valid() and ingredient_formset.is_valid() and mealtype_formset.is_valid() and difficulty_form.is_valid() and cuisine_form.is_valid() and cookingtime_form.is_valid():
+            #for inline forms - first delete all rows for the recipe
+            #later added then again according to the forms
+            #MealType.objects.filter(recipe_id=recipe.id).delete()
+            #Ingredient.objects.filter(recipe_id=recipe.id).delete()
             recipe_post = recipe_form.save(commit=False)
             recipe_post.author = user
             recipe_post.publish_date = timezone.now()
@@ -145,15 +156,56 @@ def edit_recipe(request, recipe_title):
             cookingtime_post = cookingtime_form.save(commit=False)
             cookingtime_post.recipe_id = recipe_post.id
             recipe_post.save()
-            ingredient_formset.save()
-            mealtype_formset.save()
+            # edge cases for ingredient_formset on edit
+            for form in ingredient_formset:
+                data = form.cleaned_data
+                print(data)
+                try:
+                    field = data['ingredient']
+                except:
+                    field = ''
+                try:
+                    delete = data['DELETE']
+                except:
+                    delete = True
+                print(field, " name of the field")
+                print(delete, " delete form")
+                if form.is_valid() and field and not delete:
+                    print(field, "SAVED")
+                    form.save()
+                if delete:
+                    try:
+                        Ingredient.objects.get(ingredient=field, recipe_id=recipe.id).delete()
+                        print(field, "DELETED")
+                    except:
+                        pass
+            #fixed all edge cases for mealtype on edir
+            for form in mealtype_formset:
+                data = form.cleaned_data
+                try:
+                    field = data['mealtype']
+                except:
+                    field = ''
+                try:
+                    delete = data['DELETE']
+                except:
+                    delete = True
+                if form.is_valid() and field and not delete:
+                    form.save()
+                if delete:
+                    try:
+                        MealType.objects.get(mealtype=field, recipe_id=recipe.id).delete()
+                    except:
+                        pass
+            #ingredient_formset.save()
+            #mealtype_formset.save()
             difficulty_post.save()
             cuisine_post.save()
             cookingtime_post.save()
             # for post1 in ingredient_post:
             #    post1.recipe_id = recipe_post.id
             #    post1.save()
-            return redirect('cooks:detail', recipe_post.title)
+            return redirect('cooks:detail', recipe_post.slug)
         else:
             print("not saving")
             context = {'recipe_form': recipe_form, 'ingredient_formset': ingredient_formset,

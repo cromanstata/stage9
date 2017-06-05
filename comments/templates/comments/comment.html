@@ -1,41 +1,51 @@
  {% load comments_tags %}
- {% if object.user %}
-    <p>{{ object.user.username }}</p>
-    {% if object.rating %}
+<div class="comment_top_bar">
+    <div class="profile_comment_position">
+        <a href="{% url 'user' object.user %}"><img class="img-circle img-profile" src="{{ object.user.profile.profile_image_url }}" alt="{{ object.user.username }}"></a>
+    </div>
+    <div class="comment_name_time">
+        <a href="{% url 'user' object.user %}"><p class="comment_name">{{ object.user.username }}</p></a>
+        <p class="comment_time">{{ object.created_at|timesincehumanize }}</p>
+    </div>
+    <div class="comment_rating">
+        {% if object.rating %}
         <script>$('span.stars_{{ object.id }}').stars();</script>
         <span class="stars stars_{{ object.id }}">{{ object.rating }}</span>
-    {% endif %}
-	<a href="{% url 'user' object.user %}"><img style="height: 50px; width: 50px; display: inline;" src="{{ object.user.profile.profile_image_url }}" alt="{{ object.user.username }}"></a>
-{% else %}
-	<p>By: Guest </p>
-{% endif %}
- <p  style="display: inline; margin-left: 10px" id='comment-{{ object.id }}'> {{ object.comment }} </p>
- <div id="comment-edit-{{ object.id }}" hidden>
-	{% include "comments/comment_edit_form.html" with pk=object.id form=form %}
-</div>
- <p style="position: absolute; bottom: 10px; right: 10px;">{{ object.created_at }}</p>
-<br>
- <p id="likes-count-{{ object.id }}" style="position: absolute; top:10px; right:10px;" >Likes: {{ object.likes_count }}</p>
-<span style="display: inline;">
-{% if object.user %}
-	{% if object.user.id == user.id %}
-		<form class="comment-delete-form" method='DELETE' action="{% url "comment-delete" object.pk %}">
+        {% endif %}
+    </div>
+    {% if object.user %}
+    <div class="glyphicon glyphicon-option-horizontal comment_more" data-id="{{ object.id }}"></div>
+    <div class="comment_more_menu_arrow" id="comment-more-arrow-{{ object.id }}"></div>
+    <div class="comment_more_menu" id="comment-more-{{ object.id }}">
+        {% if object.user.id == user.id %}
+        <p class="comment_more_menu_item comment-edit-class" data-id="{{ object.id }}">edit</p>
+        <p class="comment_more_menu_item comment-delete-class" data-id="{{ object.id }}">delete</p>
+        <form class="comment-delete-form" method='DELETE' action="{% url "comment-delete" object.pk %}">
 			<input value="{% csrf_token %}" id="csrf" hidden>
 			{% csrf_token %}
-			<input type="submit" value="Delete" class="comment-delete-btn" data-id="{{ object.id }}"/>
 		</form>
-	{% endif %}
-{% endif %}
-{% if object.user %}
-	{% if object.user.id == user.id %}
-		<button class='comment-edit-class' data-id='{{ object.id }}'> Edit</button>	
-	{% endif %}
-{% endif %}
-{% if allow_likes %}	
-	{% if liked %}
-		<button class="like-comment-btn" id="like-btn-{{ object.id }}" data-like="liked" data-id="{{ object.id }}">Unlike</button>
-	{% else %}
-		<button class="like-comment-btn" id="like-btn-{{ object.id }}" data-like="like" data-id="{{ object.id }}">Like</button>
-	{% endif %}	
-{% endif %}
-</span>
+        {% endif %}
+        <p class="comment_more_menu_item">report</p>
+    </div>
+    {% endif %}
+
+</div>
+<div class="comment_content">
+    <p class="comment_text" id='comment-{{ object.id }}'>{{ object.comment|trim }}</p>
+</div>
+<div id="comment-edit-{{ object.id }}" hidden>
+	{% include "comments/comment_edit_form.html" with pk=object.id form=form %}
+</div>
+<br>
+ <div class="comment_likes" id="comment-likes-{{ object.id }}">
+    {% if allow_likes %}
+        {% if liked %}
+        <i class="pressed_blue like-comment-btn material-icons comment_like_icon" id="like-btn-{{ object.id }}" data-like="liked" data-id="{{ object.id }}">thumb_up</i>
+        {% else %}
+        <i class="not_pressed_grey like-comment-btn material-icons comment_like_icon" id="like-btn-{{ object.id }}" data-like="like" data-id="{{ object.id }}">thumb_up</i>
+        {% endif %}
+    {% else %}
+    <i class="not_pressed_grey material-icons comment_like_icon">thumb_up</i>
+    {% endif %}
+    <span id="likes-count-{{ object.id }}" class="badge like_count_comment">{{ object.likes_count }}</span>
+ </div>
