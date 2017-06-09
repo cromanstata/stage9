@@ -1,5 +1,6 @@
 .recipe_form {
-    width:100%;
+    width:805px;
+    max-width: 860px;
     min-width:702px;
     background: white;
     padding: 20px;

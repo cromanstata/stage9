@@ -71,10 +71,14 @@
                 <div class="green_bar">
                     <div class="icon_dash">
                         <div class="dashboard_item">
-                            {% if not is_favorite %}
-                            <i data-toggle="tooltip" data-placement="top" title="Add to favorite recipes" id="favorite-dashboard" class="material-icons dashboard_recipe_view not_pressed_grey_red">favorite</i>
+                            {% if request.user.is_authenticated %}
+                                {% if not is_favorite %}
+                                <i data-toggle="tooltip" data-placement="top" title="Add to favorite recipes" id="favorite-dashboard" class="material-icons dashboard_recipe_view not_pressed_grey_red">favorite</i>
+                                {% else %}
+                                <i data-toggle="tooltip" data-placement="top" title="Remove from favorites" id="unfavorite-dashboard" class="material-icons dashboard_recipe_view pressed_red_grey">favorite</i>
+                                {% endif %}
                             {% else %}
-                            <i data-toggle="tooltip" data-placement="top" title="Remove from favorites" id="unfavorite-dashboard" class="material-icons dashboard_recipe_view pressed_red_grey">favorite</i>
+                                <a href="{% url 'account_login' %}"><i data-toggle="tooltip" data-placement="top" title="Add to favorite recipes" class="material-icons dashboard_recipe_view not_pressed_grey_red">favorite</i></a>
                             {% endif %}
                             <span class="badge favorite_count">{{ num_favorers }}</span>
                         </div>
@@ -85,11 +89,15 @@
                             <i data-toggle="tooltip" data-placement="top" title="Share recipe" id="share-dashboard" class="material-icons dashboard_recipe_view">share</i>
                         </div>
                         <div class="dashboard_item">
+                        {% if request.user.is_authenticated %}
                             {% if not is_liked %}
                             <i data-toggle="tooltip" data-placement="top" title="Like recipe" id="like-dashboard" class="material-icons dashboard_recipe_view not_pressed_grey_blue">thumb_up</i>
                             {% else %}
                             <i data-toggle="tooltip" data-placement="top" title="Remove like" id="unlike-dashboard" class="material-icons dashboard_recipe_view pressed_blue_grey">thumb_up</i>
                             {% endif %}
+                        {% else %}
+                            <a href="{% url 'account_login' %}"><i data-toggle="tooltip" data-placement="top" title="Like recipe" class="material-icons dashboard_recipe_view not_pressed_grey_blue">thumb_up</i></a>
+                        {% endif %}
                             <span class="badge like_count">{{ likes }}</span>
                         </div>
                     </div>

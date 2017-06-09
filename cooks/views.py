@@ -72,7 +72,7 @@ def like(request):
 
 def edit_recipe(request, recipe_slug):
     user = request.user
-    recipe = get_object_or_404(Recipe, slug=recipe_slug, author_id=user.id)
+    recipe = get_object_or_404(Recipe, slug=recipe_slug, author_id=request.user.id)
     recipe_form = RecipeForm(instance=recipe)
     #photo_path = recipe_form.photo(request.FILES or None)
     try:

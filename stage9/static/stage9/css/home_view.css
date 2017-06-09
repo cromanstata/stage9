@@ -1,0 +1,104 @@
+.home_view {
+    display: block;
+    margin-right: 10px;
+    padding: 5px;
+    background: white;
+    min-width:702px;
+    width:100%;
+    min-height: 500px;
+    position: relative;
+    max-width: 980px;
+    vertical-align: top;
+}
+
+.search_side_bar {
+    max-width: 398px;
+    display: inline-block;
+    position: relative;
+}
+
+.recipe_search_results_cont {
+    display: inline-block;
+    max-width: 540px;
+    width: 540px;
+    margin-right: 10px;
+    position: relative;
+    padding-bottom: 80px;
+    vertical-align: top;
+}
+
+#ingredients_choices {
+    display: inline-block;
+    width: 100%;
+}
+
+.way_of_search_item {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.way_of_search_item:hover {
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+#way_of_search_key {
+    background-color: #b3dad5;
+}
+
+#way_of_search_click {
+    background-color: #ffe4c4;
+}
+
+#way_of_search_lazy {
+    background-color: #e3aca7;
+}
+
+.way_of_search_text {
+    font-weight: bold;
+}
+
+
+#ingredients_typein {
+    display: none;
+}
+
+#ingredients_forlazy {
+    display: none;
+}
+
+#chosen_for_typin_cont {
+    margin-top: 10px;
+}
+
+.icon-trash-side{
+    color: #b3b3b3;
+    margin-left: 5px;
+    font-size: 20pt;
+}
+
+.icon-trash-side:hover{
+    color: #020202;
+    cursor: pointer;
+}
+
+.sidebar_selected_ingredients_text {
+    font-size: 20pt;
+    font-weight: 600;
+    color: grey;
+    margin-left: 30px;
+}
+
+.sidebar_selected_ingredients_delete{
+    display: inline-block;
+    position: absolute;
+    right: 120px;
+    bottom: 1px;
+}
+
+.sidebar_selected_ingredients {
+    position: relative;
+}

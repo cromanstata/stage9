@@ -1,38 +1,66 @@
 {% extends "stage9/base.html" %}
 {% load static %}
 {% block content %}
-    <p><a href="{% url 'cooks:list' %}">LOOK AT RECIPES</a></p>
-    <div style="display: inline-block;">
-        <h4>SEARCH:</h4>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="text" name="tags" id="search_ingredient" title="search" style="background-image: url({% static 'stage9/img/fridge-icon.png' %});" class="myTags search_input_main" readonly />
-        <h5 style="display: inline-block">Cuisine</h5>
-        <select style="margin-right: 14px;" name="cuisine" id="search_cuisine" class="multiselect" title="search">
-            <option selected disabled hidden>Choose Cousine</option>
-            <option value="">All</option>
-            {% for value, key in fields.CUISINE %}
-                <option value="{{ value }}">
-                    {{ key }}
-                </option>
-            {% endfor %}
-        </select>
-        <h5 style="display: inline-block">Meal type</h5>
-        <select name="mealtype" id="search_mealtype" class="multiselect" title="search">
-            <option selected disabled hidden>Choose Meal Type</option>
-            <option value="">All</option>
-            {% for value, key in fields.MEALTYPE %}
-                <option value="{{ value }}">
-                    {{ key }}
-                </option>
-            {% endfor %}
-        </select>
+<div class="home_view">
+    <div class="search_side_bar">
+        <div class="side_categories" style="display: inline-block;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <h5 style="display: inline-block">Search by title</h5>
+            <input title="Search by title" type="text" id="search_title_side"/>
+            <br>
+            <h5 style="display: inline-block">Difficulty</h5>
+            <select style="margin-right: 14px;" name="diff" id="search_diff" class="multiselect" title="Choose difficulty">
+                <option selected disabled hidden value="">Choose Difficulty</option>
+                <option value="all">All</option>
+                {% for value, key in fields.DIFFICULTIES %}
+                    <option value="{{ value }}">
+                        {{ key }}
+                    </option>
+                {% endfor %}
+            </select>
+            <h5 style="display: inline-block">Cuisine</h5>
+            <select style="margin-right: 14px;" name="cuisine" id="search_cuisine" class="multiselect" title="Choose cousine">
+                <option selected disabled hidden value="">Choose Cousine</option>
+                <option value="all">All</option>
+                {% for value, key in fields.CUISINE %}
+                    <option value="{{ value }}">
+                        {{ key }}
+                    </option>
+                {% endfor %}
+            </select>
+            <h5 style="display: inline-block">Category</h5>
+            <select name="mealtype" id="search_mealtype" class="multiselect" title="Choose category">
+                <option selected disabled hidden value="">Choose Category</option>
+                <option value="all">All</option>
+                {% for value, key in fields.MEALTYPE %}
+                    <option value="{{ value }}">
+                        {{ key }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="way_of_search">
+            <div id="way_of_search_key" class="way_of_search_item"><span class="way_of_search_text">type them</span></div>
+            <div id="way_of_search_click" class="way_of_search_item"><span class="way_of_search_text">click them</span></div>
+            <div id="way_of_search_lazy" class="way_of_search_item"><span class="way_of_search_text">for lazy</span></div>
+        </div>
+        <div class="way_of_search_class" id="ingredients_choices"></div>
+        <div class="way_of_search_class" id="ingredients_typein">
+            <h5>Type in your ingredients</h5>
+            <input title="Type in tags" type="text" id="typin_tags"/>
+            <div id="chosen_for_typin_cont">
+            </div>
+        </div>
+        <div class="way_of_search_class" id="ingredients_forlazy">
+            <p>HERE WILL BE STUFF FOR LAZY</p>
+        </div>
     </div>
-    <hr>
-    <h4>RESULTS:</h4>
-
-    <div id="search-results">
-
+    <div class="recipe_search_results_cont">
+        <input hidden type="text" name="tags" id="search_ingredient" class="myTags search_input_main" readonly />
+        <p><a href="#" id="clear_all">Clear tags</a></p>
+        <hr>
+        <div id="search-results" class="search_results_has_api"></div>
     </div>
-
+</div>
 {% endblock %}

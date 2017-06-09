@@ -92,64 +92,187 @@ def availble_tags (request):
 def search(request):
     if request.method == "POST":
         search_text = request.POST['search_text']
+        search_title = request.POST['search_title']
+        search_diff = request.POST['search_diff']
         search_cuisine = request.POST['search_cuisine']
         search_mealtype = request.POST['search_mealtype']
     else:
         search_text = ''
+        search_title = ''
+        search_diff = ''
         search_cuisine = ''
         search_mealtype = ''
+    print (search_title)
+    terms_entered = True
+    filters = [search_diff, search_cuisine, search_mealtype]
     results=[]
     search2 = Q()
     search_text = search_text.split(',')
     recipe_list_search=''
-    #if no ingredient tags where searched:
-    if (isinstance(search_text, list) and search_text[0]==''):
-        if search_cuisine:
-            if search_mealtype:
+    #if no ingredient tags where NOT searched:
+    print ("search diff: ", search_diff)
+    print("search_cuisine: ", search_cuisine)
+    print("search_mealtype: ", search_mealtype)
+    print("search_title: ", search_title)
+    # if no ingredient tags where NOT searched AND title was NOT entered:
+    if (isinstance(search_text, list) and search_text[0]=='' and search_title==''):
+        if search_cuisine and search_cuisine != 'all' and search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype)) & (Q(difficulty__difficulty__iexact=search_diff))
+        else:
+            if search_cuisine and search_cuisine != 'all' and search_mealtype and search_mealtype != 'all':
                 recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
             else:
-                recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine))
-        if search_mealtype:
-            if search_cuisine:
-                recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
-            else:
-                recipe_list_search = (Q(meal_type__mealtype__iexact=search_mealtype))
+                if search_cuisine and search_cuisine != 'all' and search_diff and search_diff != 'all':
+                    recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(difficulty__difficulty__iexact=search_diff))
+                else:
+                    if search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                        recipe_list_search = (Q(meal_type__mealtype__iexact=search_mealtype)) & (Q(difficulty__difficulty__iexact=search_diff))
+                    else:
+                        if search_diff and search_diff != 'all':
+                            recipe_list_search = (Q(difficulty__difficulty__iexact=search_diff))
+                        else:
+                            if search_mealtype and search_mealtype != 'all':
+                                recipe_list_search = (Q(meal_type__mealtype__iexact=search_mealtype))
+                            else:
+                                if search_cuisine and search_cuisine != 'all':
+                                    recipe_list_search = (Q(cuisine__cuisine__iexact=search_cuisine))
         if recipe_list_search:
             f_search = Recipe.objects.filter(recipe_list_search).distinct()
             for recipe in f_search:
                 results.append(str(recipe.id))
         else:
-            f_search= Recipe.objects.order_by('publish_date')[:20]
-            context = {'recipe_list_search': f_search}
+            if (search_cuisine == 'all') or (search_mealtype == 'all') or (search_diff == 'all'):
+                print("there is nothing to show BUT CHOSE ALL")
+                f_search= Recipe.objects.order_by('publish_date')[:20]
+            else:
+                f_search=''
+                terms_entered = False
+                print("there is nothing to show REALLY NOTHING")
+            request.session['search_titles from_results'] = ""
+            context = {'recipe_list_search': f_search,
+                       'terms_entered': terms_entered}
             return render(request, 'stage9/ajax_search.html', context)
-    # if ingredient tags where searched:
-    else:
-        for title_ing in search_text:
-            if search_cuisine:
-                if search_mealtype:
-                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(
-                        meal_type__mealtype__iexact=search_mealtype))
+    #if no ingredient tags but title WAS entered
+    if (isinstance(search_text, list) and search_text[0]=='' and search_title!=''):
+        print("found title was entered")
+        if search_cuisine and search_cuisine != 'all' and search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                recipe_list_search = (Q(title__icontains=search_title)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype)) & (Q(difficulty__difficulty__iexact=search_diff))
+        else:
+            if search_cuisine and search_cuisine != 'all' and search_mealtype and search_mealtype != 'all':
+                recipe_list_search = (Q(title__icontains=search_title)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+            else:
+                if search_cuisine and search_cuisine != 'all' and search_diff and search_diff != 'all':
+                    recipe_list_search = (Q(title__icontains=search_title)) &(Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(difficulty__difficulty__iexact=search_diff))
                 else:
-                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine))
-            if search_mealtype:
-                if search_cuisine:
-                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(
-                        meal_type__mealtype__iexact=search_mealtype))
-                else:
-                    recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing)) & (Q(meal_type__mealtype__iexact=search_mealtype))
-            if not search_cuisine and not search_mealtype:
-                recipe_list_search = (Q(ingredients__ingredient__icontains=title_ing))
+                    if search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                        recipe_list_search = (Q(title__icontains=search_title)) & (Q(meal_type__mealtype__iexact=search_mealtype)) & (Q(difficulty__difficulty__iexact=search_diff))
+                    else:
+                        if search_diff and search_diff != 'all':
+                            recipe_list_search = (Q(title__icontains=search_title)) & (Q(difficulty__difficulty__iexact=search_diff))
+                        else:
+                            if search_mealtype and search_mealtype != 'all':
+                                recipe_list_search = (Q(title__icontains=search_title)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+                            else:
+                                if search_cuisine and search_cuisine != 'all':
+                                    recipe_list_search = (Q(title__icontains=search_title)) & (Q(cuisine__cuisine__iexact=search_cuisine))
+                                else:
+                                    recipe_list_search = (Q(title__icontains=search_title))
+
+        if recipe_list_search:
             f_search = Recipe.objects.filter(recipe_list_search).distinct()
             for recipe in f_search:
                 results.append(str(recipe.id))
+        else:
+            f_search=''
+            terms_entered = False
+            print("there is nothing to show REALLY NOTHING")
+            request.session['search_titles from_results'] = f_search
+            context = {'recipe_list_search': f_search,
+                       'terms_entered': terms_entered}
+            return render(request, 'stage9/ajax_search.html', context)
+    # if ingredient tags WHERE searched:
+    else:
+        if search_title=='':
+            for title_ing in search_text:
+                if search_cuisine and search_cuisine != 'all' and search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                        recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(
+                            meal_type__mealtype__iexact=search_mealtype)) & (Q(difficulty__difficulty__iexact=search_diff))
+                else:
+                    if search_mealtype and search_mealtype != 'all' and search_cuisine and search_cuisine != 'all':
+                        recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+                    else:
+                        if search_cuisine and search_cuisine != 'all' and search_diff and search_diff != 'all':
+                            recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(difficulty__difficulty__iexact=search_diff))
+                        else:
+                            if search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                                recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing)) & (Q(meal_type__mealtype__iexact=search_mealtype)) & (Q(difficulty__difficulty__iexact=search_diff))
+                            else:
+                                if search_diff and search_diff != 'all':
+                                    recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing)) & (Q(difficulty__difficulty__iexact=search_diff))
+                                else:
+                                    if search_mealtype and search_mealtype!='all':
+                                        recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+                                    else:
+                                        if search_cuisine and search_cuisine!='all':
+                                            recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing)) & (Q(cuisine__cuisine__iexact=search_cuisine))
+                                        else:
+                                            recipe_list_search = (Q(ingredients__ingredient__iexact=title_ing))
+                f_search = Recipe.objects.filter(recipe_list_search).distinct()
+                for recipe in f_search:
+                    results.append(str(recipe.id))
+        else:
+            for title_ing in search_text:
+                if search_cuisine and search_cuisine != 'all' and search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                    recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing)) & (
+                    Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(
+                        meal_type__mealtype__iexact=search_mealtype)) & (Q(difficulty__difficulty__iexact=search_diff))
+                else:
+                    if search_mealtype and search_mealtype != 'all' and search_cuisine and search_cuisine != 'all':
+                        recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing)) & (
+                        Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(meal_type__mealtype__iexact=search_mealtype))
+                    else:
+                        if search_cuisine and search_cuisine != 'all' and search_diff and search_diff != 'all':
+                            recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing)) & (
+                            Q(cuisine__cuisine__iexact=search_cuisine)) & (Q(difficulty__difficulty__iexact=search_diff))
+                        else:
+                            if search_mealtype and search_mealtype != 'all' and search_diff and search_diff != 'all':
+                                recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing)) & (
+                                Q(meal_type__mealtype__iexact=search_mealtype)) & (
+                                                     Q(difficulty__difficulty__iexact=search_diff))
+                            else:
+                                if search_diff and search_diff != 'all':
+                                    recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing)) & (
+                                    Q(difficulty__difficulty__iexact=search_diff))
+                                else:
+                                    if search_mealtype and search_mealtype != 'all':
+                                        recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing)) & (
+                                        Q(meal_type__mealtype__iexact=search_mealtype))
+                                    else:
+                                        if search_cuisine and search_cuisine != 'all':
+                                            recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing)) & (
+                                            Q(cuisine__cuisine__iexact=search_cuisine))
+                                        else:
+                                            recipe_list_search = (Q(title__icontains=search_title)) & (Q(ingredients__ingredient__iexact=title_ing))
+                f_search = Recipe.objects.filter(recipe_list_search).distinct()
+                for recipe in f_search:
+                    results.append(str(recipe.id))
+
     for ids in results:
         if results.count(ids) == len(search_text):
             search2 = search2 | (Q(id=ids))
     if len(search2) != 0:
         f_search = Recipe.objects.filter(search2).distinct()
+        json_titles = Recipe.objects.filter(search2).values('title').distinct()
+        json_items = json.dumps(list(json_titles))
+        print ("passed new value to title autocomplete")
+        print (json_items)
+        #request.session['title_before_search'] = False
+        request.session['search_titles from_results'] = json_items
     else:
         f_search=''
-    context = {'recipe_list_search': f_search}
+        request.session['search_titles from_results'] = f_search
+    context = {'recipe_list_search': f_search,
+               'terms_entered': terms_entered}
     return render(request, 'stage9/ajax_search.html', context)
 
 def get_tags(request):
@@ -161,13 +284,47 @@ def get_tags(request):
     json_items = json.dumps(list(json_tags))
     return HttpResponse(json_items, content_type='application/json')
 
+
+def get_titles(request):
+    results = []
+    search2 = Q()
+    recipe_list_search =''
+    print ("reched view auto complete title")
+    if request.method == "GET":
+        search_titles = request.GET['term']
+    else:
+        search_titles = ''
+    #title_before_search = request.session.get('title_before_search', True)
+    json_titles_from_search = request.session.get('search_titles from_results', '')
+    print("what autocomplete got:")
+    print (json_titles_from_search)
+    if json_titles_from_search:
+        cond = json.loads(json_titles_from_search)
+        for item in cond:
+            title=(item['title'])
+            search2 = search2 | (Q(title__iexact=title))
+        f_search = Recipe.objects.filter(search2).distinct()
+        json_titles = f_search.filter(title__icontains=search_titles).values('title').distinct()
+        json_items = json.dumps(list(json_titles))
+        #request.session['title_before_search'] = False
+        return HttpResponse(json_items, content_type='application/json')
+    else:
+        json_titles = Recipe.objects.filter(title__icontains=search_titles).values('title').distinct()
+        json_items = json.dumps(list(json_titles))
+        return HttpResponse(json_items, content_type='application/json')
+
+
 def get_diff_tags(request):
     if request.method == "GET":
         search_tags = request.GET['term']
     else:
         search_tags = ''
     if search_tags == "all":
-        json_tags = Ingredient.objects.all().values('ingredient').distinct()
+        json_tags = Ingredient.objects.all().values('ingredient', 'slug').distinct()
+        json_items = json.dumps(list(json_tags))
+        return HttpResponse(json_items, content_type='application/json')
+    else:
+        json_tags = Ingredient.objects.filter(ingredient__iexact=search_tags).values('ingredient', 'slug').distinct()
         json_items = json.dumps(list(json_tags))
         return HttpResponse(json_items, content_type='application/json')
 

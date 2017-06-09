@@ -37,6 +37,7 @@ urlpatterns = [
     #url(r'^profile/(?P<name>[\w.@+-]+)/recipes/(?P<recipe>[\w.@+-]+)/edit/$', views.edit_recipe, name='edit_recipe'),
     url(r'^search/$', views.search, name='search'),
     url(r'^tags/$', views.get_tags, name='tags'),
+    url(r'^titles/$', views.get_titles, name='titles'),
     url(r'^diff_tags/$', views.get_diff_tags, name='diff_tags'),
     url(r'^availble_tags/$', views.availble_tags, name='availble_tags'),
     url(r'^follow/$', views.follow, name='follow'),

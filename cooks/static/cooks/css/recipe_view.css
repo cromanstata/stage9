@@ -61,6 +61,7 @@
 .recipe_view_cont {
     display: inline-block;
     max-width: 529px;
+    width: 529px;
     margin-right: 10px;
     position: relative;
     padding-bottom: 80px;
@@ -77,6 +78,7 @@
 }
 
 .category_box {
+    width: 250px;
     margin-top:20px;
     display: inline-block;
 }

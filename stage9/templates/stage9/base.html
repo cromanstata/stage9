@@ -24,12 +24,12 @@
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/star-ratings.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'cooks/css/recipe_form.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'cooks/css/recipe_view.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/home_view.css' %}" />
 
         <script type="text/javascript" src="{% static 'stage9/js/jquery-3.2.1.min.js' %}"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="{% static 'stage9/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>
-        <script type="text/javascript" src="{% static 'stage9/js/ajax_search.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_relations.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/layout.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/my_functions.js' %}"></script>
@@ -40,6 +40,7 @@
         <script type="text/javascript" src="{% static 'tinymce/js/tiny_mce/tiny_mce.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_star_rating.js' %}"></script>
         <script type="text/javascript" src="{% static 'stage9/js/ajax_tags.js' %}"></script>
+        <script type="text/javascript" src="{% static 'stage9/js/ajax_search.js' %}"></script>
 
         <script>
             $( document ).ready(function() {
@@ -106,7 +107,6 @@
                     {% else %}
                     <div class="login_form block">{% include "stage9/stage9_login.html" %}</div>
                     {% endif %}
-                    <div style="display: inline-block;">{% include "stage9/search.html" %}</div>
                         <img id="box33" class="block logo_bug" src="{% static 'stage9/img/rsz_bug.png' %}" alt="bug logo">
                     <div class="btn">
                         <img class="block menu_btn" src="{% static 'stage9/img/rsz_menuw.png' %}" alt="menu">
@@ -150,8 +150,6 @@
             <div class="container_body">
                     <div class="col-md-10 cont" style="padding-right: 40px;"> <!-- content !-->
                         {% block content %}{% endblock %}
-                    </div>
-                    <div id="ingredients_choices" style="display: inline-block;  width: 20%;">
                     </div>
             </div>
 

@@ -1,5 +1,7 @@
-<div onload="showPage()" style="display:none;" id="myDiv" class="animate-bottom">
+{% load costume_filters %}
+
 {% if recipe_list_search.count > 0 %}
+<div onload="showPage()" style="display:none;" id="search_results_ajax" class="animate-bottom">
     {% for recipe in recipe_list_search %}
         <a href="{% url 'cooks:detail' recipe.slug %}">
             <div class="cook_item">
@@ -19,17 +21,39 @@
             </div>
         </a>
     {% endfor %}
-{% else %}
-    <h4>NOTHING MATCHES SEARCH</h4>
-{% endif %}
 </div>
+{% else %}
+    {% if terms_entered %}
+<div onload="showPage()" style="display:none;" id="search_results_ajax" class="animate-bottom">
+    <h4>NOTHING MATCHES SEARCH</h4>
+</div>
+    {% else %}
+<div onload="showPage()" style="display:none;" id="search_results_ajax">
+    <h4>Hello dear hungry one!</h4>
+    <p>This is a cooking guide for busy people, who dont have much spare time, who like to eat and are looking for an
+        easy, fast and convenient way to search for recipes by the ingredients they have at home and share those recipes with friends.</p>
+    <p>Here are some tips on how to use the website:</p>
+    <ul>
+        <li>Pick a comfy way to choose the ingredients you plan on cooking.</li>
+        <li>Add your ingredients by choosing them from the drop-down menu or by typing them in directly.</li>
+        <li>Recipes you can make will automatically appear and update as you add more ingredients.</li>
+        <li><a href="{% url 'account_login' %}"><b>Login</b></a> with your favourite social media account or register for extra features.</li>
+    </ul>
+    <p>Bon appétit!</p>
+    {% endif %}
+</div>
+{% endif %}
+
 
 <script>
-function showPage() {
-  document.getElementById("myDiv").style.display = "block";
-}
+    function showPage() {
+      document.getElementById("search_results_ajax").style.display = "block";
+    }
 
-$(function(){
-	$('div[onload]').trigger('onload');
-});
+    $(function(){
+        $('div[onload]').trigger('onload');
+    });
+
+
+
 </script>

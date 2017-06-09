@@ -17,17 +17,3 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'email']
 
-
-class CousineForm(forms.Form):
-    CUISINE = (
-        ("ASIAN", _("Asian")),
-        ("CARIBBEAN", _("Caribbean")),
-        ("CHINESE", _("Chinese")),
-        ("FRENCH", _("French")),
-        ("RUSSIAN", _("Russian")),
-        ("INDIAN", _("Indian")),
-        ("ITALIAN", _("Italian")),
-        ("MEXICAN", _("Mexican")),
-        ("MEDITERRANEAN", _("Mediterranean")),
-    )
-    Cuisine = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=CUISINE)
