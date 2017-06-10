@@ -76,7 +76,7 @@
     background-color: white;
     padding: 12px;
     padding-bottom: 0;
-    width: 487px;
+    width: 538px;
     display: inline-block;
     border: 1px solid #CCC;
 }
@@ -84,7 +84,7 @@
 #id_comment {
     resize: none;
     display: inline;
-    width: 454px;
+    width: 514px;
     min-height: 35px;
     height: 35px;
     color: #020202;
@@ -121,7 +121,7 @@
 }
 
 .submit_comments_edits {
-    margin-left: 424px;
+    margin-left: 474px;
     margin-top: 5px;
     border:1px groove #9a9999;
     cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/

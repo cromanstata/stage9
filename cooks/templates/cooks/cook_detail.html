@@ -5,7 +5,7 @@
     <div class="cook_detail">
         <div class="recipe_side_bar">
             {% if recipe.photo %}
-            <img src="{{ MEDIA_URL }}{{ recipe.photo }}" class="recipe_img">
+            <img src="{{ MEDIA_URL }}{{ recipe.photo }}" class="recipe_img" alt="{{ recipe.title }} photo">
             {% else %}
             <div class="recipe_img recipe_img_blank"><h4>NO PHOTO</h4></div>
             {% endif %}
@@ -13,8 +13,8 @@
                 <p class="recipe_view_label label_ingredients_decor">INGREDIENTS</p>
                 {% for ingredient in recipe.ingredients.all %}
                     <div class="ingredient_full">
-                        <p class="ingredient_quantity_unit"> {{ ingredient.quantity }} {{ ingredient.unit }} </p>
                         <p class="ingredient_ingredient">{{ ingredient.ingredient }}</p>
+                        <p class="ingredient_quantity_unit"> {{ ingredient.quantity }} {{ ingredient.unit }} </p>
                         <p class="ingredient_note">{{ ingredient.note }}</p>
                     </div>
                 {% endfor %}
@@ -107,7 +107,7 @@
                 </div>
                 <div class="author_box">
                     {% if recipe.author_id %}
-                        <a href="{% url 'user' author %}"><img class="img-profile img-circle" style="" src="{{ author.profile.profile_image_url }}" alt="{{ author.username }}"></a>
+                        <a href="{% url 'user' author %}"><img class="img-profile img-circle" style="" src="{{ author.profile.profile_image_url }}" alt="{{ author.username }} profile picture"></a>
                         <a href="{% url 'user' author %}"><p class="author_name">{{ author.username }}</p></a>
                     {% endif %}
                 </div>

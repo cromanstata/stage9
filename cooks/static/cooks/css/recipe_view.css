@@ -3,11 +3,12 @@
     margin-right: 10px; margin-top: 20px;
     padding: 5px;
     background: white;
-    min-width:702px;
+    min-width:960px;
     width:100%;
     min-height: 500px;
     position: relative;
-    max-width: 805px;
+    max-width: 960px;
+    padding-left: 100px;
 }
 
 .recipe_side_bar {
@@ -15,6 +16,7 @@
     max-width: 251px;
     display: inline-block;
     position: relative;
+    margin-right:10px;
 }
 
 .recipe_img {
@@ -60,8 +62,9 @@
 
 .recipe_view_cont {
     display: inline-block;
-    max-width: 529px;
-    width: 529px;
+    max-width: 580px;
+    min-width: 580px;
+    width: 580px;
     margin-right: 10px;
     position: relative;
     padding-bottom: 80px;
@@ -184,7 +187,7 @@
 
 .recipe_instructions_text {
     padding-left: 40px;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 .green_bar {

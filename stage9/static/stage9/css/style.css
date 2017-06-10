@@ -329,11 +329,12 @@ a:active {
     color: #434343;
     clear: both;
     width: 100%;
+    height: auto;
     min-height: 420px;
-    top: 150px;
+    top: 110px;
     right: 0px;
     left: 0px;
-    overflow:auto;
+    padding-bottom: 100px;
 }
 
 .header {
@@ -344,7 +345,7 @@ a:active {
     top: 0px;
     height: 90px;
     background: #434343;
-    z-index: 1;
+    z-index: 10;
 }
 
 .downer {
@@ -368,7 +369,7 @@ a:active {
     bottom: 0px;
     background: #434343;
     height: 40px;
-     z-index: 0;
+     z-index: 10;
 }
 .footer_content {
     position:relative;

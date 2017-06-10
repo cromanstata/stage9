@@ -25,6 +25,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'cooks/css/recipe_form.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'cooks/css/recipe_view.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/home_view.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'stage9/css/base_view.css' %}" />
 
         <script type="text/javascript" src="{% static 'stage9/js/jquery-3.2.1.min.js' %}"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -144,13 +145,60 @@
                 <div class="menu_it">first one</div>
                     </div>
             </div>
-
             <div class="liner" style="position: fixed;"></div>
 
             <div class="container_body">
-                    <div class="col-md-10 cont" style="padding-right: 40px;"> <!-- content !-->
-                        {% block content %}{% endblock %}
+                {% if user.is_authenticated %}
+                <div id="side_navbar">
+                    <div id="side_navbar_cont">
+                        <div id="side_navbar_btn">
+                            <i id="side_navbar_meanu_icon" class="material-icons">menu</i>
+                        </div>
+                        <div id="side_navbar_items_cont">
+                            <a href="{% url 'user' user %}">
+                                <div id="side_bar_profile" class="side_navbar_items">
+                                    <img id="side_bar_profile_img" class="img-profile img-circle" src="{{ request.user.profile.profile_image_url }}" alt="{{ author.username }} profile picture">
+                                    <span id="side_navbar_msg_text" class="side_navbar_text">MY PROFILE</span>
+                                </div>
+                            </a>
+                            <a href="{% url 'home' %}">
+                                <div id="side_bar_msg" class="side_navbar_items">
+                                    <i id="side_navbar_msg_icon" class="material-icons side_navbar_icons">mail_outline</i>
+                                    <span id="side_navbar_msg_text" class="side_navbar_text">MESSAGES</span>
+                                </div>
+                            </a>
+                            <a href="{% url 'profiles:add_recipe' %}">
+                                <div id="side_bar_post" class="side_navbar_items">
+                                    <i id="side_navbar_post_icon" class="material-icons side_navbar_icons">subject</i>
+                                    <span id="side_navbar_post_text" class="side_navbar_text">POST RECIPE</span>
+                                </div>
+                            </a>
+                            <a href="{% url 'profiles:my_recipes' %}">
+                                <div id="side_bar_my" class="side_navbar_items">
+                                    <i id="side_navbar_my_icon" class="material-icons side_navbar_icons">restaurant</i>
+                                    <span id="side_navbar_my_text" class="side_navbar_text">MY RECIPES</span>
+                                </div>
+                            </a>
+                            <a href="{% url 'profiles:favs' %}">
+                                <div id="side_bar_favs" class="side_navbar_items">
+                                    <i id="side_navbar_favs_icon" class="material-icons side_navbar_icons">favorite_border</i>
+                                    <span id="side_navbar_favs_text" class="side_navbar_text">FAVORITE RECIPES</span>
+                                </div>
+                            </a>
+                            <a href="{% url "account_logout" %}">
+                                <div id="side_bar_logout" class="side_navbar_items">
+                                    <span id="side_navbar_logout_text" class="side_navbar_text">LOG OUT</span>
+                                </div>
+                            </a>
+
+
+                        </div>
                     </div>
+                </div>
+                {% endif %}
+                <div class="col-md-10 cont" style="padding-right: 40px;"> <!-- content !-->
+                    {% block content %}{% endblock %}
+                </div>
             </div>
 
             <div class="footer">
