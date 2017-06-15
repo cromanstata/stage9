@@ -27,6 +27,7 @@
         <option value="$MODULE_DIR$/allauth/templates" />
         <option value="$MODULE_DIR$/profiles/templates" />
         <option value="$MODULE_DIR$/cooks/templates" />
+        <option value="$MODULE_DIR$/django_messages/templates" />
       </list>
     </option>
   </component>

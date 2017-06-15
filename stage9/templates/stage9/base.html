@@ -147,6 +147,12 @@
             </div>
             <div class="liner" style="position: fixed;"></div>
 
+            <div id="dynamic_modal" class="modal">
+                <div class="modal-content-view">
+                    <div id="allauthpop"></div>
+                </div>
+            </div>
+
             <div class="container_body">
                 {% if user.is_authenticated %}
                 <div id="side_navbar">
@@ -161,10 +167,15 @@
                                     <span id="side_navbar_msg_text" class="side_navbar_text">MY PROFILE</span>
                                 </div>
                             </a>
-                            <a href="{% url 'home' %}">
+                            <a href="{% url 'messages:messages_inbox' %}">
                                 <div id="side_bar_msg" class="side_navbar_items">
+                                    {% load inbox %}
+                                    {% inbox_count as msg_counter %}
                                     <i id="side_navbar_msg_icon" class="material-icons side_navbar_icons">mail_outline</i>
                                     <span id="side_navbar_msg_text" class="side_navbar_text">MESSAGES</span>
+                                    {% if msg_counter > 0 %}
+                                    <span class="badge side_navbar_msg_count">{% inbox_count %}</span>
+                                    {% endif %}
                                 </div>
                             </a>
                             <a href="{% url 'profiles:add_recipe' %}">
@@ -197,6 +208,7 @@
                 </div>
                 {% endif %}
                 <div class="col-md-10 cont" style="padding-right: 40px;"> <!-- content !-->
+                    {% block sidebar %}{% endblock %}
                     {% block content %}{% endblock %}
                 </div>
             </div>

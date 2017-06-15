@@ -1,6 +1,7 @@
 /**
  * Created by Admin on 5/13/2017.
  */
+//follow another user:
 $(function () {
     
     $(document).on('submit','#unfollow', function(e){

@@ -22,6 +22,7 @@
     {% if request.user.username != profile_view.username and request.user.is_authenticated %}
         <div class="friendstuff" style="margin:10px;">
             {% include "stage9/follow_form.html" %}
+            <a href="{% url 'messages:messages_compose_to' profile_view.username %}"><div class="msg_user">SEND MESSAGE</div></a>
         </div>
         <a href="{% url 'my_recipes' profile_view %}">LOOK AT HIS RECIPES</a>
     {% endif %}

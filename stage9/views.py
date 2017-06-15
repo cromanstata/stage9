@@ -275,6 +275,16 @@ def search(request):
                'terms_entered': terms_entered}
     return render(request, 'stage9/ajax_search.html', context)
 
+def allauthpop(request):
+    if request.method == "GET":
+        allauth_data = request.GET['allauth_data']
+    else:
+        allauth_data = ''
+    #allauth_data can be either 'login' or 'register'
+    context = {'recipe_list': allauth_data}
+    return render(request, 'stage9/login_modal.html',context)
+
+
 def get_tags(request):
     if request.method == "GET":
         search_tags = request.GET['term']

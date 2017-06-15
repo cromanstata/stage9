@@ -19,6 +19,7 @@ from django.contrib.staticfiles.urls import static
 from django.views.generic.base import TemplateView
 from . import views
 from . import settings
+import allauth.account.views
 
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^messages/', include('django_messages.urls')),
     url(r'^profile/(?P<name>[\w.@+-]+)/$', views.profile, name='user'),
     url(r'^profile/(?P<name>[\w.@+-]+)/update/$', views.edit_user, name='update'),
     url(r'^profile/(?P<name>[\w.@+-]+)/favs/$', views.favorites, name='favs'),
@@ -36,6 +38,7 @@ urlpatterns = [
     url(r'^profile/(?P<name>[\w.@+-]+)/recipes/$', views.my_recipes, name='my_recipes'),
     #url(r'^profile/(?P<name>[\w.@+-]+)/recipes/(?P<recipe>[\w.@+-]+)/edit/$', views.edit_recipe, name='edit_recipe'),
     url(r'^search/$', views.search, name='search'),
+    url(r'^allauthpop/$', views.allauthpop, name='allauthpop'),
     url(r'^tags/$', views.get_tags, name='tags'),
     url(r'^titles/$', views.get_titles, name='titles'),
     url(r'^diff_tags/$', views.get_diff_tags, name='diff_tags'),

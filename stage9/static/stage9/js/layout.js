@@ -1,39 +1,41 @@
-var now = (new Date()).getTime();
-var lastTime = 0;
-var lastTimeStr = localStorage['lastTime'];
-var height = $('#box').height();
-var width = $('#box').width();
-if (lastTimeStr) lastTime = parseInt(lastTimeStr, 10);
-if (now - lastTime > 20*24*1000) {
-     // do animation
-function flicker(count, callback, current) {
+$(function () {
+        // Get the modal
+    var modal = document.getElementById('dynamic_modal');
 
-    current = current || 0;
+    // Get the <span> element that closes the modal
+    //var span = document.getElementsByClassName("close");
 
-    $("#box")[current % 2 == 0 ? 'hide' : 'show']();
+    $(document).on('click', '.allauth-link',function(e){
+        modal.style.display = "block";
+        var data = $(this).attr('datatype');
+        allauthhUpdate(data);
+    });
+    // When the user clicks on <span> (x), close the modal
+    //span.onclick = function() {
+    //    modal.style.display = "none";
+    //};
 
-    setTimeout(function(){
-        if (count * 2 <= current) {
-            callback();
-            return;
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
-        flicker(count, callback, current + 1)
-    }, 200*Math.random());
-}
-
-setTimeout(function () {
-    flicker(7, function () {
-        $("#box").fadeIn("slow");
-        $("#box2").fadeIn("slow");
-    })
-}, 1000)
-
-}
-localStorage['lastTime'] = ""+now;
-
-function tog(divId) {
-    $(divId).toggle();
-}
+    };
+    
+    var allauthhUpdate = function(allauth_data) {
+        $.ajax({
+            type: "GET",
+            url: "/allauthpop/",
+            dataType: 'html',
+            data: {
+                'allauth_data': allauth_data
+            },
+            success: function searchSuccess(data, textStatus, jqXHR) {
+                        $('#allauthpop').html(data);
+                    }
+        });
+    };
+});
 
 
 

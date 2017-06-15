@@ -1,0 +1,27 @@
+<div class="signup_modal">
+    <div id="signup_modal_info">
+        <div id="signup_modal_info_cont">
+            <h5>SIGN UP (REGISTER)</h5>
+            <p>some info on benefits of signing up to the site</p>
+        </div>
+    </div>
+    <div id="signup_modal_form">
+        <div id="signup_modal_form_cont">
+            {% load socialaccount %}
+            {% providers_media_js %}
+            <form action="{% url "account_login" %}" method="post">
+                {% csrf_token %}
+                <input type="username" placeholder="Username" name="login">
+                <input type="password" placeholder="Password" name="password">
+                <label for="id_remember_menu" class="text-primary">Remember Me:</label>
+                <input id="id_remember_menu" name="remember" type="checkbox">
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit">Login</button>
+                <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
+            </form>
+            <a href="{% provider_login_url "facebook" method="js_sdk" %}">Facebook Connect</a>
+        </div>
+    </div>
+</div>

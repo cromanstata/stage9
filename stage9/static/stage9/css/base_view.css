@@ -50,6 +50,7 @@
     height: 80px;
     text-align: center;
     margin-bottom: 20px;
+    position: relative;
 }
 
 #side_bar_profile{
@@ -84,41 +85,122 @@
 }
 
 #side_bar_profile:hover {
-
+    color: #96604b;
 }
 
 #side_bar_msg:hover {
-    color: #026767;
+    color: #027575;
 }
 
-#side_bar_msg .side_navbar_icons:hover {
-    color: #026767;
+#side_bar_msg:hover .side_navbar_icons {
+    color: #027575;
 }
 
 #side_bar_post:hover {
-    color: #670234;
+    color: #8c0240;
 }
 
-#side_bar_post .side_navbar_icons:hover {
-    color: #670234;
+#side_bar_post:hover .side_navbar_icons {
+    color: #8c0240;
 }
 
 #side_bar_my:hover {
-    color: #040234;
+    color: #080284;
 }
 
-#side_bar_my .side_navbar_icons:hover {
-    color: #040234;
+#side_bar_my:hover .side_navbar_icons {
+    color: #080284;
 }
 
 #side_bar_favs:hover {
     color: #cc3434;
 }
 
-#side_bar_favs .side_navbar_icons:hover {
+#side_bar_favs:hover .side_navbar_icons {
     color: #cc3434;
 }
 
 #side_bar_logout:hover {
-    color: yellow;
+    color: darkgray;
+}
+
+.allauth-link:hover {
+    cursor: pointer;
+}
+
+#login_modal {
+    position: relative;
+}
+
+#login_modal_info {
+    background-color: lightblue;
+    width: 40%;
+    display: inline-block;
+    height: 260px;
+    vertical-align: top;
+}
+
+#login_modal_info_cont{
+    padding: 12px;
+}
+
+
+#login_modal_form {
+    background-color: lightgoldenrodyellow;
+    display: inline-block;
+    height: auto;
+}
+
+#login_modal_form_cont {
+    padding: 12px;
+}
+
+#signup_modal {
+    position: relative;
+}
+
+#signup_modal_info {
+    background-color: lightblue;
+    width: 40%;
+    display: inline-block;
+    height: 260px;
+    vertical-align: top;
+}
+
+#signup_modal_info_cont{
+    padding: 12px;
+}
+
+
+#signup_modal_form {
+    background-color: lightgoldenrodyellow;
+    display: inline-block;
+    width: 60%;
+    height: auto;
+}
+
+#signup_modal_form_cont {
+    padding: 12px;
+}
+
+.side_navbar_msg_count {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-color: red;
+}
+
+.msg_user {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #555555;
+    background: #93cfe6;
+    font-weight: normal;
+    color: #555555;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+
+.msg_user:hover {
+    cursor: pointer;
 }
