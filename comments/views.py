@@ -7,10 +7,12 @@ from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.middleware.csrf import get_token
 from comments.models import Comment, Like
 from cooks.models import Recipe
+from django.contrib.auth.models import User
 from comments.signals import rating_recipe_created, comment_recipe_created
 from comments.forms import CommentForm
 from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
+from notify.signals import notify
 
 
 class AjaxableResponseMixin(object):
@@ -87,7 +89,13 @@ class CommentCreateView(AjaxableResponseMixin, CreateView):
             pass
         comment_recipe_created.send(sender=self, recipe=Recipe.objects.filter(id=self.request.POST['model_id']), comment=self.request.POST['comment'])
         rating_recipe_created.send(sender=self, recipe=Recipe.objects.filter(id=self.request.POST['model_id']), rating=self.request.POST['rating'])
+        print("USER WHO CREATED COMMENT: ", self.request.user)
         comment.save()
+        target = Recipe.objects.get(id=comment.object_id)
+        recipient = User.objects.get(id=target.author_id)
+        notify.send(self.request.user, actor=self.request.user, recipient=recipient, verb='commented on your recipe', target=target)
+        if comment.rating:
+            notify.send(self.request.user, actor=self.request.user, recipient=recipient, verb='rated your recipe', target=target)
         return super(CommentCreateView, self).form_valid(form)
 
 
@@ -160,6 +168,10 @@ class LikeComment(FormView):
                 likes_count += 1
                 comment.likes_count = likes_count
                 comment.save()
+                #send signal for notification
+                target = Recipe.objects.get (id=comment.object_id)
+                recipient = User.objects.get(id=target.author_id)
+                notify.send(user, actor=user, recipient=recipient, verb='liked your comment on',target=target)
                 data['likes_count'] = likes_count
                 data['success'] = 1
         except:

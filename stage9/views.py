@@ -15,6 +15,7 @@ from django.http import HttpResponse
 from cooks import fields
 from cooks.forms import RecipeForm, IngredientForm, DifficultyForm, MealTypeForm, CuisineForm, CookingTimeForm
 from django.utils import timezone
+from notify.signals import notify
 
 
 @login_required() # only logged in users should access this
@@ -468,6 +469,9 @@ def add_recipe(request, name):
             difficulty_post.save()
             cuisine_post.save()
             cookingtime_post.save()
+            followers = Follow.objects.followers(user)
+            if followers:
+                notify.send(user, actor=user, recipient_list=followers, verb='posted a new recipe', target=recipe_post)
             return redirect('cooks:detail', recipe_post.title)
         else:
             print ("one of the forms was not valid?")

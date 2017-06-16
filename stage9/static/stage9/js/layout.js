@@ -35,6 +35,33 @@ $(function () {
                     }
         });
     };
+
+    var sideBar = document.getElementById('side_navbar');
+
+
+    $(document).on('click', '#side_navbar_btn',function(e){
+        sideBar.style.display = "none";
+        $('#side_navbar_btn_hidden').show();
+    });
+
+    $(document).on('click', '#side_navbar_btn_hidden',function(e){
+        $('#side_navbar_btn_hidden').hide();
+        sideBar.style.display = "block";
+    });
+
+    $(document).on('click', '#top_bar_notifications',function(e){
+        e.stopPropagation();
+        $('#notification_box').toggle();
+        $('.notification_box_arrow').toggle();
+        //comment_more_menu_arrow
+    });
+
+    /*
+    var hideSideBar = function () {
+        $('#side_navbar').css({"width": "0"});
+    };
+    document.getElementById('side_navbar_meanu_icon').on('click', hideSideBar());
+    */
 });
 
 

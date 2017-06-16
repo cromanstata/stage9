@@ -9,6 +9,7 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
 
+from notify.signals import notify
 from friendship.exceptions import AlreadyExistsError, AlreadyFriendsError
 from friendship.signals import (
     friendship_request_created, friendship_request_rejected,
@@ -403,6 +404,7 @@ class FollowingManager(models.Manager):
         follower_created.send(sender=self, follower=follower)
         followee_created.send(sender=self, followee=followee)
         following_created.send(sender=self, following=relation)
+        notify.send(follower, actor=follower, recipient=followee, verb='is now your follower')
 
         bust_cache('followers', followee.pk)
         bust_cache('following', follower.pk)
@@ -416,6 +418,7 @@ class FollowingManager(models.Manager):
             follower_removed.send(sender=rel, follower=rel.follower)
             followee_removed.send(sender=rel, followee=rel.followee)
             following_removed.send(sender=rel, following=rel)
+            notify.send(follower, actor=follower, recipient=followee, verb='stopped following you')
             rel.delete()
             bust_cache('followers', followee.pk)
             bust_cache('following', follower.pk)

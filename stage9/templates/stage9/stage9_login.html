@@ -1,5 +1,10 @@
 {% if user.is_authenticated %}
     {% load friendshiptags %}
+    {% load static %}
+    {% load notification_tags %}
+    {% include_notify_js_variables %}
+    <script type="text/javascript" src="{% static "notify/notifyX.js" %}"></script>
+
     <div style="display: inline; width: 300px; max-height: inherit; position: absolute; right:100px;" >
         <div style="display: inline-block; margin-right: 20px;">
             <p>Hi {{ request.user.username }}</p>
@@ -7,6 +12,22 @@
             <a href="{% url "account_logout" %}">Logout</a>
         </div>
         <a href="{% url 'profiles:profile' %}"><img style=" position: absolute; height: 50px; width: 50px; display: inline;" src="{{ request.user.profile.profile_image_url }}" alt="profile picture"></a>
+
+        <div id="notification_wrap">
+            <i id="top_bar_notifications" class="material-icons">notifications</i>
+            <span id="notification_counter_badge" class="badge side_navbar_msg_count">{{ request.user.notifications.unread.count }}</span>
+            <div id="notification_box_position">
+                <div id="notification_box">
+                    <div id="notification_header">
+                        <h5 class="bold inline">NOTIFICATIONS</h5>
+                        <span id="notifications_mark" class="inline pointer">MARK ALL AS READ</span>
+                    </div>
+                    <div id="notification_cont" class="notifications notification-box-list">
+                        {% render_notifications using request.user.notifications.active for box %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% else %}
     {% load socialaccount %}

@@ -16,10 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import static
-from django.views.generic.base import TemplateView
 from . import views
 from . import settings
-import allauth.account.views
 
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
@@ -31,6 +29,7 @@ urlpatterns = [
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^messages/', include('django_messages.urls')),
+    url(r'^notifications/', include('notify.urls', 'notifications')),
     url(r'^profile/(?P<name>[\w.@+-]+)/$', views.profile, name='user'),
     url(r'^profile/(?P<name>[\w.@+-]+)/update/$', views.edit_user, name='update'),
     url(r'^profile/(?P<name>[\w.@+-]+)/favs/$', views.favorites, name='favs'),

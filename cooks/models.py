@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.exceptions import ObjectDoesNotExist
 from slugify import slugify
+from notify.signals import notify
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -251,9 +252,12 @@ class FavoriteManager(models.Manager):
         if created is False:
             raise AlreadyExistsError("User '%s' already favors '%s'" % (favorer, recipe))
 
+        recipient = User.objects.get(id=recipe.author_id)
         favorite_created.send(sender=self, favorer=favorer)
         favorer_created.send(sender=self, recipe=recipe)
         favorite_recipe_created.send(sender=self, favorers=relation)
+        notify.send(favorer, actor=favorer, recipient=recipient, verb='added to his favorites your recipe', target=recipe)
+        print("sent notification - has followed your recipe to: ", recipient)
 
         return relation
 
@@ -264,6 +268,9 @@ class FavoriteManager(models.Manager):
             favorite_removed.send(sender=rel, favorer=rel.favorer)
             favorer_removed.send(sender=rel, recipee=rel.recipe)
             favorite_recipe_removed.send(sender=rel, favorers=rel)
+            recipient = User.objects.get(id=recipe.author_id)
+            notify.send(rel.favorer, actor=favorer, recipient=recipient, verb='removed form his favorites your recipe', target=recipe)
+            print("sent notification - has UNfollowed your recipe to: ", recipient)
             rel.delete()
             return True
         except Favorite.DoesNotExist:
@@ -307,9 +314,10 @@ class LikesManager(models.Manager):
 
         if created is False:
             raise AlreadyExistsError("User '%s' already likes '%s'" % (liker, recipe))
-
+        recipient = User.objects.get(id=recipe.author_id)
         like_created.send(sender=self, liker=liker)
         like_recipe_created.send(sender=self, recipe=recipe)
+        notify.send(liker, actor=liker, recipient=recipient, verb='liked your recipe',target=recipe)
 
         return like
 

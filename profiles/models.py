@@ -18,6 +18,9 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_absolute_url(self):
+        return "/profile/%s" % str(self.user.username)
+
     def create_profile(sender, **kwargs):
         user = kwargs["instance"]
         if kwargs["created"]:

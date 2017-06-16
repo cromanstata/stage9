@@ -43,23 +43,49 @@
     height: 120px;
     margin-right: 10px;
     text-align: center;
-}
-
-.way_of_search_item:hover {
-    cursor: pointer;
-    padding-top: 10px;
+    position: relative;
 }
 
 #way_of_search_key {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
     background-color: #b3dad5;
 }
 
 #way_of_search_click {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
     background-color: #ffe4c4;
 }
 
 #way_of_search_lazy {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
     background-color: #e3aca7;
+}
+
+#way_of_search_key:hover {
+    background-color: #00d9bc;
+    color: white;
+    cursor: pointer;
+}
+
+#way_of_search_click:hover {
+    background-color: #ffa033;
+    color: white;
+    cursor: pointer;
+}
+
+#way_of_search_lazy:hover {
+    background-color: #e3645b;
+    color: white;
+    cursor: pointer;
 }
 
 .way_of_search_text {
