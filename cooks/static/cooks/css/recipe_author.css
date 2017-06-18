@@ -1,0 +1,18 @@
+#author_navbar {
+    position: relative;
+    max-width: 260px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#search-results-author {
+    position: relative;
+    display: inline-block;
+    max-width: 780px;
+}
+
+.author_navbar_item {
+    display: inline-block;
+    margin-right: 10px;
+    color: black;
+}

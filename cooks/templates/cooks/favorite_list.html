@@ -2,25 +2,60 @@
 
 {% block content %}
     <h2>MY FAVORITE RECIPES</h2>
-    <div id="search-results11">
-    {% for recipe in recipe_list %}
-        <a href="{% url 'cooks:detail' recipe.slug %}">
-            <div class="cook_item">
-                <div class="cook_item_cont" >
-                    <h3>{{ recipe.title }}</h3>
-                    <p>{{ recipe.summary }}</p>
-                    <br>
-                    {% for ingredient in recipe.ingredients.all %}
-                        <p style="display:inline-block">{{ ingredient.ingredient }} ,</p>
-                    {% endfor %}
-                {% if recipe.photo %}
-                <div class="cook_item_back" style="background-image: url({{ MEDIA_URL }}{{ recipe.photo }});"></div>
-                {% else %}
-                <div class="cook_item_back"></div>
-                {% endif %}
-                </div>
+    {% if recipe_list %}
+    <div id="fav_navbar">
+            <h5 class="inline">Search by title</h5>
+            {% csrf_token %}
+            <input title="Search by favorite title" type="text" id="search_favs_side_title"/>
+            <input hidden title="Picked cuisines" type="text" id="search_favs_side_cuisine"/>
+            <input hidden title="Picked categories" type="text" id="search_favs_side_mealtype"/>
+            <input hidden title="Picked categories" type="text" id="search_favs_side_difficulty"/>
+            <input hidden title="Whos favorites" type="text" id="search_favs_side_author" value="{{ author }}"/>
+            <span id="fav_unmark_all" class="clickable">CLEAR ALL</span>
+            <br>
+            <br>
+            <span>Click on the categories to filter recipes</span>
+            <hr>
+        {% if fav_difficulty %}
+            <div id="fav_navbar_difficulty">
+            <div class="fav_navbar_header"><span>DIFFICULTY</span></div>
+            {% for value, key in fields.DIFFICULTIES %}
+                {% if value in fav_difficulty %}
+                    <div id="fav_navbar_cuisine_{{ value }}" data-id="{{ value }}" data-model-name="difficulty" data-like="click" class="clickable fav_navbar_item">
+                    <span>{{ key }}</span>
+                    </div>
+                {%  endif %}
+            {% endfor %}
             </div>
-        </a>
-    {% endfor %}
+            <hr>
+        {%  endif %}
+        {% if fav_cuisines %}
+            <div id="fav_navbar_cuisine">
+            <div class="fav_navbar_header"><span>CUISINES</span></div>
+            {% for value, key in fields.CUISINE %}
+                {% if value in fav_cuisines %}
+                    <div id="fav_navbar_cuisine_{{ value }}" data-id="{{ value }}" data-model-name="cuisine" data-like="click" class="clickable fav_navbar_item">
+                    <span>{{ key }}</span>
+                    </div>
+                {%  endif %}
+            {% endfor %}
+            </div>
+            <hr>
+        {%  endif %}
+        {% if fav_mealtypes %}
+            <div id="fav_navbar_mealtype">
+            <div class="fav_navbar_header"><span>MEAL TYPE</span></div>
+            {% for value, key in fields.MEALTYPE %}
+                {% if value in fav_mealtypes %}
+                    <div id="fav_navbar_mealtype_{{ value }}" data-id="{{ value }}" data-model-name="mealtype" data-like="click" class="clickable fav_navbar_item">
+                    <span>{{ key }}</span>
+                    </div>
+                {%  endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div id="search-results-favs" class="search_results_has_api">
     </div>
 {%  endblock %}

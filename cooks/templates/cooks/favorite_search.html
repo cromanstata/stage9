@@ -1,0 +1,19 @@
+{% for recipe in recipe_list %}
+    <a href="{% url 'cooks:detail' recipe.slug %}">
+        <div class="cook_item">
+            <div class="cook_item_cont" >
+                <h3>{{ recipe.title }}</h3>
+                <p>{{ recipe.summary }}</p>
+                <br>
+                {% for ingredient in recipe.ingredients.all %}
+                    <p style="display:inline-block">{{ ingredient.ingredient }} ,</p>
+                {% endfor %}
+            {% if recipe.photo %}
+            <div class="cook_item_back" style="background-image: url({{ MEDIA_URL }}{{ recipe.photo }});"></div>
+            {% else %}
+            <div class="cook_item_back"></div>
+            {% endif %}
+            </div>
+        </div>
+    </a>
+{% endfor %}

@@ -265,7 +265,7 @@
     position: relative;
     z-index: 11;
     background-color: white;
-    width: 450px;
+    width: 458px;
 }
 
 #notification_box::after {
@@ -295,6 +295,12 @@
     overflow: auto;
 }
 
+#notification_box_wrap {
+    overflow: auto;
+    position: relative;
+    max-height: 400px;
+}
+
 .pointer:hover {
     cursor: pointer;
 }
@@ -314,7 +320,7 @@
 
 #notifications_mark {
     position: absolute;
-    right: 20px;
+    right: 10px;
     top: 20px;
     font-weight: 500;
     font-size: 9pt;

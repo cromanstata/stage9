@@ -1,0 +1,18 @@
+#fav_navbar {
+    position: relative;
+    max-width: 260px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#search-results-favs {
+    position: relative;
+    display: inline-block;
+    max-width: 780px;
+}
+
+.fav_navbar_item {
+    display: inline-block;
+    margin-right: 10px;
+    color: black;
+}

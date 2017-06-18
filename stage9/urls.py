@@ -30,13 +30,17 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^messages/', include('django_messages.urls')),
     url(r'^notifications/', include('notify.urls', 'notifications')),
+    #this apps views:
     url(r'^profile/(?P<name>[\w.@+-]+)/$', views.profile, name='user'),
     url(r'^profile/(?P<name>[\w.@+-]+)/update/$', views.edit_user, name='update'),
     url(r'^profile/(?P<name>[\w.@+-]+)/favs/$', views.favorites, name='favs'),
     url(r'^profile/(?P<name>[\w.@+-]+)/post/$', views.add_recipe, name='add_recipe'),
     url(r'^profile/(?P<name>[\w.@+-]+)/recipes/$', views.my_recipes, name='my_recipes'),
     #url(r'^profile/(?P<name>[\w.@+-]+)/recipes/(?P<recipe>[\w.@+-]+)/edit/$', views.edit_recipe, name='edit_recipe'),
+    #ajax nodes:
     url(r'^search/$', views.search, name='search'),
+    url(r'^favsearch/$', views.favsearch, name='favsearch'),
+    url(r'^authorsearch/$', views.authorsearch, name='authorsearch'),
     url(r'^allauthpop/$', views.allauthpop, name='allauthpop'),
     url(r'^tags/$', views.get_tags, name='tags'),
     url(r'^titles/$', views.get_titles, name='titles'),

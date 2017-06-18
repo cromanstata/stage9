@@ -16,7 +16,7 @@ from cooks import fields
 from cooks.forms import RecipeForm, IngredientForm, DifficultyForm, MealTypeForm, CuisineForm, CookingTimeForm
 from django.utils import timezone
 from notify.signals import notify
-
+from django.http import Http404
 
 @login_required() # only logged in users should access this
 def edit_user(request, name):
@@ -357,42 +357,278 @@ def follow(request):
         return render(request, 'stage9/follow_form.html')
 
 def favorites(request, name):
-    favorite_ids = Favorite.objects.filter(favorer_id=request.user.id).values('recipe_id').distinct()
+    if request.user.username == name:
+        favorite_ids = Favorite.objects.filter(favorer_id=request.user.id).values('recipe_id').distinct()
+        search3 = Q()
+        favorite_difficulty1 = []
+        favorite_cuisine1 = []
+        favorite_mealtypes1 = []
+        favorite_mealtypes2 = []
+        if favorite_ids:
+            for id in favorite_ids:
+                i = (id['recipe_id'])
+                search3 = search3 | (Q(favorite__recipe_id=i))
+            d_search = Recipe.objects.filter(search3).distinct()
+            for recipe_cat in d_search:
+                try:
+                    if recipe_cat.cuisine:
+                        if favorite_cuisine1:
+                            if recipe_cat.cuisine.cuisine not in favorite_cuisine1:
+                                favorite_cuisine1.append(recipe_cat.cuisine.cuisine)
+                        else:
+                            favorite_cuisine1.append(recipe_cat.cuisine.cuisine)
+                except:
+                    pass
+                try:
+                    if recipe_cat.difficulty:
+                        if favorite_difficulty1:
+                            if recipe_cat.difficulty.difficulty not in favorite_difficulty1:
+                                favorite_difficulty1.append(recipe_cat.difficulty.difficulty)
+                        else:
+                            favorite_difficulty1.append(recipe_cat.difficulty.difficulty)
+                except:
+                    pass
+                try:
+                    if recipe_cat.meal_type:
+                        favorite_mealtypes2 = MealType.objects.filter(recipe=recipe_cat).values_list('mealtype', flat=True).distinct()[::1]
+                        if favorite_mealtypes2:
+                            if favorite_mealtypes1:
+                                for mealtype in favorite_mealtypes2:
+                                    if mealtype not in favorite_mealtypes1:
+                                        favorite_mealtypes1.append(mealtype)
+                            else:
+                                for mealtype in favorite_mealtypes2:
+                                    favorite_mealtypes1.append(mealtype)
+                except:
+                    pass
+        else:
+            d_search=''
+        context = {'recipe_list': d_search,
+                   'author': name,
+                   'fields': fields,
+                   'fav_mealtypes': favorite_mealtypes1,
+                   'fav_cuisines': favorite_cuisine1,
+                   'fav_difficulty': favorite_difficulty1}
+        return render(request, 'cooks/favorite_list.html', context)
+    else:
+        raise Http404
+
+
+def favsearch(request):
+    if request.method == "POST":
+        search_title = request.POST['search_title']
+        search_cuisine = request.POST['search_cuisine']
+        search_mealtype = request.POST['search_mealtype']
+        search_difficulty = request.POST['search_difficulty']
+        author = request.POST['author']
+    else:
+        search_title = ''
+        search_cuisine = ''
+        search_mealtype = ''
+        search_difficulty = ''
+        author = ''
+    user = User.objects.get(username=author)
     search3 = Q()
+    recipe_list_search = Q()
+    recipe_list_search_title = Q()
+    recipe_list_search_mealtype = Q()
+    recipe_list_search_difficulty = Q()
+    recipe_list_search_cuisine = Q()
+    favorites = Favorite.objects.filter(favorer_id=user.id).distinct()
+    fav_search_val = [search_cuisine, search_mealtype, search_difficulty]
+    if search_title:
+        recipe_list_search_title = Q(title__icontains=search_title)
+    if fav_search_val[0]:
+        fav_search_val[0] = fav_search_val[0].split(',')
+        for val in fav_search_val[0]:
+            print("val ",val)
+            recipe_list_search_cuisine = recipe_list_search_cuisine | Q(cuisine__cuisine__iexact=val)
+    if fav_search_val[1]:
+        fav_search_val[1] = fav_search_val[1].split(',')
+        for val in fav_search_val[1]:
+            print("val ", val)
+            recipe_list_search_mealtype = recipe_list_search_mealtype | Q(meal_type__mealtype__iexact=val)
+    if fav_search_val[2]:
+        fav_search_val[2] = fav_search_val[2].split(',')
+        for val in fav_search_val[2]:
+            print("val ", val)
+            recipe_list_search_difficulty = recipe_list_search_difficulty | Q(difficulty__difficulty__iexact=val)
+    recipe_list_search = recipe_list_search_cuisine & recipe_list_search_mealtype & recipe_list_search_difficulty & recipe_list_search_title
+    k_search = Recipe.objects.filter(recipe_list_search).distinct()
+    print("favorite recipes search Q: ", recipe_list_search)
+    print("favorite recipes search: ", k_search)
+    favorite_ids = Favorite.objects.filter(favorer_id=user.id).values('recipe_id').distinct()
     if favorite_ids:
         for id in favorite_ids:
             i = (id['recipe_id'])
             search3 = search3 | (Q(favorite__recipe_id=i))
-        d_search = Recipe.objects.filter(search3).distinct()
+        d_search = Recipe.objects.filter(search3).filter(recipe_list_search).distinct()
+        f_search = Recipe.objects.filter(search3).filter(recipe_list_search).values('title').distinct()
     else:
-        d_search=''
+        d_search =''
+        f_search =''
+    json_items = json.dumps(list(f_search))
+    print("passed new value to title autocomplete")
+    print(json_items)
+    # request.session['title_before_search'] = False
+    request.session['search_titles from_results'] = json_items
     context = {'recipe_list': d_search}
-    return render(request, 'cooks/favorite_list.html', context)
+    return render(request, 'cooks/favorite_search.html', context)
+
 
 def my_recipes(request, name):
     userq = get_object_or_404(User, username=name)
+    my_recipes_cuisine1 = []
+    my_recipes_difficulty1 = []
+    my_recipes_mealtypes1 = []
+    my_recipes_mealtypes2 = []
     # MY RECIPES: (request.user) - IM A REGISTERED USER LOOKING AT MY RECIPES
     if request.user.is_authenticated and request.user == userq:
         my_ids = Recipe.objects.filter(author_id=userq.id).distinct()
         if my_ids:
             d_search = my_ids
+            for recipe_cat in d_search:
+                try:
+                    if recipe_cat.cuisine:
+                        if my_recipes_cuisine1:
+                            if recipe_cat.cuisine.cuisine not in my_recipes_cuisine1:
+                                my_recipes_cuisine1.append(recipe_cat.cuisine.cuisine)
+                        else:
+                            my_recipes_cuisine1.append(recipe_cat.cuisine.cuisine)
+                except:
+                    pass
+                try:
+                    if recipe_cat.difficulty:
+                        if my_recipes_difficulty1:
+                            if recipe_cat.difficulty.difficulty not in my_recipes_difficulty1:
+                                my_recipes_difficulty1.append(recipe_cat.difficulty.difficulty)
+                        else:
+                            my_recipes_difficulty1.append(recipe_cat.difficulty.difficulty)
+                except:
+                    pass
+                try:
+                    if recipe_cat.meal_type:
+                        my_recipes_mealtypes2 = MealType.objects.filter(recipe=recipe_cat).values_list('mealtype',
+                                                                                                       flat=True).distinct()[
+                                                ::1]
+                        if my_recipes_mealtypes2:
+                            if my_recipes_mealtypes1:
+                                for mealtype in my_recipes_mealtypes2:
+                                    if mealtype not in my_recipes_mealtypes1:
+                                        my_recipes_mealtypes1.append(mealtype)
+                            else:
+                                for mealtype in my_recipes_mealtypes2:
+                                    my_recipes_mealtypes1.append(mealtype)
+                except:
+                    pass
         else:
             d_search=''
         context = {'recipe_list': d_search,
                    'can_edit': True,
-                   'user': userq}
+                   'author': userq,
+                   'fields': fields,
+                   'author_mealtypes': my_recipes_mealtypes1,
+                   'author_cuisines': my_recipes_cuisine1,
+                   'author_difficulty': my_recipes_difficulty1}
         return render(request, 'cooks/my_recipes.html', context)
     # IM REGISTERED USER LOOKING AT SOMEONE ELSES LIST OF RECIPES -- OR IM NOT REGISTERED
     else:
         my_ids = Recipe.objects.filter(author_id=userq.id).distinct()
         if my_ids:
             d_search = my_ids
+            for recipe_cat in d_search:
+                try:
+                    if recipe_cat.cuisine:
+                        if my_recipes_cuisine1:
+                            if recipe_cat.cuisine.cuisine not in my_recipes_cuisine1:
+                                my_recipes_cuisine1.append(recipe_cat.cuisine.cuisine)
+                        else:
+                            my_recipes_cuisine1.append(recipe_cat.cuisine.cuisine)
+                except:
+                    pass
+                try:
+                    if recipe_cat.meal_type:
+                        my_recipes_mealtypes2 = MealType.objects.filter(recipe=recipe_cat).values_list('mealtype',
+                                                                                                     flat=True).distinct()[
+                                              ::1]
+                        if my_recipes_mealtypes2:
+                            if my_recipes_mealtypes1:
+                                for mealtype in my_recipes_mealtypes2:
+                                    if mealtype not in my_recipes_mealtypes1:
+                                        my_recipes_mealtypes1.append(mealtype)
+                            else:
+                                for mealtype in my_recipes_mealtypes2:
+                                    my_recipes_mealtypes1.append(mealtype)
+                except:
+                    pass
         else:
             d_search=''
         context = {'recipe_list': d_search,
                    'can_edit': False,
-                   'user': userq}
+                   'author': userq,
+                   'fields': fields,
+                   'author_mealtypes': my_recipes_mealtypes1,
+                   'author_cuisines': my_recipes_cuisine1,
+                    'author_difficulty': my_recipes_difficulty1}
         return render(request, 'cooks/my_recipes.html', context)
+
+def authorsearch(request):
+    if request.method == "POST":
+        search_title = request.POST['search_title']
+        search_cuisine = request.POST['search_cuisine']
+        search_mealtype = request.POST['search_mealtype']
+        search_difficulty = request.POST['search_difficulty']
+        author = request.POST['author']
+    else:
+        search_title = ''
+        search_cuisine = ''
+        search_mealtype = ''
+        search_difficulty = ''
+        author = ''
+    user = User.objects.get(username=author)
+    search3 = Q()
+    recipe_list_search = Q()
+    recipe_list_search_title = Q()
+    recipe_list_search_mealtype = Q()
+    recipe_list_search_difficulty = Q()
+    recipe_list_search_cuisine = Q()
+    fav_search_val = [search_cuisine, search_mealtype, search_difficulty]
+    recipe_author = Q(author_id=user.id)
+    print ("RECIPE AUTHOR RECIPES: ",recipe_author)
+
+    if search_title:
+        recipe_list_search_title = Q(title__icontains=search_title)
+    if fav_search_val[0]:
+        fav_search_val[0] = fav_search_val[0].split(',')
+        for val in fav_search_val[0]:
+            print("val ", val)
+            recipe_list_search_cuisine = recipe_list_search_cuisine | Q(cuisine__cuisine__iexact=val)
+    if fav_search_val[1]:
+        fav_search_val[1] = fav_search_val[1].split(',')
+        for val in fav_search_val[1]:
+            print("val ", val)
+            recipe_list_search_mealtype = recipe_list_search_mealtype | Q(meal_type__mealtype__iexact=val)
+    if fav_search_val[2]:
+        fav_search_val[2] = fav_search_val[2].split(',')
+        for val in fav_search_val[2]:
+            print("val ", val)
+            recipe_list_search_difficulty = recipe_list_search_difficulty | Q(
+                difficulty__difficulty__iexact=val)
+    print (recipe_list_search_cuisine)
+    print (recipe_list_search_mealtype)
+    print (recipe_list_search_difficulty)
+    print (recipe_list_search_title)
+    print (recipe_author)
+    recipe_list_search = recipe_list_search_cuisine & recipe_list_search_mealtype & recipe_list_search_difficulty & recipe_list_search_title & recipe_author
+    d_search = Recipe.objects.filter(recipe_list_search).distinct()
+    f_search = Recipe.objects.filter(recipe_list_search).values('title').distinct()
+    json_items = json.dumps(list(f_search))
+    print("passed new value to title autocomplete")
+    print(json_items)
+    # request.session['title_before_search'] = False
+    request.session['search_titles from_results'] = json_items
+    context = {'recipe_list': d_search}
+    return render(request, 'cooks/author_search.html', context)
 
 #RecipeForm, IngredientForm, DifficultyForm, MealTypeyForm, CuisineForm, WorkingTimeForm, CookingTimeForm
 
@@ -472,7 +708,7 @@ def add_recipe(request, name):
             followers = Follow.objects.followers(user)
             if followers:
                 notify.send(user, actor=user, recipient_list=followers, verb='posted a new recipe', target=recipe_post)
-            return redirect('cooks:detail', recipe_post.title)
+            return redirect('cooks:detail', recipe_post.slug)
         else:
             print ("one of the forms was not valid?")
             context = {'recipe_form': recipe_form, 'ingredient_formset': ingredient_formset,

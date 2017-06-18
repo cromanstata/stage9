@@ -2,29 +2,61 @@
 {% load costume_filters %}
 
 {% block content %}
+    {% if request.user.id != author.id %}
+    <h2>RECIPES BY {{ author.username }}</h2>
+    {%  else %}
     <h2>MY RECIPES</h2>
-    <div id="search-results11">
-    {% for recipe in recipe_list %}
-        <a href="{% url 'cooks:detail' recipe.slug %}">
-            <div class="cook_item">
-                <div class="cook_item_cont" >
-                    <h3>{{ recipe.title }}</h3>
-                    <p>{{ recipe.summary }}</p>
-                    <br>
-                    {% for ingredient in recipe.ingredients.all %}
-                        <p style="display:inline-block">{{ ingredient.ingredient }} ,</p>
-                    {% endfor %}
-                {% if recipe.photo %}
-                <div class="cook_item_back" style="background-image: url({{ MEDIA_URL }}{{ recipe.photo }});"></div>
-                {% else %}
-                <div class="cook_item_back"></div>
-                {% endif %}
-                </div>
+    {% endif %}
+     {% if recipe_list %}
+    <div id="author_navbar">
+            <h5 class="inline">Search by title</h5>
+            {% csrf_token %}
+            <input title="Search by title" type="text" id="search_author_side_title"/>
+            <input hidden title="Picked cuisines" type="text" id="search_author_side_cuisine"/>
+            <input hidden title="Picked categories" type="text" id="search_author_side_mealtype"/>
+            <input hidden title="Picked categories" type="text" id="search_author_side_difficulty"/>
+            <input hidden title="Who is the author" type="text" id="search_author_side_author" value="{{ author }}"/>
+            <hr>
+        {% if author_difficulty %}
+            <div id="author_navbar_difficulty">
+            <div class="author_navbar_header"><span>DIFFICULTY</span></div>
+            {% for value, key in fields.DIFFICULTIES %}
+                {% if value in author_difficulty %}
+                    <div id="author_navbar_difficulty_{{ value }}" data-id="{{ value }}" data-model-name="difficulty" data-like="click" class="clickable author_navbar_item">
+                    <span>{{ key }}</span>
+                    </div>
+                {%  endif %}
+            {% endfor %}
             </div>
-        </a>
-        {% if can_edit %}
-        <a href="{% url 'cooks:edit_recipe' recipe.slug %}"><p>edit recipe</p></a>
+            <hr>
         {%  endif %}
-    {% endfor %}
+        {% if author_cuisines %}
+            <div id="author_navbar_cuisine">
+            <div class="author_navbar_header"><span>CUISINES</span></div>
+            {% for value, key in fields.CUISINE %}
+                {% if value in author_cuisines %}
+                    <div id="author_navbar_cuisine_{{ value }}" data-id="{{ value }}" data-model-name="cuisine" data-like="click" class="clickable author_navbar_item">
+                    <span>{{ key }}</span>
+                    </div>
+                {%  endif %}
+            {% endfor %}
+            </div>
+            <hr>
+        {%  endif %}
+        {% if author_mealtypes %}
+            <div id="author_navbar_mealtype">
+            <div class="author_navbar_header"><span>MEAL TYPE</span></div>
+            {% for value, key in fields.MEALTYPE %}
+                {% if value in author_mealtypes %}
+                    <div id="author_navbar_mealtype_{{ value }}"data-id="{{ value }}" data-model-name="mealtype" data-like="click" class="clickable author_navbar_item">
+                    <span>{{ key }}</span>
+                    </div>
+                {%  endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div id="search-results-author" class="search_results_has_api">
     </div>
 {%  endblock %}

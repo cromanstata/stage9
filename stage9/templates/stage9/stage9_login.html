@@ -18,12 +18,14 @@
             <span id="notification_counter_badge" class="badge side_navbar_msg_count">{{ request.user.notifications.unread.count }}</span>
             <div id="notification_box_position">
                 <div id="notification_box">
-                    <div id="notification_header">
-                        <h5 class="bold inline">NOTIFICATIONS</h5>
-                        <span id="notifications_mark" class="inline pointer">MARK ALL AS READ</span>
-                    </div>
-                    <div id="notification_cont" class="notifications notification-box-list">
-                        {% render_notifications using request.user.notifications.active for box %}
+                    <div id="notification_box_wrap">
+                        <div id="notification_header">
+                            <h5 class="bold inline">NOTIFICATIONS</h5>
+                            <span id="notifications_mark" class="inline pointer">MARK ALL AS READ</span>
+                        </div>
+                        <div id="notification_cont" class="notifications notification-box-list">
+                            {% render_notifications using request.user.notifications.active for box %}
+                        </div>
                     </div>
                 </div>
             </div>
